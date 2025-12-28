@@ -1,12 +1,8 @@
 <?php
-
 namespace App\Controller;
 
 use App\Model\Recipe;
 use App\Model\Comment;
-
-require_once './../Model/Recipe.php';
-require_once './../Model/Comment.php';
 
 class RecipeController
 {

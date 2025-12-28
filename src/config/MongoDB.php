@@ -3,8 +3,6 @@
 namespace App\config;
 use MongoDB\Client;
 
-require './../../vendor/autoload.php';
-
 final class MongoDB
 {
 

@@ -7,10 +7,6 @@ use App\Exception\UserNotFound;
 use App\Exception\WrongPassword;
 use PDO;
 
-require_once './../Exception/UserNotFound.php';
-require_once './../Exception/WrongPassword.php';
-require_once './../Exception/UserAlreadyExists.php';
-
 class User
 {
     private PDO $db;

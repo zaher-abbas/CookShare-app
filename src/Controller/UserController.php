@@ -6,12 +6,6 @@ use App\Exception\UserAlreadyExists;
 use App\Exception\UserNotFound;
 use App\Exception\WrongPassword;
 use App\Model\User;
-use Exception;
-
-require_once './../Model/User.php';
-require_once './../Exception/UserNotFound.php';
-require_once './../Exception/WrongPassword.php';
-
 class UserController
 {
     private User $user;

@@ -1,5 +1,5 @@
 {
-    "name": "administrateur/recipe_app",
+    "name": "administrateur/cookshare-app",
     "type": "project",
     "require": {
         "mongodb/mongodb": "^2.1",
@@ -10,5 +10,10 @@
             "name": "Zaher ABBAS",
             "email": "z.abbas83@yahoo.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
 }

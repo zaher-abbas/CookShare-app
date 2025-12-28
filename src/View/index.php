@@ -1,7 +1,5 @@
 <?php
-require_once './../config/MySQL.php';
-require_once './../Controller/UserController.php';
-require_once './../Controller/RecipeController.php';
+require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use App\config\MySQL;
 use App\Controller\RecipeController;

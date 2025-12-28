@@ -4,8 +4,6 @@
 namespace App\Model;
 use App\config\MongoDB;
 
-require_once './../config/MongoDB.php';
-
 class Comment
 {
   private $dbCollection;
