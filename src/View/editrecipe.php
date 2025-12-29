@@ -4,14 +4,14 @@
 unset($_COOKIE['ErrorAddingRecipe']);
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 ?>
-<main class="flex-grow-1">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container my-4">
         <?php if ($action == 'addrecipe'): ?>
-            <h3 class="text-center alert alert-light">&#10133; Add New Recipe</h3>
+            <h3 class="text-center alert alert-light w-75 mx-auto">&#10133; Add New Recipe</h3>
         <?php elseif ($action == 'updaterecipe'): ?>
-            <h3 class="text-center alert alert-light">&#9998; Edit Recipe</h3>
+            <h3 class="text-center alert alert-light w-75 mx-auto">&#9998; Edit Recipe</h3>
         <?php endif; ?>
-        <form class="edit-form p-5" method="post" action="" enctype="multipart/form-data" class="p-3 rounded">
+        <form class="edit-form p-5 w-75 mx-auto rounded" method="post" action="" enctype="multipart/form-data">
             <div class="mb-4">
                 <label for="rname" class="form-label">Recipe's Name <span class="text-danger">*</span>
                 </label>

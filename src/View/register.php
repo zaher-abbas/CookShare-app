@@ -1,7 +1,7 @@
-<main class="flex-grow-1">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container my-4 text-white">
-        <h3 class="text-center alert alert-info">Register New Account</h3>
-        <form class="auth-form p-5 rounded-3" action="" method="post" class="p-3 rounded">
+        <h3 class="text-center alert alert-info w-75 mx-auto">Register New Account</h3>
+        <form class="auth-form p-5 rounded-3 w-75 mx-auto" action="" method="post" class="p-3 rounded">
             <div class="mb-4">
                 <label for="firstname" class="form-label">First Name <span class="text-danger">*</span>
                 </label>
