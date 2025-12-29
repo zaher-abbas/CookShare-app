@@ -3,8 +3,8 @@
 /** @var array|null $recipes */
 $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
 ?>
-<main class="flex-grow-1">
     <?php if ($user != ""): ?>
+<main class="flex-grow-1">
     <section class='container my-4'>
         <h4 class="text-center fw-bold mt-5 mb-3">Welcome back <strong
                     class="badge text-bg-success">&#128100; <?= htmlspecialchars($user) ?></strong>
@@ -59,22 +59,26 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                 </div>
             <?php endforeach; ?>
             <?php endif; ?>
+</main>
             <?php if ($recipes == null): ?>
-                <div class="container">
+              <main class="flex-grow-1">
+               <div class="container">
                     <div class="alert alert-info text-center fs-5" role="alert">
                         No recipes found. Be the first to add a recipe!
                         <br><br>
                         <a href="index.php?action=addrecipe" class="btn btn-success">Add a Recipe</a>
                     </div>
                 </div>
+              </main>
             <?php endif; ?>
             <?php else: ?>
-                <section class="hero-section my-3 p-4 container rounded-4">
+            <main class="flex-grow-1 d-flex justify-content-center align-items-center">
+            <section class="hero-section my-3 p-5 container rounded-4">
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-lg-8">
                                 <h1 class="display-4 fw-bold mb-4">Welcome to CookShare App &#129379;</h1>
-                                <p class="lead mb-5">View recipes from all over the world, shared by everyone, you can
+                                <p class="lead mb-3">View recipes from all over the world, shared by everyone, you can
                                     add yours too!</p>
                                 <p class="lead mb-5">Try it...it is Fun!</p>
                                 <div class="d-flex gap-3 justify-content-center flex-wrap">
@@ -86,8 +90,8 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                         </div>
                     </div>
                 </section>
+            </main>
             <?php endif; ?>
-</main>
 <?php if (!empty($_SESSION['toast'])): ?>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
