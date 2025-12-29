@@ -73,12 +73,12 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
             <?php endif; ?>
             <?php else: ?>
             <main class="flex-grow-1 d-flex justify-content-center align-items-center">
-            <section class="hero-section my-3 p-5 container rounded-4">
+            <section class="hero-section my-3 p-5 container rounded-5">
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-lg-8">
-                                <h1 class="display-4 fw-bold mb-4">Welcome to CookShare App &#129379;</h1>
-                                <p class="lead mb-3">View recipes from all over the world, shared by everyone, you can
+                                <h1 class="display-4 fw-bold mb-4">Welcome to CookShare &#129379;</h1>
+                                <p class="lead my-5">View recipes from all over the world, shared by everyone, you can
                                     add yours too!</p>
                                 <p class="lead mb-5">Try it...it is Fun!</p>
                                 <div class="d-flex gap-3 justify-content-center flex-wrap">
