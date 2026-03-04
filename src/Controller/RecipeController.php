@@ -77,6 +77,19 @@ class RecipeController
     public function showAllRecipes(): void
     {
         $recipes = $this->recipe->getRecipes();
+
+        $userId = $_SESSION['userId'] ?? null;
+        if ($userId) {
+            $favoriteRecipes = $this->recipe->getFavoritesByUserId($userId);
+            foreach ($recipes as $key => $recipe) {
+                foreach ($favoriteRecipes as $favoriteRecipe) {
+                    if ($recipe['id'] == $favoriteRecipe['id']) {
+                        $recipes[$key]['isFavorite'] = true;
+                    }
+                }
+            }
+        }
+
         require_once './../View/dashboard.php';
     }
 
