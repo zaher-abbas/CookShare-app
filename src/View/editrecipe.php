@@ -13,17 +13,17 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
         <?php endif; ?>
         <form class="edit-form p-5 w-75 mx-auto rounded" method="post" action="" enctype="multipart/form-data">
             <div class="mb-4">
-                <label for="rname" class="form-label">Recipe's Name <span class="text-danger">*</span>
+                <label for="rName" class="form-label">Recipe's Name <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control" id="rname" name="rname" placeholder="" required maxlength="50"
+                <input type="text" class="form-control" id="rName" name="rName" placeholder="" required maxlength="50"
                        value="<?= $recipe ? htmlspecialchars($recipe['name']) : ''; ?>">
             </div>
             <div class="mb-4">
-                <label for="rimage" class="form-label">Recipe's Image <span
+                <label for="rImage" class="form-label">Recipe's Image <span
                             class="badge rounded-pill bg-secondary ms-1">Optional</span>
 
                 </label>
-                <input class="form-control" type="file" id="rimage" name="rimage" accept="image/*"
+                <input class="form-control" type="file" id="rImage" name="rImage" accept="image/*"
             </div>
             <div class="my-3 p-2 d-flex flex-column justify-content-center align-items-start">
                 <?php if ($recipe && $recipe['image'] != ''): ?>
@@ -35,9 +35,18 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
                 <?php endif; ?>
             </div>
             <div class="mb-4">
-                <label for="rdescription" class="form-label">Recipe Description <span class="text-danger">*</span>
+                <label for="rIngredients" class="form-label">Ingredients<span class="text-danger">*</span>
                 </label>
-                <textarea class="form-control" id="rdescription" name="rdescription" rows="8" required>
+                <p class="badge text-bg-info fst-italic p-2">**"Separate ingredients with a comma"**
+                </p>
+                <textarea class="form-control" id="rIngredients" name="rIngredients" rows="8" required>
+                    <?= $recipe ? htmlspecialchars(trim($recipe['ingredients'])) : ''; ?>
+                </textarea>
+            </div>
+            <div class="mb-4">
+                <label for="rDescription" class="form-label">Recipe Description <span class="text-danger">*</span>
+                </label>
+                <textarea class="form-control" id="rDescription" name="rDescription" rows="8" required>
                     <?= $recipe ? htmlspecialchars(trim($recipe['description'])) : ''; ?>
                 </textarea>
             </div>

@@ -13,15 +13,16 @@ class Recipe
         $this->db = $db;
     }
 
-    public function createRecipe(int $userId, string $name, string $image, string $description): void
+    public function createRecipe(int $userId, string $name, string $image, string $description, string $ingredients): void
     {
-        $query = "INSERT INTO recipe (user_id, name, image, description) VALUES
-                                   (:user_id, :name, :image, :description)";
+        $query = "INSERT INTO recipe (user_id, name, image, description, ingredients) VALUES
+                                   (:user_id, :name, :image, :description, :ingredients)";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':user_id', $userId);
         $statement->bindValue(':name', $name);
         $statement->bindValue(':image', $image);
         $statement->bindValue(':description', $description);
+        $statement->bindValue(':ingredients', $ingredients);
         $statement->execute();
     }
 
@@ -104,13 +105,14 @@ class Recipe
         $statement->execute();
     }
 
-    public function updateRecipe(int $recipeId, string $name, string $image, string $description): void
+    public function updateRecipe(int $recipeId, string $name, string $image, string $description, string $ingredients): void
     {
-        $query = "UPDATE recipe SET name = :name, image = :image, description = :description WHERE id = :recipeId";
+        $query = "UPDATE recipe SET name = :name, image = :image, description = :description, ingredients = :ingredients WHERE id = :recipeId";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':name', $name);
         $statement->bindValue(':image', $image);
         $statement->bindValue(':description', $description);
+        $statement->bindValue(':ingredients', $ingredients);
         $statement->bindValue(':recipeId', $recipeId);
         $statement->execute();
     }

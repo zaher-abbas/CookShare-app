@@ -1,5 +1,6 @@
 <?php
 /** @var array|null $recipe */
+/** @var array|null $recipeIngredients */
 /** @var array|null $comments */
 /** @var boolean $isRecipeFavorite */
 
@@ -45,6 +46,17 @@
                                     </span>
                                 </span>
                             </h5>
+                            <h2>&#129379; Ingredients</h2>
+                            <?php if ($recipeIngredients): ?>
+                            <ul class="list-group list-group-flush">
+                                <?php foreach ($recipeIngredients as $ingredient): ?>
+                                    <li class="list-group-item"><?= htmlspecialchars($ingredient) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php else: ?>
+                                <p>No ingredients available.</p>
+                            <?php endif; ?>
+                            <h2>&#128151; Description</h2>
                             <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
                         </div>
                     </div>

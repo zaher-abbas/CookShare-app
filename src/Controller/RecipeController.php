@@ -25,35 +25,35 @@ class RecipeController
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $rname = isset($_POST['rname']) ? trim($_POST['rname']) : null;
-            $rimage = $_FILES['rimage'] ?? null;
-            $rdescription = isset($_POST['rdescription']) ? trim($_POST['rdescription']) : null;
+            $rName = isset($_POST['rName']) ? trim($_POST['rName']) : null;
+            $rImage = $_FILES['rImage'] ?? null;
+            $rDescription = isset($_POST['rDescription']) ? trim($_POST['rDescription']) : null;
+            $rIngredients = isset($_POST['rIngredients']) ? trim($_POST['rIngredients']) : null;
+            if ($rName && $rDescription && $rIngredients) {
 
-            if ($rname && $rdescription) {
-
-                if ($rimage['error'] == 0) {
-                    $image_name = $rimage['name'];
+                if ($rImage['error'] == 0) {
+                    $image_name = $rImage['name'];
                     $image_name = time() . $image_name;
                     $folderName = './../View/img/';
                     if (!is_dir($folderName)) {
                         mkdir($folderName, 0775, true);
                     }
 
-                    move_uploaded_file($rimage['tmp_name'], $folderName . $image_name);
+                    move_uploaded_file($rImage['tmp_name'], $folderName . $image_name);
                 } else {
                     $image_name = '';
                 }
                 if ($action == 'addrecipe') {
-                    $this->recipe->createRecipe($_SESSION['userId'], $rname, $image_name, $rdescription);
+                    $this->recipe->createRecipe($_SESSION['userId'], $rName, $image_name, $rDescription, $rIngredients);
                     $_SESSION['toast'] = [
                         'type' => 'success',
                         'message' => 'Recipe added successfully.'
                     ];
                 } elseif ($action == 'updaterecipe') {
                     if ($image_name != '') {
-                        $this->recipe->updateRecipe($id, $rname, $image_name, $rdescription);
+                        $this->recipe->updateRecipe($id, $rName, $image_name, $rDescription, $rIngredients);
                     } else {
-                        $this->recipe->updateRecipe($id, $rname, $recipe['image'], $rdescription);
+                        $this->recipe->updateRecipe($id, $rName, $recipe['image'], $rDescription, $rIngredients);
                     }
                     $_SESSION['toast'] = [
                         'type' => 'success',
@@ -97,11 +97,16 @@ class RecipeController
     {
         $id = $_GET['id'] ?? null;
         $isRecipeFavorite = false;
+        $recipeIngredients = [];
         if ($id) {
             $isRecipeFavorite = $this->recipe->isRecipeInFavorites($id, $_SESSION['userId']);
             $this->comment = new Comment();
             $recipe = $this->recipe->getRecipeById($id);
-            $comments = $this->comment->getCommentsByRecipeId($id);
+            if ($recipe['ingredients'] != null)
+                $recipeIngredients = array_filter(
+                    array_map('trim', explode(",", $recipe['ingredients'])),
+                    fn($item) => !empty($item)
+                );$comments = $this->comment->getCommentsByRecipeId($id);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $comment = isset($_POST["comment"]) ? trim($_POST['comment']) : null;
                 $note = isset($_POST["note"]) ? $_POST['note'] : null;
