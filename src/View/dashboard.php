@@ -33,9 +33,9 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                 <div class="col">
                     <div class="<?= (isset($recipe['isFavorite']) && $recipe['isFavorite']) ? 'border border-3 border-warning' : 'border border-secondary-subtle border-start-0 rounded-end border-4' ?> card h-100 recipe-card bg-sage-light text-forest mb-3 p-4">
                       <?php if (isset($recipe['isFavorite']) && ($recipe['isFavorite'] === true)): ?>
-                          <h3>&#11088;</h3>
+                          <h4>&#11088;</h4>
                       <?php else: ?>
-                      <h3 class="p-3"></h3>
+                      <h4 class="p-3"></h4>
                           <?php endif; ?>
                         <?php if ($recipe['image'] === ''): ?>
                             <img src="./../View/img/recipe_placeholder.png"
