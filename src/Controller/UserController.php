@@ -97,7 +97,7 @@ class UserController
             }
             if (!empty($user)) {
                 $_SESSION['userName'] = $user['firstname'];
-                $_SESSION['userPhoto'] = $user['photo'] ?? "default_user.png";
+                $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
                 $_SESSION['userId'] = $user['id'];
                 header('Location: index.php?action=home');
                 exit();
