@@ -12,7 +12,7 @@
                         <img src="./../View/img/<?= $user['photo'] ?>" class="card-img" alt="...">
                     <?php else: ?>
                     <img
-                            src="https://img.favpng.com/23/3/2/computer-icons-silhouette-user-profile-png-favpng-NvqKckg9G8mZk9Qi1zqWnn4fA.jpg"
+                            src="./../View/img/default_user_image.jpg"
                             class="card-img" alt="...">
                     <?php endif; ?>
                     <br>

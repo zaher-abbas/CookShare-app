@@ -58,27 +58,34 @@ $connected = $user != "Guest";
                 }
                 ?>
                 <span class="d-lg-flex d-xl-flex align-items-center justify-content-evenly gap-4">
-                    <?php
-                    if (!$connected) {
-                        echo "<ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
+                    <?php if (!$connected): ?>
+                        <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
                           <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
                                 <a class='btn btn-primary btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=register'>&#10133; Register</a>
                                 </li>
                           <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
                                 <a class='btn btn-success btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
                                 </li>
-                        </ul>";
-                    } else {
-                        echo "
-                        <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
+                        </ul>
+                    <?php else: ?>
+                        <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0 d-flex justify-content-center align-items-center'>
                             <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0'>
-                      <a href='index.php?action=profile' class='btn btn-info btn-outline-dark btn-md p-2 rounded-2 text-decoration-none mt-0 w-100 fw-bold'>&#128100; My Profile</a>
+                      <a href='index.php?action=profile' class='btn btn-outline-primary btn-md border-0 p-2 text-decoration-none mt-0 w-100 fw-bold'>
+                        <?php if (isset($_SESSION['userPhoto'])): ?>
+                            <img src="./../View/img/<?= $_SESSION['userPhoto'] ?>" class="rounded-circle profile-img"
+                                 alt="...">
+                        <?php else: ?>
+                            <img
+                                    src="./../View/img/default_user_image.jpg"
+                                    class="rounded-circle profile-img" alt="...">
+                        <?php endif; ?>
+                          <?= $user ?></a>
                       </li>
                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
-                                <a class='btn btn-danger btn-outline-dark btn-md p-2 rounded-2 mt-0 w-100 fw-bold' href='index.php?action=logout'>Log-out ↪</a>
+                                <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold' href='index.php?action=logout'>Log-out ↪</a>
                         </li>
-                        </ul>";
-                    }
+                        </ul>
+                    <?php endif;
                     ?>
                 </span>
             </div>
