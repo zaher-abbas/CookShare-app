@@ -71,14 +71,8 @@ $connected = $user != "Guest";
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0 d-flex justify-content-center align-items-center'>
                             <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0'>
                       <a href='index.php?action=profile' class='btn btn-outline-primary text-light btn-md border-0 p-2 text-decoration-none mt-0 w-100 fw-bold'>
-                        <?php if (isset($_SESSION['userPhoto'])): ?>
                             <img src="./../View/img/<?= $_SESSION['userPhoto'] ?>" class="rounded-circle profile-img me-2"
                                  alt="User Profile Picture">
-                        <?php else: ?>
-                            <img
-                                    src="./../View/img/default_user_image.jpg"
-                                    class="rounded-circle profile-img me-2" alt="User Profile Picture">
-                        <?php endif; ?>
                           <?= $user ?></a>
                       </li>
                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>

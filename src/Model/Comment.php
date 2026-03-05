@@ -14,11 +14,12 @@ class Comment
       $this->dbCollection = MongoDB::getConnection()->$collectionName ?? null;
   }
 
-  public function createComment(int $recipeId, string $authorName, string $comment, int $note): void {
+  public function createComment(int $recipeId, string $authorName, string $authorPictureName, string $comment, int $note): void {
 
       $this->dbCollection->insertOne([
           "recipe_id" => $recipeId,
           "author_name" => $authorName,
+          "author_picture_name" => $authorPictureName,
           "comment" => $comment,
           "note" => $note,
           "date" => date("d-m-Y H:i:s")

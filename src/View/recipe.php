@@ -95,7 +95,11 @@
             <?php foreach ($comments as $comment): ?>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $comment["author_name"] ?> on <?= $comment["date"] ?></h5>
+                        <?php if (isset($comment['author_picture_name'])): ?>
+                        <h5 class="card-title"><img src="./../View/img/<?= $comment['author_picture_name'] ?>" alt="User Profile Picture" class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?> on <?= $comment["date"] ?></h5>
+                     <?php else: ?>
+                        <h5 class="card-title"><img src="./../View/img/default_user_image.jpg" alt="User Profile Picture" class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?> on <?= $comment["date"] ?></h5>
+                        <?php endif; ?>
                         <?php switch ($comment["note"]) {
                             case 1:
                                 echo "<p class='card-text'>	&#11088;</p>";

@@ -106,12 +106,13 @@ class RecipeController
                 $recipeIngredients = array_filter(
                     array_map('trim', explode(",", $recipe['ingredients'])),
                     fn($item) => !empty($item)
-                );$comments = $this->comment->getCommentsByRecipeId($id);
+                );
+            $comments = $this->comment->getCommentsByRecipeId($id);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $comment = isset($_POST["comment"]) ? trim($_POST['comment']) : null;
                 $note = isset($_POST["note"]) ? $_POST['note'] : null;
                 if ($comment && $note) {
-                    $this->comment->createComment($id, $_SESSION['userName'], $comment, $note);
+                    $this->comment->createComment($id, $_SESSION['userName'], $_SESSION['userPhoto'], $comment, $note);
                     header('Location: index.php?action=recipe&id=' . $id);
                 }
             }

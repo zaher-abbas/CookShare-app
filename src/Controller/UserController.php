@@ -97,7 +97,7 @@ class UserController
             }
             if (!empty($user)) {
                 $_SESSION['userName'] = $user['firstname'];
-                $_SESSION['userPhoto'] = $user['photo'];
+                $_SESSION['userPhoto'] = $user['photo'] ?? "default_user.png";
                 $_SESSION['userId'] = $user['id'];
                 header('Location: index.php?action=home');
                 exit();
@@ -128,8 +128,7 @@ class UserController
                 }
                 move_uploaded_file($profilePhoto['tmp_name'], $folderName . $image_name);
                 $this->user->updateUserPhoto($_SESSION['userId'], $image_name);
-               $_COOKIE["ProfilePhotoUpdated"] = 'true';
-               setcookie("ProfilePhotoUpdated", 'true');
+                $_SESSION['userPhoto'] = $image_name;
                 $_SESSION['toast'] = [
                     'type' => 'success',
                     'message' => 'Profile photo updated successfully.'
