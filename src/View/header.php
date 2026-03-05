@@ -3,7 +3,32 @@ session_start();
 $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "Guest";
 $connected = $user != "Guest";
 ?>
+<?php if (!empty($_SESSION['toast'])): ?>
+    <?php
+    $toastMsg = is_array($_SESSION['toast']) ? ($_SESSION['toast']['message'] ?? '') : $_SESSION['toast'];
+    $toastType = is_array($_SESSION['toast']) ? ($_SESSION['toast']['type'] ?? 'success') : 'success';
 
+    $bgStyle = $toastType === 'danger'
+        ? 'linear-gradient(to right, #ff416c, #ff4b2b)'
+        : 'linear-gradient(to right, #00b09b, #96c93d)';
+    ?>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Toastify({
+                text: "<?= addslashes($_SESSION['toast']['message'] ?? $_SESSION['toast']) ?>",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                style: {
+                    background: "<?= $bgStyle ?>",
+                }
+            }).showToast();
+        });
+    </script>
+    <?php unset($_SESSION['toast']); // Clear it so it doesn't show on refresh ?>
+<?php endif; ?>
 <header>
     <nav class="navbar navbar-expand-md p-4 text-light">
         <div class="container-fluid">

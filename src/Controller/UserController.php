@@ -117,9 +117,33 @@ class UserController
         } catch (UserNotFound $e) {
             header('Location: index.php?action=login');
         }
-        require_once './../View/profile.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $profilePhoto = $_FILES['profilePhoto'] ?? null;
+            if ($profilePhoto && $profilePhoto['error'] == 0) {
+                $image_name = 'profile_photo_' . $user['id'];
+                $folderName = './../View/img/';
+                if (!is_dir($folderName)) {
+                    mkdir($folderName, 0775, true);
+                }
+                move_uploaded_file($profilePhoto['tmp_name'], $folderName . $image_name);
+                $this->user->updateUserPhoto($_SESSION['userId'], $image_name);
+               $_COOKIE["ProfilePhotoUpdated"] = 'true';
+               setcookie("ProfilePhotoUpdated", 'true');
+                $_SESSION['toast'] = [
+                    'type' => 'success',
+                    'message' => 'Profile photo updated successfully.'
+                ];
+               header('Location: index.php?action=profile');
+               exit();
+            } else {
+                $_SESSION['toast'] = [
+                    'type' => 'danger',
+                    'message' => 'Error updating profile photo.'
+                ];
+            }
+        }
+                require_once './../View/profile.php';
     }
-
     public function logout(): void
     {
         setcookie("loggedOut", "true");

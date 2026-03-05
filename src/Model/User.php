@@ -71,4 +71,14 @@ class User
         }
         return $user;
     }
+
+    public function updateUserPhoto(int $id, string $photo): void
+
+    {
+        $query = "UPDATE user SET photo = :photo WHERE id = :id";
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':photo', $photo);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+    }
 }
