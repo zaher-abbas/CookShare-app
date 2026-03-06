@@ -9,8 +9,8 @@ $connected = $user != "Guest";
     $toastType = is_array($_SESSION['toast']) ? ($_SESSION['toast']['type'] ?? 'success') : 'success';
 
     $bgStyle = $toastType === 'danger'
-        ? 'linear-gradient(to right, #ff416c, #ff4b2b)'
-        : 'linear-gradient(to right, #00b09b, #96c93d)';
+        ? '#a12525'
+        : '#00b09b';
     ?>
 
     <script>
