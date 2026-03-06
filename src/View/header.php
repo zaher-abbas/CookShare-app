@@ -10,7 +10,7 @@ $connected = $user != "Guest";
 
     $bgStyle = $toastType === 'danger'
         ? '#a12525'
-        : '#00b09b';
+        : '#0c818a';
     ?>
 
     <script>
