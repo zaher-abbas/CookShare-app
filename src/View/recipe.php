@@ -58,7 +58,7 @@
                                 <p>No ingredients available.</p>
                             <?php endif; ?>
                             <br>
-                            <h2>&#128151; Description</h2>
+                            <h2>&#128195; Description</h2>
                             <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
                         </div>
                     </div>

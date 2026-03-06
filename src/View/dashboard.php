@@ -9,8 +9,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
         <h4 class="text-center fw-bold mt-5 mb-3">Welcome back <strong
                     class="badge text-bg-success">&#128100; <?= htmlspecialchars($user) ?></strong>
         </h4>
-        <h2 class="text-center mb-5 fw-bold">Discover Our Recipes - <span class="badge text-bg-success">🍽️</span>
-            <span class="badge text-bg-warning">🍹</span></h2>
+        <h2 class="text-center mb-5 fw-bold">Discover Our Recipes</h2>
         <form class="d-flex justify-content-center" role="search" method="get" action="index.php">
             <input type="hidden" name="action" value="search"/>
             <div class="input-group input-group-lg" style="max-width: 400px;">
@@ -82,7 +81,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-lg-8">
-                                <h1 class="display-4 fw-bold mb-4">Welcome to CookShare &#129379;</h1>
+                                <h1 class="display-4 fw-bold mb-4">Welcome to CookShare &#127869;</h1>
                                 <p class="lead my-5">View recipes from all over the world, shared by everyone, you can
                                     add yours too!</p>
                                 <p class="lead mb-5">Try it...it is Fun!</p>

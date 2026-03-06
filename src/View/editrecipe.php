@@ -35,7 +35,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
                 <?php endif; ?>
             </div>
             <div class="mb-4">
-                <label for="rIngredients" class="form-label">Ingredients<span class="text-danger"> *</span>
+                <label for="rIngredients" class="form-label">&#129379; Ingredients<span class="text-danger"> *</span>
                 </label>
                 <br>
                 <p class="badge text-bg-info fst-italic p-2">Separate ingredients with a comma
@@ -43,7 +43,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
                 <textarea class="form-control" id="rIngredients" name="rIngredients" rows="8" required><?= $recipe ? htmlspecialchars(trim($recipe['ingredients'])) : ''; ?></textarea>
             </div>
             <div class="mb-4">
-                <label for="rDescription" class="form-label">Recipe Description <span class="text-danger">*</span>
+                <label for="rDescription" class="form-label">&#128195; Description <span class="text-danger">*</span>
                 </label>
                 <textarea class="form-control" id="rDescription" name="rDescription" rows="8" required><?= $recipe ? htmlspecialchars(trim($recipe['description'])) : ''; ?></textarea>
             </div>

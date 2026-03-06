@@ -1,4 +1,4 @@
-## &#129379; CookShare App
+## &#127869; CookShare App
 
 CookShare is a modern web application for managing recipes, built with native PHP using an MVC structure and both
 MongoDB and MySQL
