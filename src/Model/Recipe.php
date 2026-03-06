@@ -35,7 +35,7 @@ class Recipe
 
     public function getRecipeById(int $id): array|null
     {
-        $query = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id WHERE recipe.id = :id";
+        $query = "SELECT recipe.*, firstname, lastname, photo FROM recipe JOIN user u ON u.id = recipe.user_id WHERE recipe.id = :id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();

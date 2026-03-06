@@ -30,12 +30,21 @@
                                 <?php endif; ?>
                             </div>
                             <h1 class="card-title"><?= htmlspecialchars($recipe['name']) ?></h1>
-                            <h5 class="my-4">
+                            <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
                                 <span>
-                                    <span>Submitted by</span>
+                                    <span class="me-2">Submitted by</span>
                                     <span>
-                                        <span class="badge bg-light text-secondary border">
-                                            &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
+                                     <span>
+                                            <?php if ($recipe['photo']): ?>
+                                                <img src="./../View/img/<?= $recipe['photo'] ?>"
+                                                     alt="User Profile Picture" class="rounded-circle profile-img me-0">
+                                            <?php else: ?>
+                                                <img src="./../View/img/default_user_image.jpg"
+                                                     alt="User Profile Picture" class="rounded-circle profile-img me-0">
+                                            <?php endif; ?>
+                                         </span>
+                                        <span class="me-2">
+                                            <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span>
                                     </span>
                                     <span>
@@ -46,8 +55,8 @@
                                     </span>
                                 </span>
                             </h5>
-                            <br>
-                            <h2>&#129379; Ingredients</h2>
+                            <br><br>
+                            <h2 class="mb-3">&#129379; Ingredients</h2>
                             <?php if ($recipeIngredients): ?>
                             <ul class="list-group">
                                 <?php foreach ($recipeIngredients as $ingredient): ?>
@@ -57,8 +66,8 @@
                             <?php else: ?>
                                 <p>No ingredients available.</p>
                             <?php endif; ?>
-                            <br>
-                            <h2>&#128195; Description</h2>
+                            <br><br>
+                            <h2 class="mb-3">&#128195; Description</h2>
                             <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
                         </div>
                     </div>
