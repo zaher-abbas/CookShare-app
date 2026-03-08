@@ -3,7 +3,7 @@
 CookShare is a modern web application for managing recipes, built with native PHP using an MVC structure and both
 MongoDB and MySQL
 for data persistence.
-It allows users to create, manage, and share their culinary recipes.
+It allows users to create, manage, and share their culinary recipes, as well as share their opinions and notes on recipes from other users.
 
 ## ✨Features
 
@@ -12,7 +12,9 @@ It allows users to create, manage, and share their culinary recipes.
 - Add images and rich descriptions to recipes
 - Comment on recipes and view discussions 🗨
 - Personal dashboard and profile management
+- Upload and update custom user profile pictures 🖼️
 - Search and browse recipes 🔍
+- Sort recipes by different criteria ↕️
 - Add recipes to your favorites ⭐
 - Uses MySQL (PDO) and MongoDB drivers
 - Simple, modular MVC-like structure (Controllers, Models, Views)
