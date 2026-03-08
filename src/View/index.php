@@ -55,6 +55,9 @@ switch ($action) {
     case 'search':
         $recipeController->searchRecipeByName();
         break;
+    case 'order' :
+        $recipeController->orderRecipes();
+        break;
     case 'addtofavorites':
         $recipeController->addtoFavorites();
         break;

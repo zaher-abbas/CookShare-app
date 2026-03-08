@@ -130,6 +130,25 @@ class RecipeController
         require_once './../View/dashboard.php';
     }
 
+    public function orderRecipes(): void
+    {
+        $order = isset($_GET['orderBy']) ? trim($_GET['orderBy']) : null;
+        $recipes = [];
+        if (!$order) {
+            $recipes = $this->recipe->getRecipes();
+        }
+        else {
+            switch ($order) {
+                case 'name':
+                    $recipes = $this->recipe->orderRecipesByName();
+                    break;
+                case 'date' :
+                    $recipes = $this->recipe->orderRecipesByDate();
+            }
+        }
+    require_once './../View/dashboard.php';
+    }
+
     public function addtoFavorites(): void
     {
         $id = $_GET['id'] ?? null;

@@ -6,7 +6,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
     <?php if ($user != ""): ?>
 <main class="flex-grow-1">
     <section class='container my-4'>
-        <h4 class="text-center fw-bold mt-5 mb-3">Welcome back <strong
+        <h4 class="text-center fw-bold mt-5 mb-4">Welcome back <strong
                     class="badge text-bg-success"><?= htmlspecialchars($user) ?></strong>
         </h4>
         <h1 class="text-center mb-5 fw-bold">Discover Our Recipes</h1>
@@ -23,6 +23,14 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                 />
                 <button class="btn btn-success" type="submit" title="Search">Go</button>
             </div>
+        </form>
+        <form class="d-flex justify-content-center mt-5" method="get" action="index.php">
+            <input type="hidden" name="action" value="order"/>
+            <select name="orderBy" onchange="this.form.submit()">
+                <option value="" selected disabled>Order recipes by:</option>
+                <option value="name">Order recipes by name</option>
+                <option value="date">Order recipes by date</option>
+            </select>
         </form>
     </section>
     <?php if ($recipes): ?>
