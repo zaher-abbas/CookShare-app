@@ -58,8 +58,8 @@ input {
 }
 
 .page-favorites .recipe-card {
-    background: #fff7e6; /* léger orange pâle */
-    border-color: #ffc107 !important; /* rappel jaune */
+    background: #fff7e6;
+    border-color: #ffc107 !important;
     box-shadow: 0 6px 16px rgba(255, 193, 7, 0.25);
 }
 

@@ -9,7 +9,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
         <h4 class="text-center fw-bold mt-5 mb-3">Welcome back <strong
                     class="badge text-bg-success">&#128100; <?= htmlspecialchars($user) ?></strong>
         </h4>
-        <h2 class="text-center mb-5 fw-bold">Discover Our Recipes</h2>
+        <h1 class="text-center mb-5 fw-bold">Discover Our Recipes</h1>
         <form class="d-flex justify-content-center" role="search" method="get" action="index.php">
             <input type="hidden" name="action" value="search"/>
             <div class="input-group input-group-lg" style="max-width: 400px;">
