@@ -28,8 +28,10 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
             <input type="hidden" name="action" value="order"/>
             <select name="orderBy" onchange="this.form.submit()">
                 <option value="" selected disabled>Order recipes by:</option>
-                <option value="name">Order recipes by name</option>
-                <option value="date">Order recipes by date</option>
+                <option value="nameAZ">Order by name (A-Z)</option>
+                <option value="nameZA">Order by name (Z-A)</option>
+                <option value="dateNewest">Order by date (Newest first)</option>
+                <option value="dateOldest">Order by date (oldest first)</option>
             </select>
         </form>
     </section>

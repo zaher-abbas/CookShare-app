@@ -139,11 +139,18 @@ class RecipeController
         }
         else {
             switch ($order) {
-                case 'name':
-                    $recipes = $this->recipe->orderRecipesByName();
+                case 'nameAZ':
+                    $recipes = $this->recipe->orderRecipesByNameAscending();
                     break;
-                case 'date' :
-                    $recipes = $this->recipe->orderRecipesByDate();
+                case 'nameZA':
+                     $recipes = $this->recipe->orderRecipesByNameDescending();
+                     break;
+                case 'dateNewest' :
+                    $recipes = $this->recipe->orderRecipesByDateNewest();
+                    break;
+                case 'dateOldest' :
+                    $recipes = $this->recipe->orderRecipesByDateOldest();
+                    break;
             }
         }
     require_once './../View/dashboard.php';
@@ -200,7 +207,6 @@ class RecipeController
         }
 
     }
-
 }
 
 

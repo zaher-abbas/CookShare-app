@@ -50,13 +50,25 @@ class Recipe
         $statement->execute();
         return $statement->fetchAll() ?? null;
     }
-    public function orderRecipesByName(): array|null
+    public function orderRecipesByNameAscending(): array|null
     {
         $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.name";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
-    public function orderRecipesByDate(): array|null
+    public function orderRecipesByNameDescending(): array|null
+    {
+        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.name DESC";
+        $statement = $this->db->query($sql);
+        return $statement->fetchAll() ?? null;
+    }
+    public function orderRecipesByDateNewest(): array|null
+    {
+        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.created_at DESC";
+        $statement = $this->db->query($sql);
+        return $statement->fetchAll() ?? null;
+    }
+    public function orderRecipesByDateOldest(): array|null
     {
         $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.created_at";
         $statement = $this->db->query($sql);
