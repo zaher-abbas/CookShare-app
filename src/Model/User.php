@@ -30,7 +30,7 @@ class User
             $statement->execute();
         }
         else
-            throw new UserAlreadyExists("This user already exist!");
+            throw new UserAlreadyExists("An account already exists with this email address!");
     }
 
     public function findUserByEmail(string $email): bool

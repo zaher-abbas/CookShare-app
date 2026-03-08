@@ -31,12 +31,23 @@ class UserController
             $email = isset($_POST['email']) ? trim($_POST['email']) : '';
             $password = isset($_POST['password']) ? trim($_POST['password']) : '';
             $pwdConfirm = isset($_POST['pwdConfirm']) ? trim($_POST['pwdConfirm']) : '';
+            $cgu = isset($_POST['cgu']);
 
             if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($pwdConfirm)) {
                 $errors["empty"] = "Please fill all the fields before submitting!";
             }
             if ($password != $pwdConfirm) {
-                $errors["pwd"] = "Passwords do not match!";
+                $errors["pwdMatch"] = "Passwords do not match!";
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors["email"] = "Invalid email format!";
+            }
+            if (strlen($password) < 8) {
+                $errors["pwdLength"] = "Password must be at least 8 characters long!";
+            }
+            if (!$cgu)
+            {
+                $errors["cgu"] = "You must accept the terms and conditions!";
             }
             if (empty($errors)) {
                 $password_crypted = password_hash($password, PASSWORD_BCRYPT);
@@ -56,11 +67,31 @@ class UserController
                     $_COOKIE["ErrorEmptyFields"] = $errors["empty"];
                 } else
                     unset($_COOKIE['ErrorEmptyFields']);
-                if (isset($errors["pwd"])) {
-                    setcookie("ErrorPwdNotMatch", $errors["pwd"]);
-                    $_COOKIE["ErrorPwdNotMatch"] = $errors["pwd"];
+
+                if (isset($errors["pwdLength"])) {
+                    setcookie("ErrorPasswordLength", $errors["pwdLength"]);
+                    $_COOKIE["ErrorPasswordLength"] = $errors["pwdLength"];
                 } else
                     unset($_COOKIE['ErrorPwdNotMatch']);
+
+                if (isset($errors["pwdMatch"])) {
+                    setcookie("ErrorPwdNotMatch", $errors["pwdMatch"]);
+                    $_COOKIE["ErrorPwdNotMatch"] = $errors["pwdMatch"];
+                } else
+                    unset($_COOKIE['ErrorPwdNotMatch']);
+
+                if (isset($errors["email"])) {
+                    setcookie("ErrorEmail", $errors["email"]);
+                    $_COOKIE["ErrorEmail"] = $errors["email"];
+                } else
+                    unset($_COOKIE['ErrorEmail']);
+
+                if (isset($errors["cgu"])) {
+                    setcookie("ErrorCgu", $errors["cgu"]);
+                    $_COOKIE["ErrorCgu"] = $errors["cgu"];
+                } else
+                    unset($_COOKIE['ErrorCgu']);
+
                 $this->persistUserInfo($firstname, $lastname, $email);
             }
             if (empty($errors)) {

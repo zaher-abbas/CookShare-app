@@ -31,12 +31,25 @@
                 </label>
                 <input type="password" class="form-control" id="pwdConfirm" name="pwdConfirm" required minlength="8">
             </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="cgu" name="cgu" required>
+                <label class="form-check-label" for="cgu">I agree to the Terms and Conditions and the Privacy Policy</label>
+            </div>
             <?php
             if (isset($_COOKIE['UserAlreadyExists'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['UserAlreadyExists'] . "</div>";
             }
             if (isset($_COOKIE['ErrorEmptyFields'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorEmptyFields'] . "</div>";
+            }
+            if (isset($_COOKIE['ErrorPwdLength'])) {
+                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorPwdLength'] . "</div>";
+            }
+            if (isset($_COOKIE['ErrorCgu'])) {
+                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorCgu'] . "</div>";
+            }
+            if (isset($_COOKIE['ErrorEmail'])) {
+                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorEmail'] . "</div>";
             }
             if (isset($_COOKIE['ErrorPwdNotMatch'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorPwdNotMatch'] . "</div>";
