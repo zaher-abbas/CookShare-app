@@ -7,7 +7,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
 <main class="flex-grow-1">
     <section class='container my-4'>
         <h4 class="text-center fw-bold mt-5 mb-3">Welcome back <strong
-                    class="badge text-bg-success">&#128100; <?= htmlspecialchars($user) ?></strong>
+                    class="badge text-bg-success"><?= htmlspecialchars($user) ?></strong>
         </h4>
         <h1 class="text-center mb-5 fw-bold">Discover Our Recipes</h1>
         <form class="d-flex justify-content-center" role="search" method="get" action="index.php">
@@ -50,7 +50,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                                             &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span></p>
                             <div class="text-center my-4">
-                                <a href="index.php?action=recipe&id=<?= $recipe['id'] ?>" class="btn btn-success w-50">Check
+                                <a href="index.php?action=recipe&id=<?= $recipe['id'] ?>" class="btn btn-success w-60">Check
                                     this Recipe</a>
                             </div>
                         </div>

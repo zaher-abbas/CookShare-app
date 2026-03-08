@@ -21,7 +21,7 @@
                                     by <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?></p>
                                 <div class="text-center my-4">
                                     <a href="index.php?action=recipe&id=<?= $recipe['id'] ?>"
-                                       class="btn btn-success w-50">Check
+                                       class="btn btn-success w-60">Check
                                         this Recipe!</a>
                                 </div>
                             </div>
