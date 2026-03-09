@@ -56,6 +56,19 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                         <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h5>
+                            <span class="badge rounded-pill text-bg-primary">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
+                            <?php switch ($recipe['difficulty']) {
+                                case 'Easy':
+                                   echo '<span class="badge rounded-pill  text-bg-success">Easy</span>';
+                                   break;
+                                   case 'Medium':
+                                       echo '<span class="badge rounded-pill text-bg-warning">Medium</span>';
+                                       break;
+                                       case 'Hard':
+                                           echo '<span class="badge rounded-pill text-bg-danger">Hard</span>';
+                                           break;
+
+                            }?>
                             <p class="card-text">Submitted by <span class="badge bg-light text-secondary border">
                                             &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span></p>

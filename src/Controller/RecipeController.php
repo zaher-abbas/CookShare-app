@@ -27,9 +27,16 @@ class RecipeController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $rName = isset($_POST['rName']) ? trim($_POST['rName']) : null;
             $rImage = $_FILES['rImage'] ?? null;
-            $rDescription = isset($_POST['rDescription']) ? trim($_POST['rDescription']) : null;
+            $rDuration = isset($_POST['rDuration']) ? trim($_POST['rDuration']) : null;
+            $rDifficulty = isset($_POST['rDifficulty']) ? trim($_POST['rDifficulty']) : null;
             $rIngredients = isset($_POST['rIngredients']) ? trim($_POST['rIngredients']) : null;
-            if ($rName && $rDescription && $rIngredients) {
+            $rDescription = isset($_POST['rDescription']) ? trim($_POST['rDescription']) : null;
+
+            $isValidDuration = filter_var($rDuration, FILTER_VALIDATE_INT, [
+                "options" => ["min_range" => 1]
+            ]);
+
+            if ($rName && $rDescription && $rIngredients && $isValidDuration && $rDifficulty) {
 
                 if ($rImage['error'] == 0) {
                     $image_name = $rImage['name'];
@@ -44,31 +51,38 @@ class RecipeController
                     $image_name = '';
                 }
                 if ($action == 'addrecipe') {
-                    $this->recipe->createRecipe($_SESSION['userId'], $rName, $image_name, $rDescription, $rIngredients);
+                    $this->recipe->createRecipe($_SESSION['userId'], $rName, $image_name, $rDuration, $rDifficulty, $rDescription, $rIngredients);
                     $_SESSION['toast'] = [
                         'type' => 'success',
                         'message' => 'Recipe added successfully.'
                     ];
+                    unset($_COOKIE['ErrorAddingRecipe']);
+                    header('Location: index.php?action=home');
+                    exit();
                 } elseif ($action == 'updaterecipe') {
                     if ($image_name != '') {
-                        $this->recipe->updateRecipe($id, $rName, $image_name, $rDescription, $rIngredients);
+                        $this->recipe->updateRecipe($id, $rName, $image_name, $rDuration, $rDifficulty, $rDescription, $rIngredients);
                     } else {
-                        $this->recipe->updateRecipe($id, $rName, $recipe['image'], $rDescription, $rIngredients);
+                        $this->recipe->updateRecipe($id, $rName, $recipe['image'], $rDuration, $rDifficulty, $rDescription, $rIngredients);
                     }
                     $_SESSION['toast'] = [
                         'type' => 'success',
                         'message' => 'Recipe edited successfully.'
                     ];
+                    header('Location: index.php?action=userrecipes');
+                    exit();
+                }
+            } else {
+                setcookie("ErrorAddingRecipe", "Error; Please fill all the required fields before submitting!", time() + 5, "/");;
+                switch ($action) {
+                    case 'addrecipe':
+                        header('Location: index.php?action=addrecipe');
+                        exit();
+                    case 'updaterecipe':
+                            header('Location: index.php?action=updaterecipe&id=' . $id);
+                         exit();
                 }
             }
-            if ($action == 'addrecipe') {
-                header('Location: index.php?action=home');
-            } elseif ($action == 'updaterecipe') {
-                header('Location: index.php?action=userrecipes');
-            }
-        } else {
-            setcookie("ErrorAddingRecipe", "Error; Please fill all the required fields before submitting!");
-            $_COOKIE["ErrorAddingRecipe"] = "Error; Please fill all the required fields before submitting!";
         }
 
         require_once './../View/editrecipe.php';

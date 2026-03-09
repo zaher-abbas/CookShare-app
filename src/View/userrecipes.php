@@ -1,6 +1,7 @@
 <?php
 /** @var array|null $userRecipes */
-
+unset($_COOKIE['ErrorAddingRecipe']);
+$_COOKIE['ErrorAddingRecipe'] = '';
 ?>
 <main>
     <h1 class="text-center my-5 fw-bold">&#129379; My Recipes</h1>

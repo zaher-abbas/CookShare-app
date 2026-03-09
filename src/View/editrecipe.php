@@ -1,7 +1,6 @@
 <?php
 /** @var array|null $recipe */
 
-unset($_COOKIE['ErrorAddingRecipe']);
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 ?>
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
@@ -12,6 +11,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
             <h3 class="text-center alert alert-light w-75 mx-auto">&#9998; Edit Recipe</h3>
         <?php endif; ?>
         <form class="edit-form p-5 w-75 mx-auto rounded" method="post" action="" enctype="multipart/form-data">
+            <?php
+            if (isset($_COOKIE['ErrorAddingRecipe']) && $_COOKIE['ErrorAddingRecipe'] != '') {
+                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorAddingRecipe'] . "</div>";
+            }
+            ?>
             <div class="mb-4">
                 <label for="rName" class="form-label">Recipe's Name <span class="text-danger">*</span>
                 </label>
@@ -35,6 +39,38 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
                 <?php endif; ?>
             </div>
             <div class="mb-4">
+                <label for="rDuration" class="form-label">Duration <span class="badge text-bg-info"><em>In minutes</em></span>
+                    <span class="text-danger">*</span>
+                </label>
+                <input class="form-control" type="number" min="1" step="1" id="rDuration" name="rDuration" value="<?= $recipe ? htmlspecialchars($recipe['duration']) : '1'; ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="rDifficulty" class="form-label">Difficulty <span class="text-danger">*</span>
+                </label>
+                <select class="form-select" id="rDifficulty" name="rDifficulty" required>
+                    <?php if ($recipe && in_array($recipe['difficulty'], ['Easy', 'Medium', 'Hard'])): ?>
+                    <?php if ($recipe['difficulty'] == 'Easy'): ?>
+                    <option selected value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                    <?php elseif ($recipe['difficulty'] == 'Medium'): ?>
+                    <option value="Easy">Easy</option>
+                    <option selected value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                    <?php elseif ($recipe['difficulty'] == 'Hard'): ?>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option selected value="Hard">Hard</option>
+                    <?php endif; ?>
+                    <?php else: ?>
+                    <option selected disabled>Choose a difficulty:</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                    <?php endif; ?>
+                </select>
+            </div>
+            <div class="mb-4">
                 <label for="rIngredients" class="form-label">&#129379; Ingredients<span class="text-danger"> *</span>
                 </label>
                 <br>
@@ -47,12 +83,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
                 </label>
                 <textarea class="form-control" id="rDescription" name="rDescription" rows="8" required><?= $recipe ? htmlspecialchars(trim($recipe['description'])) : ''; ?></textarea>
             </div>
-            <?php
-            if (isset($_COOKIE['ErrorAddingRecipe'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorAddingRecipe'] . "</div>";
-                unset($_COOKIE['ErrorAddingRecipe']);
-            }
-            ?>
             <div class="text-center">
                 <?php if ($action == 'addrecipe'): ?>
                     <button type="submit" class="btn btn-success">Add Recipe</button>
