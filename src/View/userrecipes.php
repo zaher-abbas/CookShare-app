@@ -3,7 +3,7 @@
 
 ?>
 <main>
-    <h1 class="text-center my-5 fw-bold">&#128100; My Recipes &#129379;</h1>
+    <h1 class="text-center my-5 fw-bold">&#129379; My Recipes</h1>
     <?php if ($userRecipes): ?>
     <div class="container">
         <section class="list-group">
