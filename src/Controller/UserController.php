@@ -97,7 +97,7 @@ class UserController
             if (empty($errors)) {
                 $_SESSION['toast'] = [
                     'type' => 'success',
-                    'message' => 'User registered successfully. Please login.'
+                    'message' => 'User registered successfully. Please login to continue!'
                 ];
                 header('Location: index.php?action=login');
                 exit();
@@ -130,6 +130,10 @@ class UserController
                 $_SESSION['userName'] = $user['firstname'];
                 $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
                 $_SESSION['userId'] = $user['id'];
+                $_SESSION['toast'] = [
+                    'type' => 'success',
+                    'message' => 'You are now logged in!'
+                ];
                 header('Location: index.php?action=home');
                 exit();
             }
