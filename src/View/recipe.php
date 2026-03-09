@@ -30,6 +30,20 @@
                                 <?php endif; ?>
                             </div>
                             <h1 class="card-title"><?= htmlspecialchars($recipe['name']) ?></h1>
+                            <span class="badge rounded-pill text-bg-primary p-2 mt-3 fs-6 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
+                            <?php switch ($recipe['difficulty']) {
+                                case 'Easy':
+                                    echo '<span class="badge rounded-pill text-bg-success p-2 fs-6">Easy</span>';
+                                    break;
+                                case 'Medium':
+                                    echo '<span class="badge rounded-pill text-bg-warning p-2 fs-6">Medium</span>';
+                                    break;
+                                case 'Hard':
+                                    echo '<span class="badge rounded-pill text-bg-danger p-2 fs-6">Hard</span>';
+                                    break;
+
+                            }?>
+                            <br>
                             <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
                                 <span>
                                     <span class="me-2">Submitted by</span>
