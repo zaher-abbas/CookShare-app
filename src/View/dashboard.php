@@ -67,7 +67,6 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                                        case 'Hard':
                                            echo '<span class="badge rounded-pill text-bg-danger p-2 mb-3">Hard</span>';
                                            break;
-
                             }?>
                             <p class="card-text">Submitted by <span class="badge bg-light text-secondary border">
                                             &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
