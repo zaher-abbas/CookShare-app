@@ -59,13 +59,13 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                             <span class="badge rounded-pill text-bg-primary p-2 mt-2 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
                             <?php switch ($recipe['difficulty']) {
                                 case 'Easy':
-                                   echo '<span class="badge rounded-pill text-bg-success p-2 mb-3">Easy</span>';
+                                   echo '<span class="badge rounded-pill text-bg-success p-2 mb-3">&#127919; Easy</span>';
                                    break;
                                    case 'Medium':
-                                       echo '<span class="badge rounded-pill text-bg-warning p-2 mb-3">Medium</span>';
+                                       echo '<span class="badge rounded-pill text-bg-warning p-2 mb-3">&#127919; Medium</span>';
                                        break;
                                        case 'Hard':
-                                           echo '<span class="badge rounded-pill text-bg-danger p-2 mb-3">Hard</span>';
+                                           echo '<span class="badge rounded-pill text-bg-danger p-2 mb-3">&#127919; Hard</span>';
                                            break;
                             }?>
                             <p class="card-text">Submitted by <span class="badge bg-light text-secondary border">
