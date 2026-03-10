@@ -22,7 +22,7 @@ class Comment
           "author_picture_name" => $authorPictureName,
           "comment" => $comment,
           "note" => $note,
-          "date" => date("d-m-Y H:i:s")
+          "date" => date("d/m/Y H:i")
       ]);
 
   }

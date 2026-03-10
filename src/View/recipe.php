@@ -97,7 +97,7 @@
         <div class="card mt-5 mb-4 border-light shadow-sm">
             <div class="card-body p-4">
                 <h2 class="mb-4">&#128101; Community Reviews</h2>
-                <?php if ($comments !== null): ?>
+                <?php if (!empty($comments)): ?>
                     <?php foreach ($comments as $comment): ?>
                         <div class="card mb-4">
                             <div class="card-body">
@@ -106,12 +106,12 @@
                                                 src="./../View/img/<?= $comment['author_picture_name'] ?>"
                                                 alt="User Profile Picture"
                                                 class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
-                                        on <?= $comment["date"] ?></h5>
+                                        <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php else: ?>
                                     <h5 class="card-title"><img src="./../View/img/default_user_image.jpg"
                                                                 alt="User Profile Picture"
                                                                 class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
-                                        on <?= $comment["date"] ?></h5>
+                                        <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php endif; ?>
                                 <?php switch ($comment["note"]) {
                                     case 1:
@@ -134,6 +134,8 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                <?php else: ?>
+                <p class="fst-italic">No reviews yet. Be the first to share your review about this recipe!</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -155,7 +157,6 @@
                         <label for="comment" class="form-label">Your thoughts</label>
                         <textarea class="form-control" id="comment" name="comment" rows="6" required></textarea>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </fieldset>
             </form>

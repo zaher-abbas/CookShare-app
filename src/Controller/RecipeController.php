@@ -126,8 +126,14 @@ class RecipeController
                 $comment = isset($_POST["comment"]) ? trim($_POST['comment']) : null;
                 $note = isset($_POST["note"]) ? $_POST['note'] : null;
                 if ($comment && $note) {
-                    $this->comment->createComment($id, $_SESSION['userName'], $_SESSION['userPhoto'], $comment, $note);
+                    $fullUserName = $_SESSION['userFirstName'] . ' ' . $_SESSION['userLastName'];
+                    $this->comment->createComment($id, $fullUserName, $_SESSION['userPhoto'], $comment, $note);
+                    $_SESSION['toast'] = [
+                        'type' => 'success',
+                        'message' => 'Your comment is added successfully.'
+                    ];
                     header('Location: index.php?action=recipe&id=' . $id);
+                    exit();
                 }
             }
             require_once './../View/recipe.php';

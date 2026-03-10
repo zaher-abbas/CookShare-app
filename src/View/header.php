@@ -1,6 +1,6 @@
 <?php
 session_start();
-$user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "Guest";
+$user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "Guest";
 $connected = $user != "Guest";
 ?>
 <?php if (!empty($_SESSION['toast'])): ?>

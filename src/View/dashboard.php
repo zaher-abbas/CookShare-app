@@ -1,7 +1,7 @@
 <?php
 
 /** @var array|null $recipes */
-$user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
+$user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
 ?>
     <?php if ($user != ""): ?>
 <main class="flex-grow-1">
@@ -54,8 +54,9 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                                  class="card-img-top rounded-start w-100 fixed-img"
                                  alt="Image of recipe <?= htmlspecialchars($recipe['name']) ?>">
                         <?php endif; ?>
-                        <div class="card-body">
-                            <h6 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h6>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h5>
+                            <div>
                             <span class="badge rounded-pill text-bg-primary p-2 mt-2 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
                             <?php switch ($recipe['difficulty']) {
                                 case 'Easy':
@@ -68,6 +69,7 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                                            echo '<span class="badge rounded-pill text-bg-danger p-2 mb-3">&#127919; Hard</span>';
                                            break;
                             }?>
+                            </div>
                             <p class="card-text">Submitted by <span class="badge bg-light text-secondary border">
                                             &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span></p>

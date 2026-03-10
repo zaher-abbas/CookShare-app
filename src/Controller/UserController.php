@@ -127,7 +127,8 @@ class UserController
 
             }
             if (!empty($user)) {
-                $_SESSION['userName'] = $user['firstname'];
+                $_SESSION['userFirstName'] = $user['firstname'];
+                $_SESSION['userLastName'] = $user['lastname'];
                 $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
                 $_SESSION['userId'] = $user['id'];
                 $_SESSION['toast'] = [
