@@ -30,7 +30,7 @@
                                 <?php endif; ?>
                             </div>
                             <h1 class="card-title"><?= htmlspecialchars($recipe['name']) ?></h1>
-                            <span class="badge rounded-pill text-bg-primary p-2 mt-3 fs-6 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
+                            <span class="badge rounded-pill text-bg-primary p-2 mt-3 fs-6 me-2">&#8987; <?= htmlspecialchars($recipe['duration']) ?> min</span>
                             <?php switch ($recipe['difficulty']) {
                                 case 'Easy':
                                     echo '<span class="badge rounded-pill text-bg-success p-2 fs-6">&#127919; Easy</span>';
@@ -42,7 +42,7 @@
                                     echo '<span class="badge rounded-pill text-bg-danger p-2 fs-6">&#127919; Hard</span>';
                                     break;
 
-                            }?>
+                            } ?>
                             <br>
                             <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
                                 <span>
@@ -72,16 +72,16 @@
                             <br><br>
                             <h2 class="mb-3">&#129379; Ingredients</h2>
                             <?php if ($recipeIngredients): ?>
-                            <ul class="list-group">
-                                <?php foreach ($recipeIngredients as $ingredient): ?>
-                                    <li class="list-group-item"><?= htmlspecialchars($ingredient) ?></li>
-                                <?php endforeach; ?>
-                            </ul>
+                                <ul class="list-group">
+                                    <?php foreach ($recipeIngredients as $ingredient): ?>
+                                        <li class="list-group-item"><?= htmlspecialchars($ingredient) ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
                             <?php else: ?>
                                 <p>No ingredients available.</p>
                             <?php endif; ?>
                             <br><br>
-                            <h2 class="mb-3">&#128195; Description</h2>
+                            <h2 class="mb-3 ">&#128195; Description</h2>
                             <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
                         </div>
                     </div>
@@ -94,57 +94,72 @@
                 Back
             </a>
         </div>
-        <form method="post" action="" class="my-4 p-3 rounded">
-            <h6 class="mb-4">Rate this recipe and leave a comment:</h6>
-            <div class="mb-4">
-                <select class="form-select" aria-label="Default select example" name="note" required>
-                    <option selected disabled>Rate this recipe</option>
-                    <option value="1">&#11088;</option>
-                    <option value="2">&#11088; &#11088;</option>
-                    <option value="3">&#11088; &#11088; &#11088;</option>
-                    <option value="4">&#11088; &#11088; &#11088; &#11088;</option>
-                    <option value="5">&#11088; &#11088; &#11088; &#11088; &#11088;</option>
-                </select>
+        <div class="card mt-5 mb-4 border-light shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="mb-4">&#128101; Community Reviews</h2>
+                <?php if ($comments !== null): ?>
+                    <?php foreach ($comments as $comment): ?>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <?php if (isset($comment['author_picture_name'])): ?>
+                                    <h5 class="card-title"><img
+                                                src="./../View/img/<?= $comment['author_picture_name'] ?>"
+                                                alt="User Profile Picture"
+                                                class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
+                                        on <?= $comment["date"] ?></h5>
+                                <?php else: ?>
+                                    <h5 class="card-title"><img src="./../View/img/default_user_image.jpg"
+                                                                alt="User Profile Picture"
+                                                                class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
+                                        on <?= $comment["date"] ?></h5>
+                                <?php endif; ?>
+                                <?php switch ($comment["note"]) {
+                                    case 1:
+                                        echo "<p class='card-text'>	&#11088;</p>";
+                                        break;
+                                    case 2:
+                                        echo "<p class='card-text'>	&#11088; &#11088;</p>";
+                                        break;
+                                    case 3:
+                                        echo "<p class='card-text'>	&#11088; &#11088; &#11088;</p>";
+                                        break;
+                                    case 4:
+                                        echo "<p class='card-text'>	&#11088; &#11088; &#11088; &#11088;</p>";
+                                        break;
+                                    case 5:
+                                        echo "<p class='card-text'>	&#11088; &#11088; &#11088; &#11088; &#11088;</p>";
+                                        break;
+                                } ?>
+                                <p class="card-text"><?= htmlspecialchars($comment["comment"]) ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
-            <div class="mb-4">
-                <label for="comment" class="form-label">Recipe Description</label>
-                <textarea class="form-control" id="comment" name="comment" rows="6" required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-
-        <?php if ($comments !== null): ?>
-            <?php foreach ($comments as $comment): ?>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <?php if (isset($comment['author_picture_name'])): ?>
-                        <h5 class="card-title"><img src="./../View/img/<?= $comment['author_picture_name'] ?>" alt="User Profile Picture" class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?> on <?= $comment["date"] ?></h5>
-                     <?php else: ?>
-                        <h5 class="card-title"><img src="./../View/img/default_user_image.jpg" alt="User Profile Picture" class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?> on <?= $comment["date"] ?></h5>
-                        <?php endif; ?>
-                        <?php switch ($comment["note"]) {
-                            case 1:
-                                echo "<p class='card-text'>	&#11088;</p>";
-                                break;
-                            case 2:
-                                echo "<p class='card-text'>	&#11088; &#11088;</p>";
-                                break;
-                            case 3:
-                                echo "<p class='card-text'>	&#11088; &#11088; &#11088;</p>";
-                                break;
-                            case 4:
-                                echo "<p class='card-text'>	&#11088; &#11088; &#11088; &#11088;</p>";
-                                break;
-                            case 5:
-                                echo "<p class='card-text'>	&#11088; &#11088; &#11088; &#11088; &#11088;</p>";
-                                break;
-                        } ?>
-                        <p class="card-text"><?= htmlspecialchars($comment["comment"]) ?></p>
+        </div>
+        <div class="card mt-5 mb-4 border-light shadow-sm">
+            <form method="post" action="" class="my-4 p-3 rounded w-75">
+                <fieldset>
+                    <legend class="mb-3">Rate this recipe and leave a comment:</legend>
+                    <div class="mb-4">
+                        <select class="form-select" aria-label="Default select example" name="note" required>
+                            <option selected disabled>Rate this recipe</option>
+                            <option value="1">&#11088;</option>
+                            <option value="2">&#11088; &#11088;</option>
+                            <option value="3">&#11088; &#11088; &#11088;</option>
+                            <option value="4">&#11088; &#11088; &#11088; &#11088;</option>
+                            <option value="5">&#11088; &#11088; &#11088; &#11088; &#11088;</option>
+                        </select>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+                    <div class="mb-4">
+                        <label for="comment" class="form-label">Your thoughts</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+            </form>
+        </div>
     </section>
 </main>
 <?php if (!empty($_SESSION['toast'])): ?>

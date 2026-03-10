@@ -5,7 +5,7 @@
 <main class="flex-grow-1">
     <section class="container my-3">
         <div class="card p-3">
-            <div class="card-header text-primary fw-bolder fs-2">Profile Info</div>
+            <div class="card-header text-primary fw-bolder fs-2 mb-3">Profile Info</div>
             <div class="row g-0">
                 <div class="col-4">
                     <?php if ($user['photo']): ?>

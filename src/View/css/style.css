@@ -5,6 +5,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
     background-color: #d3d3d4;
     font-family: 'Poppins' , sans-serif !important;
+    line-height: 1.8;
 }
 
 nav.navbar {

@@ -48,14 +48,14 @@ $user = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
                           <?php endif; ?>
                         <?php if ($recipe['image'] === ''): ?>
                             <img src="./../View/img/recipe_placeholder.png"
-                                 class="card-img-top rounded-start w-100 fixed-img" alt="recipe image placeholder">
+                                 class="card-img-top rounded-start w-100 fixed-img" alt="recipe placeholder image">
                         <?php else: ?>
                             <img src="./../View/img/<?= $recipe['image'] ?>"
                                  class="card-img-top rounded-start w-100 fixed-img"
                                  alt="Image of recipe <?= htmlspecialchars($recipe['name']) ?>">
                         <?php endif; ?>
                         <div class="card-body">
-                            <h5 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h5>
+                            <h6 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h6>
                             <span class="badge rounded-pill text-bg-primary p-2 mt-2 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
                             <?php switch ($recipe['difficulty']) {
                                 case 'Easy':
