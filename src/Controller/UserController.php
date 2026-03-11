@@ -195,7 +195,7 @@ class UserController
             $_COOKIE["firstname"] = $firstname;
         }
         if (!empty($lastname)) {
-            setcookie("lastname", $lastname);;
+            setcookie("lastname", $lastname);
             $_COOKIE["lastname"] = $lastname;
         }
         if (!empty($email)) {
