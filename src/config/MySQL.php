@@ -9,7 +9,7 @@ use PDOException;
 final class MySQL
 {
     private const HOST = 'localhost';
-    private const DBNAME = 'recipe-app';
+    private const DBNAME = 'cookshare-app';
     private const USER = 'zaher';
     private const PASSWORD = '6666';
 
@@ -31,5 +31,4 @@ final class MySQL
         }
         return null;
     }
-
 }

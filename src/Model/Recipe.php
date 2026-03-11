@@ -15,7 +15,7 @@ class Recipe
 
     public function createRecipe(int $userId, string $name, string $image, int $duration, string $difficulty, string $description, string $ingredients): void
     {
-        $query = "INSERT INTO recipe (user_id, name, image, duration, difficulty, description, ingredients) VALUES
+        $query = "INSERT INTO recipes (user_id, name, image, duration, difficulty, description, ingredients) VALUES
                                    (:user_id, :name, :image, :duration, :difficulty, :description, :ingredients)";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':user_id', $userId);
@@ -30,14 +30,14 @@ class Recipe
 
     public function getRecipes(): array|null
     {
-        $query = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id";
+        $query = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id";
         $statement = $this->db->query($query);
         return $statement->fetchAll() ?? null;
     }
 
     public function getRecipeById(int $id): array|null
     {
-        $query = "SELECT recipe.*, firstname, lastname, photo FROM recipe JOIN user u ON u.id = recipe.user_id WHERE recipe.id = :id";
+        $query = "SELECT recipes.*, firstname, lastname, photo FROM recipe JOIN users u ON u.id = recipe.user_id WHERE recipe.id = :id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();
@@ -46,7 +46,7 @@ class Recipe
 
     public function searchRecipeByName(string $query): array|null
     {
-        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id WHERE recipe.name LIKE :query";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id WHERE recipe.name LIKE :query";
         $statement = $this->db->prepare($sql);
         $statement->bindValue(':query', '%' . $query . '%');
         $statement->execute();
@@ -54,32 +54,32 @@ class Recipe
     }
     public function orderRecipesByNameAscending(): array|null
     {
-        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.name";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.name";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
     public function orderRecipesByNameDescending(): array|null
     {
-        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.name DESC";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.name DESC";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
     public function orderRecipesByDateNewest(): array|null
     {
-        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.created_at DESC";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.created_at DESC";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
     public function orderRecipesByDateOldest(): array|null
     {
-        $sql = "SELECT recipe.*, firstname, lastname FROM recipe JOIN user u ON u.id = recipe.user_id ORDER BY recipe.created_at";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.created_at";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
 
     public function addRecipeToFavorites(int $recipeId, int $userId): void
     {
-        $query = "INSERT INTO favorite (recipe_id, user_id) VALUES (:recipe_id, :user_id)";
+        $query = "INSERT INTO favorites (recipe_id, user_id) VALUES (:recipe_id, :user_id)";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':recipe_id', $recipeId);
         $statement->bindValue(':user_id', $userId);
@@ -88,7 +88,7 @@ class Recipe
 
     public function removeRecipeFromFavorites(int $recipeId, int $userId): void
     {
-        $query = "DELETE FROM favorite WHERE recipe_id = :recipe_id AND user_id = :user_id";
+        $query = "DELETE FROM favorites WHERE recipe_id = :recipe_id AND user_id = :user_id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':recipe_id', $recipeId);
         $statement->bindValue(':user_id', $userId);
@@ -97,7 +97,7 @@ class Recipe
 
     public function isRecipeInFavorites(int $recipeId, int $userId): bool
     {
-        $query = "SELECT COUNT(*) FROM favorite WHERE recipe_id = :recipe_id AND user_id = :user_id";
+        $query = "SELECT COUNT(*) FROM favorites WHERE recipe_id = :recipe_id AND user_id = :user_id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':recipe_id', $recipeId);
         $statement->bindValue(':user_id', $userId);
@@ -107,7 +107,7 @@ class Recipe
 
     public function getFavoritesByUserId(int $userId): array|null
     {
-        $query = "SELECT r.*, u.firstname, u.lastname FROM recipe r JOIN favorite f ON f.recipe_id = r.id JOIN `user` u ON u.id = r.user_id WHERE f.user_id = :user_id;";
+        $query = "SELECT r.*, u.firstname, u.lastname FROM recipes r JOIN favorites f ON f.recipe_id = r.id JOIN `users` u ON u.id = r.user_id WHERE f.user_id = :user_id;";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':user_id', $userId);
         $statement->execute();
@@ -116,7 +116,7 @@ class Recipe
 
     public function getRecipesByUserId(int $userId): array|null
     {
-        $query = "SELECT r.*, u.firstname, u.lastname FROM recipe r JOIN `user` u ON u.id = r.user_id WHERE r.user_id = :user_id;";
+        $query = "SELECT r.*, u.firstname, u.lastname FROM recipes r JOIN `users` u ON u.id = r.user_id WHERE r.user_id = :user_id;";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':user_id', $userId);
         $statement->execute();
@@ -125,7 +125,7 @@ class Recipe
 
     public function deleteRecipe(int $recipeId): void
     {
-        $query = "DELETE FROM recipe WHERE id = :recipeId";
+        $query = "DELETE FROM recipes WHERE id = :recipeId";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':recipeId', $recipeId);
         $statement->execute();
@@ -133,7 +133,7 @@ class Recipe
 
     public function updateRecipe(int $recipeId, string $name, string $image, int $duration, string $difficulty, string $description, string $ingredients): void
     {
-        $query = "UPDATE recipe SET name = :name, image = :image, duration = :duration, difficulty = :difficulty, description = :description, ingredients = :ingredients WHERE id = :recipeId";
+        $query = "UPDATE recipes SET name = :name, image = :image, duration = :duration, difficulty = :difficulty, description = :description, ingredients = :ingredients WHERE id = :recipeId";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':name', $name);
         $statement->bindValue(':image', $image);

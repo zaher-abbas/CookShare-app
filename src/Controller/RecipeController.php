@@ -107,6 +107,13 @@ class RecipeController
         require_once './../View/dashboard.php';
     }
 
+    public function getAllRecipesAdmin(): void
+    {
+        $recipes = $this->recipe->getRecipes();
+        require_once './../View/managerecipes.php';
+    }
+
+
     public function showRecipeDetails(): void
     {
         $id = $_GET['id'] ?? null;
@@ -218,14 +225,19 @@ class RecipeController
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $this->recipe->deleteRecipe($id);
+            $recipe = $this->recipe->getRecipeById($id);
+            if (($recipe['user_id'] != $_SESSION['userId']) && ($_SESSION['userRole'] != 'admin')) {
+                header('Location: index.php?action=error');
+                exit();
+            }
+            else
+                $this->recipe->deleteRecipe($id);
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'Recipe was deleted successfully.'
             ];
             header('Location: index.php?action=userrecipes');
         }
-
     }
 }
 

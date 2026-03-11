@@ -53,7 +53,7 @@ class UserController
                 $password_crypted = password_hash($password, PASSWORD_BCRYPT);
 
                 try {
-                    $this->user->createUser($firstname, $lastname, $password_crypted, $email);
+                    $this->user->createUser($firstname, $lastname, $password_crypted, $email, 2);
 
                 } catch (UserAlreadyExists $e) {
                     $errors["UserAlreadyExists"] = $e->getMessage();
@@ -131,6 +131,7 @@ class UserController
                 $_SESSION['userLastName'] = $user['lastname'];
                 $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
                 $_SESSION['userId'] = $user['id'];
+                $_SESSION['userRole'] = $this->user->getUserRoleName($user['id']);
                 $_SESSION['toast'] = [
                     'type' => 'success',
                     'message' => 'You are now logged in!'
@@ -200,6 +201,30 @@ class UserController
         if (!empty($email)) {
             setcookie("email", $email);
             $_COOKIE["email"] = $email;
+        }
+    }
+    public function getAllUsers(): void
+    {
+        $users = $this->user->getAllUsers();
+
+        require_once './../View/manageusers.php';
+    }
+
+    public function deleteUser(): void
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            if ($_SESSION['userRole'] == 'admin') {
+                $this->user->deleteUser($id);
+                $_SESSION['toast'] = [
+                    'type' => 'success',
+                    'message' => 'User deleted successfully.'
+                ];
+                header('Location: index.php?action=manageusers');
+            }
+            else {
+                header('Location: index.php?action=error');
+            }
         }
     }
 }

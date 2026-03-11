@@ -73,6 +73,18 @@ switch ($action) {
     case 'deleterecipe':
         $recipeController->deleteRecipe();
         break;
+    case 'managerecipes':
+        $recipeController->getAllRecipesAdmin();
+        break;
+    case 'manageusers' :
+        $userController->getAllUsers();
+        break;
+    case 'deleteuser':
+        $userController->deleteUser();
+        break;
+    case 'error':
+        require_once 'error.php';
+        break;
     default:
         require_once 'dashboard.php';
         break;

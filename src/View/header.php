@@ -40,7 +40,7 @@ $connected = $user != "Guest";
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <?php
-                if ($connected) {
+                if ($connected && $_SESSION['userRole'] === 'user') {
                     echo "<ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
                         <li class='nav-item me-lg-3 mb-sm-2 mb-lg-0 mb-md-0'>
                             <a class='btn btn-success btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
@@ -57,6 +57,23 @@ $connected = $user != "Guest";
                     </ul>";
                 }
                 ?>
+                <?php if ($connected && $_SESSION['userRole'] === 'admin'): ?>
+                    <ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
+                        <li class="nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0 dropdown">
+                            <a class="nav-link dropdown-toggle bg-primary-subtle btn btn-outline-info btn-md p-2 rounded-2 mt-0 w-100 fw-bold" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Admin Panel
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=manageusers">Manage Users</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=managerecipes">Manage Recipes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php endif; ?>
                 <span class="d-lg-flex d-xl-flex align-items-center justify-content-evenly gap-4">
                     <?php if (!$connected): ?>
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
@@ -67,6 +84,7 @@ $connected = $user != "Guest";
                                 <a class='btn btn-success btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
                                 </li>
                         </ul>
+                </ul>
                     <?php else: ?>
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0 d-flex justify-content-center align-items-center'>
                             <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0'>
@@ -79,8 +97,7 @@ $connected = $user != "Guest";
                                 <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold' href='index.php?action=logout'>Log-out ↪</a>
                         </li>
                         </ul>
-                    <?php endif;
-                    ?>
+                    <?php endif;?>
                 </span>
             </div>
         </div>

@@ -17,16 +17,17 @@ class User
     }
 
     //Operation CRUD Create:
-    public function createUser(string $firstName, string $lastName, string $password, string $email): void
+    public function createUser(string $firstName, string $lastName, string $password, string $email, int $role): void
     {
-        $query = "INSERT INTO user (firstName, lastName, email, password) VALUES
-                                   (:firstName, :lastName, :email, :password)";
+        $query = "INSERT INTO users (firstName, lastName, email, password, role) VALUES
+                                   (:firstName, :lastName, :email, :password, :role)";
         if (!$this->findUserByEmail($email)) {
             $statement = $this->db->prepare($query);
             $statement->bindValue(':firstName', $firstName);
             $statement->bindValue(':lastName', $lastName);
             $statement->bindValue(':password', $password);
             $statement->bindValue(':email', $email);
+            $statement->bindValue(':role', $role);
             $statement->execute();
         }
         else
@@ -35,7 +36,7 @@ class User
 
     public function findUserByEmail(string $email): bool
     {
-        $query = "SELECT * FROM user WHERE email = :email";
+        $query = "SELECT * FROM users WHERE email = :email";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':email', $email);
         $statement->execute();
@@ -45,7 +46,7 @@ class User
 
     public function getUser(string $email, string $password): array
     {
-        $query = "SELECT * FROM user WHERE email = :email";
+        $query = "SELECT * FROM users WHERE email = :email";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':email', $email);
         $statement->execute();
@@ -59,9 +60,19 @@ class User
        return $user;
     }
 
+    public function getUserRoleName(int $userId): string
+    {
+        $query = "SELECT users.*, roles.name FROM users JOIN roles ON users.role = roles.id WHERE users.id = :id";
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':id', $userId);
+        $statement->execute();
+        $role = $statement->fetch();
+        return $role["name"];
+    }
+
     public function getUserById(int $id): array
     {
-        $query = "SELECT * FROM user WHERE id = :id";
+        $query = "SELECT * FROM users WHERE id = :id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();
@@ -75,9 +86,24 @@ class User
     public function updateUserPhoto(int $id, string $photo): void
 
     {
-        $query = "UPDATE user SET photo = :photo WHERE id = :id";
+        $query = "UPDATE users SET photo = :photo WHERE id = :id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':photo', $photo);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+    }
+
+    public function getAllUsers(): array|null
+    {
+        $query = 'SELECT * FROM users';
+        $statement = $this->db->query($query);
+        return $statement->fetchAll();
+    }
+
+    public function deleteUser(int $id): void
+    {
+        $query = "DELETE FROM users WHERE id = :id";
+        $statement = $this->db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();
     }
