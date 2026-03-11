@@ -37,7 +37,7 @@ class Recipe
 
     public function getRecipeById(int $id): array|null
     {
-        $query = "SELECT recipes.*, firstname, lastname, photo FROM recipe JOIN users u ON u.id = recipe.user_id WHERE recipe.id = :id";
+        $query = "SELECT recipes.*, firstname, lastname, photo FROM recipe JOIN users u ON u.id = recipe.user_id WHERE recipes.id = :id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();
@@ -46,7 +46,7 @@ class Recipe
 
     public function searchRecipeByName(string $query): array|null
     {
-        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id WHERE recipe.name LIKE :query";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id WHERE recipes.name LIKE :query";
         $statement = $this->db->prepare($sql);
         $statement->bindValue(':query', '%' . $query . '%');
         $statement->execute();
@@ -54,25 +54,25 @@ class Recipe
     }
     public function orderRecipesByNameAscending(): array|null
     {
-        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.name";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id ORDER BY recipes.name";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
     public function orderRecipesByNameDescending(): array|null
     {
-        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.name DESC";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id ORDER BY recipes.name DESC";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
     public function orderRecipesByDateNewest(): array|null
     {
-        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.created_at DESC";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id ORDER BY recipes.created_at DESC";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
     public function orderRecipesByDateOldest(): array|null
     {
-        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipe.user_id ORDER BY recipe.created_at";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id ORDER BY recipes.created_at";
         $statement = $this->db->query($sql);
         return $statement->fetchAll() ?? null;
     }
