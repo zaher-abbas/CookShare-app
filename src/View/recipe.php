@@ -46,7 +46,7 @@
                             <br>
                             <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
                                 <span>
-                                    <span class="me-2">Submitted by</span>
+                                    <span class="me-2">Contributed by</span>
                                     <span>
                                      <span>
                                             <?php if ($recipe['photo']): ?>

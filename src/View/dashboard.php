@@ -57,7 +57,7 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h5>
                             <div>
-                            <span class="badge rounded-pill text-bg-primary p-2 mt-2 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
+                            <span class="badge rounded-pill text-bg-primary p-2 mt-1 me-2">&#8987; <?= htmlspecialchars($recipe['duration'])?> min</span>
                             <?php switch ($recipe['difficulty']) {
                                 case 'Easy':
                                    echo '<span class="badge rounded-pill text-bg-success p-2 mb-3">&#127919; Easy</span>';
@@ -70,7 +70,7 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                            break;
                             }?>
                             </div>
-                            <p class="card-text">Submitted by <span class="badge bg-light text-secondary border">
+                            <p class="card-text">Contributed by<span class="badge bg-light text-secondary border">
                                             &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span></p>
                             <div class="text-center my-4">
