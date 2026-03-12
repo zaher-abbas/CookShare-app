@@ -83,6 +83,10 @@ input {
     border-color: #ffb300;
 }
 
+.editBtn, .deleteBtn {
+    width: 90px;
+}
+
 
 
 

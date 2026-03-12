@@ -33,7 +33,7 @@ $connected = $user != "Guest";
     <nav class="navbar navbar-expand-md p-4 text-light">
         <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
             <a class="navbar-brand text-light fs-2 logo" href="index.php">&#127869; CookShare</a>
-            <button class="navbar-toggler mt-3 mt-md-0" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler mt-2 mb-2 mt-md-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -65,11 +65,11 @@ $connected = $user != "Guest";
                                 Admin Panel
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=manageusers">Manage Users</a></li>
+                                <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=manageusers">&#128101; Manage Users</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=managerecipes">Manage Recipes</a></li>
+                                <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=managerecipes">&#128214; Manage Recipes</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -78,7 +78,7 @@ $connected = $user != "Guest";
                     <?php if (!$connected): ?>
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
                           <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
-                                <a class='btn btn-primary btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=register'>&#10133; Register</a>
+                                <a class='btn btn-primary btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=register'>&#128221; Register</a>
                                 </li>
                           <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
                                 <a class='btn btn-success btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>

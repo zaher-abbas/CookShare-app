@@ -2,7 +2,9 @@
 /** @var array|null $recipes */
 ?>
     <main>
-        <h1 class="text-center my-5 fw-bold">&#129379; All Recipes</h1>
+        <div class="container">
+            <h1 class="text-center my-4 fw-bold alert alert-info">&#128214; Manage All Recipes
+        </div>
         <?php if ($recipes): ?>
         <div class="container">
             <section class="list-group">
@@ -14,9 +16,9 @@
                                 &#129379; <?= $recipe['name'] ?></a>
                         </div>
                         <div>
-                            <a href="index.php?action=updaterecipe&id=<?= $recipe['id'] ?>" class="btn btn-warning">Edit</a>
+                            <a href="index.php?action=updaterecipe&id=<?= $recipe['id'] ?>" class="btn btn-warning me-3 editBtn">Edit</a>
                             <button data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                    class="btn btn-danger">Delete
+                                    class="btn btn-danger deleteBtn">Delete
                             </button>
                         </div>
                     </div>
