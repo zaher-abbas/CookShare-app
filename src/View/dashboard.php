@@ -70,8 +70,8 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                            break;
                             }?>
                             </div>
-                            <p class="card-text">Contributed by<span class="badge bg-light text-secondary border">
-                                            &#128100; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
+                            <p class="card-text">Contributed by<span class="badge bg-light text-secondary border fs-6">
+                                            &#128105;&#8205;&#127859; <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span></p>
                             <div class="text-center my-4">
                                 <a href="index.php?action=recipe&id=<?= $recipe['id'] ?>" class="btn btn-success w-60">Check

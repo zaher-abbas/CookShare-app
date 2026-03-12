@@ -52,7 +52,7 @@ $connected = $user != "Guest";
                         <a class='btn btn-warning btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=favorites'>&#11088; My Favorites</a>
                         </li>
                           <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
-                        <a class='btn btn-info btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=userrecipes'>&#129379; My Recipes</a>
+                        <a class='btn btn-info btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=userrecipes'>&#128105;&#8205;&#127859; My Recipes</a>
                         </li>
                     </ul>";
                 }
@@ -60,10 +60,8 @@ $connected = $user != "Guest";
                 <?php if ($connected && $_SESSION['userRole'] === 'admin'): ?>
                     <ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
                         <li class="nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0 dropdown">
-                            <a class="nav-link dropdown-toggle bg-primary-subtle btn btn-outline-info btn-md p-2 rounded-2 mt-0 w-100 fw-bold" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Admin Panel
-                            </a>
+                            <a class="nav-link dropdown-toggle bg-primary-subtle btn btn-outline-info btn-md p-2 rounded-2 mt-0 w-100 fw-bold p-3 fs-6" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">&#9881; Admin Panel</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item btn btn-outline-info" href="index.php?action=manageusers">&#128101; Manage Users</a></li>
                                 <li>
