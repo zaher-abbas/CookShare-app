@@ -87,6 +87,15 @@ input {
     width: 90px;
 }
 
+.btnHero {
+    width: 150px;
+}
+
+.registerBtn, .loginBtn {
+    width: 125px;
+}
+
+
 
 
 

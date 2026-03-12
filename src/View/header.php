@@ -77,10 +77,10 @@ $connected = $user != "Guest";
                 <span class="d-lg-flex d-xl-flex align-items-center justify-content-evenly gap-4">
                     <?php if (!$connected): ?>
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
-                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
+                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0 me-3 registerBtn'>
                                 <a class='btn btn-primary btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=register'>&#128221; Register</a>
                                 </li>
-                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
+                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0 loginBtn'>
                                 <a class='btn btn-success btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
                                 </li>
                         </ul>

@@ -111,8 +111,8 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                 <p class="lead mb-5">Try it...it is Fun!</p>
                                 <div class="d-flex gap-3 justify-content-center flex-wrap">
                                     <a href="index.php?action=register"
-                                       class="btn btn-light btn-lg px-4 py-2">Register</a>
-                                    <a href="index.php?action=login" class="btn btn-outline-light btn-lg px-4 py-2">Login</a>
+                                       class="btn btn-light btn-lg px-4 py-2 me-4 btnHero">Register</a>
+                                    <a href="index.php?action=login" class="btn btn-outline-light btn-lg px-4 py-2 btnHero">Login</a>
                                 </div>
                             </div>
                         </div>
