@@ -31,14 +31,14 @@ $connected = $user != "Guest";
 <?php endif; ?>
 <header>
     <nav class="navbar navbar-expand-md p-4 text-light">
-        <div class="container-fluid">
+        <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
             <a class="navbar-brand text-light fs-2 logo" href="index.php">&#127869; CookShare</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler mt-3 mt-md-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 <?php
                 if ($connected && $_SESSION['userRole'] === 'user') {
                     echo "<ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
