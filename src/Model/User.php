@@ -62,12 +62,23 @@ class User
 
     public function getUserRoleName(int $userId): string
     {
-        $query = "SELECT users.*, roles.name FROM users JOIN roles ON users.role = roles.id WHERE users.id = :id";
+        $query = "
+        SELECT roles.name AS role_name
+        FROM users
+        JOIN roles ON users.role_id = roles.id
+        WHERE users.id = :id";
+
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':id', $userId);
+        $statement->bindValue(':id', $userId, PDO::PARAM_INT);
         $statement->execute();
-        $role = $statement->fetch();
-        return $role["name"];
+
+        $row = $statement->fetch();
+
+        if (!$row) {
+            throw new UserNotFound('User not found');
+        }
+
+        return $row['role_name'];
     }
 
     public function getUserById(int $id): array
