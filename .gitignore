@@ -1,0 +1,15 @@
+# Fichiers sensibles
+.env
+.env.local
+
+# Dépendances
+vendor/
+
+# IDE
+/.idea/
+/.vscode/
+*.iml
+
+# Uploads
+/src/View/img/profile_photo_*
+/src/View/img/[0-9]*.*
