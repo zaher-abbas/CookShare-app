@@ -10,8 +10,11 @@
             <section class="list-group">
                 <?php foreach ($users as $user): ?>
                     <div class="list-group-item list-group-item-action p-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
-                        <div class="w-50">
+                        <div>
                             <div class="text-decoration-none text-dark">&#128100; <?= $user['firstname'] . ' ' . $user['lastname'] ?></div>
+                        </div>
+                        <div>
+                            <div class="text-decoration-none text-dark"><span class="fs-5">&#9993;</span> <?= $user['email'] ?></div>
                         </div>
                         <div>
                             <button data-bs-toggle="modal" data-bs-target="#deleteModal"
