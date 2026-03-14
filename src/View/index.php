@@ -74,9 +74,17 @@ switch ($action) {
         $recipeController->deleteRecipe();
         break;
     case 'managerecipes':
-        $recipeController->getAllRecipesAdmin();
+    if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
+        header('Location: index.php?action=error');
+        exit();
+    } else
+    $recipeController->getAllRecipesAdmin();
         break;
     case 'manageusers' :
+        if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
+            header('Location: index.php?action=error');
+            exit();
+        } else
         $userController->getAllUsers();
         break;
     case 'deleteuser':
