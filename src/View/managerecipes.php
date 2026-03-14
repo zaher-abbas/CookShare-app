@@ -10,10 +10,15 @@
             <section class="list-group">
                 <?php foreach ($recipes as $recipe): ?>
                     <div class="list-group-item list-group-item-action p-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
-                        <div class="w-50">
+                        <div class="w-25">
                             <a class="text-decoration-none text-dark"
                                href="index.php?action=recipe&id=<?= $recipe['id'] ?>">
                                 &#129379; <?= $recipe['name'] ?></a>
+                        </div>
+                        <div class="w-25">
+                            <span>Contributed by: &#128100;
+                                <?= $recipe['firstname'] . ' ' . $recipe['lastname'] ?>
+                            </span>
                         </div>
                         <div>
                             <a href="index.php?action=updaterecipe&id=<?= $recipe['id'] ?>" class="btn btn-warning me-3 editBtn">Edit</a>
