@@ -8,16 +8,22 @@ It allows users to create, manage, and share their culinary recipes, as well as 
 ## ✨Features
 
 - User registration and authentication 👤
-- Create, edit, and delete recipes 🥣
-- Add images and rich descriptions to recipes
-- Comment on recipes and view discussions 🗨
+- Role-based access with standard user and admin accounts 🔐
 - Personal dashboard and profile management
 - Upload and update custom user profile pictures 🖼️
+- Create, edit, and delete recipes 🥣
+- Add images and rich descriptions to recipes
+- Comment on recipes and view discussions 🗨️
 - Search and browse recipes 🔍
 - Sort recipes by different criteria ↕️
 - Add recipes to your favorites ⭐
+- Admin panel for managing users and recipes 🛠️
+- Administrative user management, including viewing and deleting users
+- Administrative recipe management with global recipe oversight
+- Toast notifications for user actions and feedback 🔔
 - Uses MySQL (PDO) and MongoDB drivers
 - Simple, modular MVC-like structure (Controllers, Models, Views)
+
 
 ## 🛠️ Tech Stack
 
