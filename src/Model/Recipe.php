@@ -41,7 +41,11 @@ class Recipe
         $statement = $this->db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();
-        return $statement->fetch() ?? null;
+        if ($statement->rowCount() > 0) {
+            return $statement->fetch();
+        }
+        else
+            return null;
     }
 
     public function searchRecipeByName(string $query): array|null

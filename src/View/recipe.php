@@ -5,7 +5,7 @@
 /** @var boolean $isRecipeFavorite */
 
 ?>
-<main class="flex-grow-1">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container">
         <?php if ($recipe !== null): ?>
             <div class="card my-4 recipe-details p-3">
@@ -87,7 +87,6 @@
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
         <div class="d-flex justify-content-center my-4">
             <a href="index.php?action=home"
                class="btn btn-outline-danger btn-lg">
@@ -161,6 +160,9 @@
                 </fieldset>
             </form>
         </div>
+        <?php else: ?>
+        <div class="alert alert-danger text-center fs-3" role="alert"> Recipe not found. </div>
+        <?php endif; ?>
     </section>
 </main>
 <?php if (!empty($_SESSION['toast'])): ?>
