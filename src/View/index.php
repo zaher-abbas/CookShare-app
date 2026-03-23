@@ -5,6 +5,9 @@ use App\config\MySQL;
 use App\Controller\RecipeController;
 use App\Controller\UserController;
 
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 2));
+$dotenv->load();
+
 $db = MySQL::getConnection();
 $userController = new UserController($db);
 $recipeController = new RecipeController($db);
