@@ -21,7 +21,8 @@ $action = $_GET['action'] ?? 'home';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>CookShare - App</title>
 </head>
@@ -33,6 +34,13 @@ $action = $_GET['action'] ?? 'home';
 require_once 'header.php';
 
 switch ($action) {
+    case 'home':
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+            $recipeController->showAllRecipes();
+        } else {
+            require_once 'welcome.php';
+        }
+        break;
     case 'register':
         $userController->register();
         break;
@@ -44,54 +52,98 @@ switch ($action) {
         break;
     case 'addrecipe':
     case 'updaterecipe':
+    if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
         $recipeController->editRecipe();
-        break;
-    case 'home':
-        $recipeController->showAllRecipes();
-        break;
+    } else {
+        header('Location: index.php?action=error');
+    }
+    break;
     case 'profile':
-        $userController->profile();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+            $userController->profile();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'recipe':
-        $recipeController->showRecipeDetails();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->showRecipeDetails();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'search':
-        $recipeController->searchRecipeByName();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->searchRecipeByName();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'order' :
-        $recipeController->orderRecipes();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->orderRecipes();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'addtofavorites':
-        $recipeController->addtoFavorites();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->addtoFavorites();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'removefromfavorites':
         $recipeController->removeFromFavorites();
         break;
     case 'favorites':
-        $recipeController->showFavorites();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->showFavorites();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'userrecipes':
-        $recipeController->listUserRecipes();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->listUserRecipes();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'deleterecipe':
-        $recipeController->deleteRecipe();
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+
+            $recipeController->deleteRecipe();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'managerecipes':
-    if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
-        header('Location: index.php?action=error');
-        exit();
-    } else
-    $recipeController->getAllRecipesAdmin();
+        if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
+            header('Location: index.php?action=error');
+            exit();
+        } else
+            $recipeController->getAllRecipesAdmin();
         break;
     case 'manageusers' :
         if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
             header('Location: index.php?action=error');
             exit();
         } else
-        $userController->getAllUsers();
+            $userController->getAllUsers();
         break;
     case 'deleteuser':
-        $userController->deleteUser();
+        if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
+            $userController->deleteUser();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'error':
         require_once 'error.php';

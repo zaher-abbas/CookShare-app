@@ -127,6 +127,7 @@ class UserController
 
             }
             if (!empty($user)) {
+                $_SESSION['connected'] = true;
                 $_SESSION['userFirstName'] = $user['firstname'];
                 $_SESSION['userLastName'] = $user['lastname'];
                 $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
@@ -183,7 +184,7 @@ class UserController
     }
     public function logout(): void
     {
-        setcookie("loggedOut", "true");
+        setcookie("loggedOut", "true", time() + 5, "/");;
         session_destroy();
         Header('Location: index.php?action=home');
     }
