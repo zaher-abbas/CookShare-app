@@ -38,16 +38,14 @@ class RecipeController
 
             if (!$rName)
                 $errors["rName"] = "Please enter a recipe name.";
-            if (!$rDuration)
-                $errors["rDuration"] = "Please enter a duration.";
+            if (!$isValidDuration)
+                $errors["ValidDuration"] = "Please enter a valid duration.";
             if (!$rDifficulty)
                 $errors["rDifficulty"] = "Please select a difficulty.";
             if (!$rIngredients)
                 $errors["rIngredients"] = "Please enter ingredients.";
             if (!$rDescription)
                 $errors["rDescription"] = "Please enter a description.";
-            if (!$isValidDuration)
-                $errors["ValidDuration"] = "Please enter a valid duration.";
 
             if ($rName && $rDescription && $rIngredients && $isValidDuration && $rDifficulty) {
 
@@ -86,9 +84,7 @@ class RecipeController
                     exit();
                 }
             }
-
         }
-
         require_once './../View/editrecipe.php';
     }
 
