@@ -1,3 +1,6 @@
+<?php
+/** @var array|null $errors */
+?>
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container my-4">
         <h3 class="text-center alert alert-info w-75 mx-auto">&#128273; Log-in to your account</h3>
@@ -10,18 +13,21 @@
             <?php
             if (isset($_COOKIE['UserNotFound'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['UserNotFound'] . "</div>";
-                unset($_COOKIE['UserNotFound']);
             }
             ?>
             <div class="mb-4">
                 <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" minlength="8" required>
             </div>
             <?php
             if (isset($_COOKIE['WrongPassword'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['WrongPassword'] . "</div>";
-                unset($_COOKIE['WrongPassword']);
             }
+            if (!empty($errors))
+                foreach ($errors as $error)
+                {
+                    echo "<div class='form-text alert alert-danger'>" . $error . "</div>";
+                }
             ?>
             <div class="text-center">
                 <button type="submit" class="btn btn-success">Log-in</button>

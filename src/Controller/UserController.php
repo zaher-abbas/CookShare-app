@@ -103,37 +103,47 @@ class UserController
 
     public function login(): void
     {
-        unset($_COOKIE['UserNotFound']);
-        unset($_COOKIE['WrongPassword']);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
-            $user = [];
-            try {
-                $user = $this->user->getUser($email, $password);
-
-            } catch (UserNotFound $e) {
-                setcookie("UserNotFound", $e->getMessage());
-                $_COOKIE["UserNotFound"] = $e->getMessage();
-
-            } catch (WrongPassword $e) {
-                setcookie("WrongPassword", $e->getMessage());
-                $_COOKIE["WrongPassword"] = $e->getMessage();
-
+            $errors = [];
+            $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+            $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+            if (empty($email) || empty($password)) {
+                $errors["empty"] = "Please fill all the fields before submitting!";
             }
-            if (!empty($user)) {
-                $_SESSION['connected'] = true;
-                $_SESSION['userFirstName'] = $user['firstname'];
-                $_SESSION['userLastName'] = $user['lastname'];
-                $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
-                $_SESSION['userId'] = $user['id'];
-                $_SESSION['userRole'] = $this->user->getUserRoleName($user['id']);
-                $_SESSION['toast'] = [
-                    'type' => 'success',
-                    'message' => 'You are now logged in!'
-                ];
-                header('Location: index.php?action=home');
-                exit();
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors["email"] = "Invalid email format!";
+            }
+            if (strlen($password) < 8) {
+                $errors["pwdLength"] = "Password must be at least 8 characters long!";
+            }
+            if (empty($errors)) {
+                $user = [];
+                try {
+                    $user = $this->user->getUser($email, $password);
+
+                } catch (UserNotFound $e) {
+                    setcookie("UserNotFound", $e->getMessage(), time() + 5, "/");
+                    $_COOKIE["UserNotFound"] = $e->getMessage();
+
+                } catch (WrongPassword $e) {
+                    setcookie("WrongPassword", $e->getMessage(), time() + 5, "/");
+                    $_COOKIE["WrongPassword"] = $e->getMessage();
+
+                }
+                if (!empty($user)) {
+                    $_SESSION['connected'] = true;
+                    $_SESSION['userFirstName'] = $user['firstname'];
+                    $_SESSION['userLastName'] = $user['lastname'];
+                    $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";
+                    $_SESSION['userId'] = $user['id'];
+                    $_SESSION['userRole'] = $this->user->getUserRoleName($user['id']);
+                    $_SESSION['toast'] = [
+                        'type' => 'success',
+                        'message' => 'You are now logged in!'
+                    ];
+                    header('Location: index.php?action=home');
+                    exit();
+                }
             }
         }
         require_once './../View/login.php';
