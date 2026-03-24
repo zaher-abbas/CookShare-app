@@ -36,14 +36,23 @@ class UserController
             if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($pwdConfirm)) {
                 $errors["empty"] = "Please fill all the fields before submitting!";
             }
-            if ($password != $pwdConfirm) {
-                $errors["pwdMatch"] = "Passwords do not match!";
+            if (strlen($firstname) > 20) {
+                $errors["firstname"] = "First name must be less than 20 characters!";
+            }
+            if (strlen($lastname) > 50) {
+                $errors["lastname"] = "Last name must be less than 50 characters!";
+            }
+            if (strlen($email) > 50) {
+                $errors["email"] = "Email must be less than 50 characters!";
             }
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors["email"] = "Invalid email format!";
             }
             if (strlen($password) < 8) {
                 $errors["pwdLength"] = "Password must be at least 8 characters long!";
+            }
+            if ($password != $pwdConfirm) {
+                $errors["pwdMatch"] = "Passwords do not match!";
             }
             if (!$cgu)
             {
@@ -56,37 +65,11 @@ class UserController
                     $this->user->createUser($firstname, $lastname, $password_crypted, $email, 2);
 
                 } catch (UserAlreadyExists $e) {
-                    $errors["UserAlreadyExists"] = $e->getMessage();
                     setcookie("UserAlreadyExists", $e->getMessage(), time() + 5, "/");
                     $_COOKIE["UserAlreadyExists"] = $e->getMessage();
                     $this->persistUserInfo($firstname, $lastname, $email);
                 }
             } else {
-                if (isset($errors["empty"])) {
-                    setcookie("ErrorEmptyFields", $errors["empty"], time() + 5, "/");
-                    $_COOKIE["ErrorEmptyFields"] = $errors["empty"];
-                }
-
-                if (isset($errors["pwdLength"])) {
-                    setcookie("ErrorPasswordLength", $errors["pwdLength"], time() + 5, "/");
-                    $_COOKIE["ErrorPasswordLength"] = $errors["pwdLength"];
-                }
-
-                if (isset($errors["pwdMatch"])) {
-                    setcookie("ErrorPwdNotMatch", $errors["pwdMatch"], time() + 5, "/");
-                    $_COOKIE["ErrorPwdNotMatch"] = $errors["pwdMatch"];
-                }
-
-                if (isset($errors["email"])) {
-                    setcookie("ErrorEmail", $errors["email"], time() + 5, "/");
-                    $_COOKIE["ErrorEmail"] = $errors["email"];
-                }
-
-                if (isset($errors["cgu"])) {
-                    setcookie("ErrorCgu", $errors["cgu"], time() + 5, "/");
-                    $_COOKIE["ErrorCgu"] = $errors["cgu"];
-                }
-
                 $this->persistUserInfo($firstname, $lastname, $email);
             }
             if (empty($errors)) {

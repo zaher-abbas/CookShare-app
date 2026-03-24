@@ -1,3 +1,6 @@
+<?php
+/** @var array|null $errors */
+?>
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container my-4 text-white">
         <h3 class="text-center alert alert-info w-75 mx-auto">&#128221; Register New Account</h3>
@@ -39,20 +42,11 @@
             if (isset($_COOKIE['UserAlreadyExists'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['UserAlreadyExists'] . "</div>";
             }
-            if (isset($_COOKIE['ErrorEmptyFields'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorEmptyFields'] . "</div>";
-            }
-            if (isset($_COOKIE['ErrorPwdLength'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorPwdLength'] . "</div>";
-            }
-            if (isset($_COOKIE['ErrorCgu'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorCgu'] . "</div>";
-            }
-            if (isset($_COOKIE['ErrorEmail'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorEmail'] . "</div>";
-            }
-            if (isset($_COOKIE['ErrorPwdNotMatch'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorPwdNotMatch'] . "</div>";
+            if (!empty($errors)) {
+                foreach ($errors as $error) {
+                    echo "<div class='form-text alert alert-danger'>" . $error . "</div>";
+
+                }
             }
             ?>
             <div class="text-center">
