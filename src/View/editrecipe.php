@@ -1,5 +1,6 @@
 <?php
 /** @var array|null $recipe */
+/** @var array|null $errors */
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 ?>
@@ -12,8 +13,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
         <?php endif; ?>
         <form class="edit-form p-5 w-75 mx-auto rounded" method="post" action="" enctype="multipart/form-data">
             <?php
-            if (isset($_COOKIE['ErrorAddingRecipe']) && $_COOKIE['ErrorAddingRecipe'] != '') {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['ErrorAddingRecipe'] . "</div>";
+            if (!empty($errors))
+            foreach ($errors as $error)
+            {
+                echo "<div class='form-text alert alert-danger'>" . $error . "</div>";
             }
             ?>
             <div class="mb-4">

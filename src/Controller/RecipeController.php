@@ -19,12 +19,12 @@ class RecipeController
         $recipe = null;
         $id = $_GET['id'] ?? null;
         $action = $_GET['action'] ?? null;
-
         if ($action == 'updaterecipe') {
             $recipe = $this->recipe->getRecipeById($id);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
             $rName = isset($_POST['rName']) ? trim($_POST['rName']) : null;
             $rImage = $_FILES['rImage'] ?? null;
             $rDuration = isset($_POST['rDuration']) ? trim($_POST['rDuration']) : null;
@@ -35,6 +35,19 @@ class RecipeController
             $isValidDuration = filter_var($rDuration, FILTER_VALIDATE_INT, [
                 "options" => ["min_range" => 1]
             ]);
+
+            if (!$rName)
+                $errors["rName"] = "Please enter a recipe name.";
+            if (!$rDuration)
+                $errors["rDuration"] = "Please enter a duration.";
+            if (!$rDifficulty)
+                $errors["rDifficulty"] = "Please select a difficulty.";
+            if (!$rIngredients)
+                $errors["rIngredients"] = "Please enter ingredients.";
+            if (!$rDescription)
+                $errors["rDescription"] = "Please enter a description.";
+            if (!$isValidDuration)
+                $errors["ValidDuration"] = "Please enter a valid duration.";
 
             if ($rName && $rDescription && $rIngredients && $isValidDuration && $rDifficulty) {
 
@@ -72,17 +85,8 @@ class RecipeController
                     header('Location: index.php?action=userrecipes');
                     exit();
                 }
-            } else {
-                setcookie("ErrorAddingRecipe", "Error; Please fill all the required fields before submitting!", time() + 5, "/");;
-                switch ($action) {
-                    case 'addrecipe':
-                        header('Location: index.php?action=addrecipe');
-                        exit();
-                    case 'updaterecipe':
-                            header('Location: index.php?action=updaterecipe&id=' . $id);
-                         exit();
-                }
             }
+
         }
 
         require_once './../View/editrecipe.php';
