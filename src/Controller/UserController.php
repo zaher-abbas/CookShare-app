@@ -57,40 +57,35 @@ class UserController
 
                 } catch (UserAlreadyExists $e) {
                     $errors["UserAlreadyExists"] = $e->getMessage();
-                    setcookie("UserAlreadyExists", $e->getMessage());
+                    setcookie("UserAlreadyExists", $e->getMessage(), time() + 5, "/");
                     $_COOKIE["UserAlreadyExists"] = $e->getMessage();
                     $this->persistUserInfo($firstname, $lastname, $email);
                 }
             } else {
                 if (isset($errors["empty"])) {
-                    setcookie("ErrorEmptyFields", $errors["empty"]);
+                    setcookie("ErrorEmptyFields", $errors["empty"], time() + 5, "/");
                     $_COOKIE["ErrorEmptyFields"] = $errors["empty"];
-                } else
-                    unset($_COOKIE['ErrorEmptyFields']);
+                }
 
                 if (isset($errors["pwdLength"])) {
-                    setcookie("ErrorPasswordLength", $errors["pwdLength"]);
+                    setcookie("ErrorPasswordLength", $errors["pwdLength"], time() + 5, "/");
                     $_COOKIE["ErrorPasswordLength"] = $errors["pwdLength"];
-                } else
-                    unset($_COOKIE['ErrorPwdNotMatch']);
+                }
 
                 if (isset($errors["pwdMatch"])) {
-                    setcookie("ErrorPwdNotMatch", $errors["pwdMatch"]);
+                    setcookie("ErrorPwdNotMatch", $errors["pwdMatch"], time() + 5, "/");
                     $_COOKIE["ErrorPwdNotMatch"] = $errors["pwdMatch"];
-                } else
-                    unset($_COOKIE['ErrorPwdNotMatch']);
+                }
 
                 if (isset($errors["email"])) {
-                    setcookie("ErrorEmail", $errors["email"]);
+                    setcookie("ErrorEmail", $errors["email"], time() + 5, "/");
                     $_COOKIE["ErrorEmail"] = $errors["email"];
-                } else
-                    unset($_COOKIE['ErrorEmail']);
+                }
 
                 if (isset($errors["cgu"])) {
-                    setcookie("ErrorCgu", $errors["cgu"]);
+                    setcookie("ErrorCgu", $errors["cgu"], time() + 5, "/");
                     $_COOKIE["ErrorCgu"] = $errors["cgu"];
-                } else
-                    unset($_COOKIE['ErrorCgu']);
+                }
 
                 $this->persistUserInfo($firstname, $lastname, $email);
             }
@@ -192,15 +187,15 @@ class UserController
     public function persistUserInfo(string $firstname, string $lastname, string $email): void
     {
         if (!empty($firstname)) {
-            setcookie("firstname", $firstname);
+            setcookie("firstname", $firstname, time() + 5, "/");
             $_COOKIE["firstname"] = $firstname;
         }
         if (!empty($lastname)) {
-            setcookie("lastname", $lastname);
+            setcookie("lastname", $lastname, time() + 5, "/");
             $_COOKIE["lastname"] = $lastname;
         }
         if (!empty($email)) {
-            setcookie("email", $email);
+            setcookie("email", $email, time() + 5, "/");
             $_COOKIE["email"] = $email;
         }
     }
