@@ -17,9 +17,9 @@ class User
     }
 
     //Operation CRUD Create:
-    public function createUser(string $firstName, string $lastName, string $password, string $email, int $role): void
+    public function createUser(string $firstName, string $lastName, string $password, string $email, int $role_id): void
     {
-        $query = "INSERT INTO users (firstName, lastName, email, password, role) VALUES
+        $query = "INSERT INTO users (firstName, lastName, email, password, role_id) VALUES
                                    (:firstName, :lastName, :email, :password, :role)";
         if (!$this->findUserByEmail($email)) {
             $statement = $this->db->prepare($query);
@@ -27,7 +27,7 @@ class User
             $statement->bindValue(':lastName', $lastName);
             $statement->bindValue(':password', $password);
             $statement->bindValue(':email', $email);
-            $statement->bindValue(':role', $role);
+            $statement->bindValue(':role_id', $role_id);
             $statement->execute();
         }
         else
