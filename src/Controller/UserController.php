@@ -203,7 +203,7 @@ class UserController
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            if ($_SESSION['userRole'] == 'admin') {
+            if ($_SESSION['userRole'] === 'admin') {
                 $this->user->deleteUser($id);
                 $_SESSION['toast'] = [
                     'type' => 'success',

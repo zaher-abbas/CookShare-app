@@ -118,28 +118,28 @@ switch ($action) {
         break;
     case 'deleterecipe':
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
-
             $recipeController->deleteRecipe();
         } else {
             header('Location: index.php?action=error');
         }
         break;
     case 'managerecipes':
-        if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
-            header('Location: index.php?action=error');
-            exit();
-        } else
+        if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
             $recipeController->getAllRecipesAdmin();
+        } else {
+            header('Location: index.php?action=error');
+        }
         break;
     case 'manageusers' :
-        if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
-            header('Location: index.php?action=error');
-            exit();
-        } else
+        if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
             $userController->getAllUsers();
+        } else {
+            header('Location: index.php?action=error');
+        }
+
         break;
     case 'deleteuser':
-        if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
+        if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
             $userController->deleteUser();
         } else {
             header('Location: index.php?action=error');
@@ -149,7 +149,11 @@ switch ($action) {
         require_once 'error.php';
         break;
     default:
-        require_once 'dashboard.php';
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+            $recipeController->showAllRecipes();
+        } else {
+            require_once 'welcome.php';
+        }
         break;
 }
 require_once 'footer.php';
