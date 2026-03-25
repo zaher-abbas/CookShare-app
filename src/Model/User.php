@@ -20,7 +20,7 @@ class User
     public function createUser(string $firstName, string $lastName, string $password, string $email, int $role_id): void
     {
         $query = "INSERT INTO users (firstName, lastName, email, password, role_id) VALUES
-                                   (:firstName, :lastName, :email, :password, :role)";
+                                   (:firstName, :lastName, :email, :password, :role_id)";
         if (!$this->findUserByEmail($email)) {
             $statement = $this->db->prepare($query);
             $statement->bindValue(':firstName', $firstName);
