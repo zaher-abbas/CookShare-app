@@ -39,7 +39,7 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
         <section class="container">
             <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 p-4 justify-content-center">
                 <?php foreach ($recipes as $recipe): ?>
-                    <div class="col">
+                    <article class="col">
                         <div class="<?= (isset($recipe['isFavorite']) && $recipe['isFavorite']) ? 'border border-3 border-warning' : 'border border-secondary-subtle border-start-0 rounded-end border-4' ?> card h-100 recipe-card bg-sage-light text-forest mb-3 p-4">
                             <?php if (isset($recipe['isFavorite']) && ($recipe['isFavorite'] === true)): ?>
                                 <h4>&#11088;</h4>
@@ -86,7 +86,7 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                 </small>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 <?php endforeach; ?>
                 <?php endif; ?>
     </main>

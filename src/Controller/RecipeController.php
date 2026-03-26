@@ -67,7 +67,6 @@ class RecipeController
                         'type' => 'success',
                         'message' => 'Recipe added successfully.'
                     ];
-                    unset($_COOKIE['ErrorAddingRecipe']);
                     header('Location: index.php?action=home');
                     exit();
                 } elseif ($action == 'updaterecipe') {
