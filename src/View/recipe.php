@@ -72,17 +72,20 @@
                             <br><br>
                             <h2 class="mb-3">&#129379; Ingredients</h2>
                             <?php if ($recipeIngredients): ?>
-                                <ul class="list-group">
+                                <ul class="list-group border-start border-4 border-info bg-light rounded-3 shadow-sm">
                                     <?php foreach ($recipeIngredients as $ingredient): ?>
-                                        <li class="list-group-item"><?= htmlspecialchars($ingredient) ?></li>
+                                        <li class="list-group-item list-group-item-action"><?= htmlspecialchars($ingredient) ?></li>
                                     <?php endforeach; ?>
                                 </ul>
                             <?php else: ?>
                                 <p>No ingredients available.</p>
                             <?php endif; ?>
-                            <br><br>
-                            <h2 class="mb-3 ">&#128195; Description</h2>
-                            <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="mb-3 ">&#128195; Instructions</h2>
+                        <div class="border-start border-4 border-success ps-3 py-3 bg-light rounded-3 shadow-sm">
+                        <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +101,7 @@
                 <h2 class="mb-4">&#128101; Community Reviews</h2>
                 <?php if (!empty($comments)): ?>
                     <?php foreach ($comments as $comment): ?>
-                        <div class="card mb-4">
+                        <div class="card mb-4 border-secondary-subtle bg-light shadow-sm">
                             <div class="card-body">
                                 <?php if (isset($comment['author_picture_name'])): ?>
                                     <h5 class="card-title"><img
