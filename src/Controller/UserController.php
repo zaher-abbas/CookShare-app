@@ -17,13 +17,6 @@ class UserController
 
     public function register(): void
     {
-        unset($_COOKIE['UserAlreadyExists']);
-        unset($_COOKIE['ErrorEmptyFields']);
-        unset($_COOKIE['ErrorPwdNotMatch']);
-        unset($_COOKIE['firstname']);
-        unset($_COOKIE['lastname']);
-        unset($_COOKIE['email']);
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = [];
             $firstname = isset($_POST['firstname']) ? trim($_POST['firstname']) : '';
