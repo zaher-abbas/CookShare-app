@@ -4,31 +4,19 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "Guest"
 $connected = $user != "Guest";
 ?>
 <?php if (!empty($_SESSION['toast'])): ?>
-    <?php
-    $toastMsg = is_array($_SESSION['toast']) ? ($_SESSION['toast']['message'] ?? '') : $_SESSION['toast'];
-    $toastType = is_array($_SESSION['toast']) ? ($_SESSION['toast']['type'] ?? 'success') : 'success';
-
-    $bgStyle = $toastType === 'danger'
-        ? '#a12525'
-        : '#0c818a';
-    ?>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function () {
             Toastify({
-                text: "<?= addslashes($_SESSION['toast']['message'] ?? $_SESSION['toast']) ?>",
+                text: "<?php echo htmlspecialchars($_SESSION['toast']['message'] ?? ''); ?>",
                 duration: 3000,
-                close: true,
                 gravity: "top",
                 position: "right",
-                style: {
-                    background: "<?= $bgStyle ?>",
-                }
+                backgroundColor: "<?php echo ($_SESSION['toast']['type'] ?? 'info') === 'success' ? '#16a34a' : '#dc3545'; ?>",
+                close: true
             }).showToast();
         });
     </script>
-    <?php unset($_SESSION['toast']); // Clear it so it doesn't show on refresh ?>
-<?php endif; ?>
+    <?php unset($_SESSION['toast']); endif; ?>
 <header>
     <nav class="navbar navbar-expand-md p-4 text-light">
         <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
@@ -82,7 +70,6 @@ $connected = $user != "Guest";
                                 <a class='btn btn-success btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
                                 </li>
                         </ul>
-                </ul>
                     <?php else: ?>
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0 d-flex justify-content-center align-items-center'>
                             <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0'>

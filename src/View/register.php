@@ -45,7 +45,6 @@
             if (!empty($errors)) {
                 foreach ($errors as $error) {
                     echo "<div class='form-text alert alert-danger'>" . $error . "</div>";
-
                 }
             }
             ?>

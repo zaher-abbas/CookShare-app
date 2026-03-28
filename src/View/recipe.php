@@ -168,18 +168,5 @@
         <?php endif; ?>
     </section>
 </main>
-<?php if (!empty($_SESSION['toast'])): ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Toastify({
-                text: "<?php echo htmlspecialchars($_SESSION['toast']['message'] ?? ''); ?>",
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                backgroundColor: "<?php echo ($_SESSION['toast']['type'] ?? 'danger') === 'success' ? '#16a34a' : '#dc3545'; ?>",
-                close: true
-            }).showToast();
-        });
-    </script>
-    <?php unset($_SESSION['toast']); endif; ?>
+
 

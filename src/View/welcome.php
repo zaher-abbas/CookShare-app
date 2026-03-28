@@ -27,7 +27,7 @@
                 duration: 3000,
                 gravity: "top",
                 position: "right",
-                backgroundColor: "#eb253c",
+                backgroundColor: "#dc3545",
                 close: true
             }).showToast();
         });
