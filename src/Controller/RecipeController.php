@@ -43,9 +43,9 @@ class RecipeController
             if (!$rDifficulty)
                 $errors["rDifficulty"] = "Please select a difficulty.";
             if (!$rIngredients)
-                $errors["rIngredients"] = "Please enter ingredients.";
+                $errors["rIngredients"] = "Please enter the recipe ingredients.";
             if (!$rDescription)
-                $errors["rDescription"] = "Please enter a description.";
+                $errors["rDescription"] = "Please enter the recipe instructions.";
 
             if ($rName && $rDescription && $rIngredients && $isValidDuration && $rDifficulty) {
 

@@ -82,7 +82,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
                 <textarea class="form-control" id="rIngredients" name="rIngredients" rows="8" required><?= $recipe ? htmlspecialchars(trim($recipe['ingredients'])) : ''; ?></textarea>
             </div>
             <div class="mb-4">
-                <label for="rDescription" class="form-label">&#128195; Description <span class="text-danger">*</span>
+                <label for="rDescription" class="form-label">&#128195; Instructions <span class="text-danger">*</span>
                 </label>
                 <textarea class="form-control" id="rDescription" name="rDescription" rows="8" required><?= $recipe ? htmlspecialchars(trim($recipe['description'])) : ''; ?></textarea>
             </div>
