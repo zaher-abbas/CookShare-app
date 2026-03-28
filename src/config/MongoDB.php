@@ -10,9 +10,9 @@ final class MongoDB
         $uri = $_ENV['MONGODB_URI'];
         return new Client($uri);
     }
-    public static function getConnection($dbName = self::DB_NAME)
+    public static function getConnection()
     {
-        $db = getenv('MONGODB_DB');
+        $db = $_ENV['MONGODB_DB'];
         return self::getClient()->$db;
     }
 
