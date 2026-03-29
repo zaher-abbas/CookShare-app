@@ -2,7 +2,6 @@
 
 namespace App\config;
 
-
 use PDO;
 use PDOException;
 use RuntimeException;
@@ -22,9 +21,11 @@ final class MySQL
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ]);
-        } catch (PDOException $e) {
-            echo "Erreur : " . $e->getMessage();
+        } catch (
+            PDOException | RuntimeException $e
+        )
+        {
+            return null;
         }
-        return null;
     }
 }

@@ -48,7 +48,6 @@ class RecipeController
                 $errors["rDescription"] = "Please enter the recipe instructions.";
 
             if ($rName && $rDescription && $rIngredients && $isValidDuration && $rDifficulty) {
-
                 if ($rImage['error'] == 0) {
                     $image_name = $rImage['name'];
                     $image_name = time() . $image_name;
@@ -56,7 +55,6 @@ class RecipeController
                     if (!is_dir($folderName)) {
                         mkdir($folderName, 0775, true);
                     }
-
                     move_uploaded_file($rImage['tmp_name'], $folderName . $image_name);
                 } else {
                     $image_name = '';

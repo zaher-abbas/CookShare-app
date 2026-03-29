@@ -7,11 +7,17 @@ use App\Controller\UserController;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 2));
 $dotenv->load();
+session_start();
 
 $db = MySQL::getConnection();
-$userController = new UserController($db);
-$recipeController = new RecipeController($db);
-$action = $_GET['action'] ?? 'home';
+if ($db) {
+    $userController = new UserController($db);
+    $recipeController = new RecipeController($db);
+    $action = $_GET['action'] ?? 'home';
+} else {
+    echo "Database connection failed.";
+    exit();
+}
 ?>
 
 <!doctype html>
@@ -27,8 +33,6 @@ $action = $_GET['action'] ?? 'home';
     <title>CookShare - App</title>
 </head>
 <body class="bg-dark-subtle d-flex flex-column min-vh-100">
-</body>
-</html>
 
 <?php
 require_once 'header.php';
@@ -52,36 +56,36 @@ switch ($action) {
         break;
     case 'addrecipe':
     case 'updaterecipe':
-    if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
-        $recipeController->editRecipe();
-    } else {
-        header('Location: index.php?action=error');
-        $_SESSION['toast'] = [
-            'type' => 'danger',
-            'message' => 'You dont have the permission to access this page.'
-        ];
-    }
-    break;
-    case 'profile':
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
-            $userController->profile();
+            $recipeController->editRecipe();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
+        }
+        break;
+    case 'profile':
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+            $userController->profile();
+        } else {
+            $_SESSION['toast'] = [
+                'type' => 'danger',
+                'message' => 'You dont have the permission to access this page.'
+            ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'recipe':
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
             $recipeController->showRecipeDetails();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'search':
@@ -89,11 +93,11 @@ switch ($action) {
 
             $recipeController->searchRecipeByName();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'order' :
@@ -101,33 +105,33 @@ switch ($action) {
 
             $recipeController->orderRecipes();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You must be connected to order recipes.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'addtofavorites':
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
             $recipeController->addtoFavorites();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'removefromfavorites':
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
             $recipeController->removeFromFavorites();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'favorites':
@@ -135,11 +139,11 @@ switch ($action) {
 
             $recipeController->showFavorites();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'userrecipes':
@@ -147,6 +151,10 @@ switch ($action) {
 
             $recipeController->listUserRecipes();
         } else {
+            $_SESSION['toast'] = [
+                'type' => 'danger',
+                'message' => 'You dont have the permission to access this page.'
+            ];
             header('Location: index.php?action=error');
         }
         break;
@@ -154,33 +162,33 @@ switch ($action) {
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
             $recipeController->deleteRecipe();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'managerecipes':
         if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
             $recipeController->getAllRecipesAdmin();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'manageusers' :
         if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
             $userController->getAllUsers();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
 
         break;
@@ -188,11 +196,11 @@ switch ($action) {
         if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
             $userController->deleteUser();
         } else {
-            header('Location: index.php?action=error');
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'You dont have the permission to access this page.'
             ];
+            header('Location: index.php?action=error');
         }
         break;
     case 'error':
@@ -208,7 +216,7 @@ switch ($action) {
 }
 require_once 'footer.php';
 ?>
-
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
+</body>
+</html>

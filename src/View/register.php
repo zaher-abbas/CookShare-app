@@ -4,7 +4,17 @@
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container my-4 text-white">
         <h3 class="text-center alert alert-info w-75 mx-auto">&#128221; Register New Account</h3>
-        <form class="auth-form p-5 rounded-3 w-75 mx-auto" action="" method="post" class="p-3 rounded">
+        <form class="auth-form p-5 rounded-3 w-75 mx-auto" action="" method="post">
+            <?php
+            if (isset($_COOKIE['UserAlreadyExists'])) {
+                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['UserAlreadyExists'] . "</div>";
+            }
+            if (!empty($errors)) {
+                foreach ($errors as $error) {
+                    echo "<div class='form-text alert alert-danger'>" . $error . "</div>";
+                }
+            }
+            ?>
             <div class="mb-4">
                 <label for="firstname" class="form-label">First Name <span class="text-danger">*</span>
                 </label>
@@ -38,16 +48,6 @@
                 <input type="checkbox" class="form-check-input" id="cgu" name="cgu" required>
                 <label class="form-check-label" for="cgu">I agree to the Terms and Conditions and the Privacy Policy</label>
             </div>
-            <?php
-            if (isset($_COOKIE['UserAlreadyExists'])) {
-                echo "<div class='form-text alert alert-danger'>" . $_COOKIE['UserAlreadyExists'] . "</div>";
-            }
-            if (!empty($errors)) {
-                foreach ($errors as $error) {
-                    echo "<div class='form-text alert alert-danger'>" . $error . "</div>";
-                }
-            }
-            ?>
             <div class="text-center">
                 <button type="submit" class="btn btn-success">Register</button>
             </div>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "Guest";
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
 ?>
