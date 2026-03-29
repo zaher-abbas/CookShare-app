@@ -228,10 +228,14 @@ class RecipeController
             $recipe = $this->recipe->getRecipeById($id);
             if (($recipe['user_id'] != $_SESSION['userId']) && ($_SESSION['userRole'] != 'admin')) {
                 header('Location: index.php?action=error');
+                $_SESSION['toast'] = [
+                    'type' => 'danger',
+                    'message' => 'You dont have the permission to access this page.'
+                ];
                 exit();
             }
             else
-                $this->recipe->deleteRecipe($id);
+            $this->recipe->deleteRecipe($id);
             $_SESSION['toast'] = [
                 'type' => 'danger',
                 'message' => 'Recipe was deleted successfully.'
