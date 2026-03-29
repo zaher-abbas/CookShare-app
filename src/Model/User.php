@@ -27,7 +27,7 @@ class User
             $statement->bindValue(':lastName', $lastName);
             $statement->bindValue(':password', $password);
             $statement->bindValue(':email', $email);
-            $statement->bindValue(':role_id', $role_id);
+            $statement->bindValue(':role_id', $role_id, PDO::PARAM_INT);
             $statement->execute();
         }
         else
@@ -85,7 +85,7 @@ class User
     {
         $query = "SELECT * FROM users WHERE id = :id";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':id', $id);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         $user = $statement->fetch();
         if (!$user) {
@@ -100,7 +100,7 @@ class User
         $query = "UPDATE users SET photo = :photo WHERE id = :id";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':photo', $photo);
-        $statement->bindValue(':id', $id);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -115,7 +115,7 @@ class User
     {
         $query = "DELETE FROM users WHERE id = :id";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':id', $id);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
     }
 }

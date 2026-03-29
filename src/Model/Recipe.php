@@ -39,7 +39,7 @@ class Recipe
     {
         $query = "SELECT recipes.*, firstname, lastname, photo FROM recipes JOIN users u ON u.id = recipes.user_id WHERE recipes.id = :id";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':id', $id);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         if ($statement->rowCount() > 0) {
             return $statement->fetch();
@@ -85,8 +85,8 @@ class Recipe
     {
         $query = "INSERT INTO favorites (recipe_id, user_id) VALUES (:recipe_id, :user_id)";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':recipe_id', $recipeId);
-        $statement->bindValue(':user_id', $userId);
+        $statement->bindValue(':recipe_id', $recipeId, PDO::PARAM_INT);
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -94,8 +94,8 @@ class Recipe
     {
         $query = "DELETE FROM favorites WHERE recipe_id = :recipe_id AND user_id = :user_id";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':recipe_id', $recipeId);
-        $statement->bindValue(':user_id', $userId);
+        $statement->bindValue(':recipe_id', $recipeId, PDO::PARAM_INT);
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -103,8 +103,8 @@ class Recipe
     {
         $query = "SELECT COUNT(*) FROM favorites WHERE recipe_id = :recipe_id AND user_id = :user_id";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':recipe_id', $recipeId);
-        $statement->bindValue(':user_id', $userId);
+        $statement->bindValue(':recipe_id', $recipeId, PDO::PARAM_INT);
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchColumn() > 0;
     }
@@ -113,7 +113,7 @@ class Recipe
     {
         $query = "SELECT r.*, u.firstname, u.lastname FROM recipes r JOIN favorites f ON f.recipe_id = r.id JOIN `users` u ON u.id = r.user_id WHERE f.user_id = :user_id;";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':user_id', $userId);
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll() ?? null;
     }
@@ -122,7 +122,7 @@ class Recipe
     {
         $query = "SELECT r.*, u.firstname, u.lastname FROM recipes r JOIN `users` u ON u.id = r.user_id WHERE r.user_id = :user_id;";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':user_id', $userId);
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll() ?? null;
     }
@@ -131,7 +131,7 @@ class Recipe
     {
         $query = "DELETE FROM recipes WHERE id = :recipeId";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':recipeId', $recipeId);
+        $statement->bindValue(':recipeId', $recipeId, PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -141,11 +141,11 @@ class Recipe
         $statement = $this->db->prepare($query);
         $statement->bindValue(':name', $name);
         $statement->bindValue(':image', $image);
-        $statement->bindValue(':duration', $duration);
+        $statement->bindValue(':duration', $duration, PDO::PARAM_INT);
         $statement->bindValue(':difficulty', $difficulty);
         $statement->bindValue(':description', $description);
         $statement->bindValue(':ingredients', $ingredients);
-        $statement->bindValue(':recipeId', $recipeId);
+        $statement->bindValue(':recipeId', $recipeId, PDO::PARAM_INT);;
         $statement->execute();
     }
 }
