@@ -46,73 +46,74 @@ It allows users to create, manage, and share their culinary recipes, as well as 
 ## 📦 Installation
 
 1. Clone the repository:
-    - git clone https://repo-url/recipe_app.git
-    - cd recipe_app
+    ```bash
+    git clone https://github.com/zaher-abbas/CookShare-app.git
+    cd CookShare-app
+    ```
 
 2. Install PHP dependencies:
-    - composer install
+    ```bash
+    composer install
+    ```
 
-3. Configure databases:
-    - MySQL:
-        - Create a database (e.g., recipe_app)
-        - Create a MySQL user with permissions for this database
-        - If a schema file is provided (e.g., database/schema.sql), import it
-    - MongoDB:
-        - Ensure a MongoDB database and user are available
+3. Set up the environment file:
+  - Copy `.env.example` to `.env`
+  - Update the environment variables with your own MySQL and MongoDB credentials
 
-4. Configure connection settings:
-    - Update your MySQL connection details (host, dbname, user, password) in the MySQL configuration file
-    - Update your MongoDB URI and database name in the MongoDB configuration file
+   Example:
+    ```bash
+    cp .env.example .env
+    ```
 
-5. Configure your web server:
-    - Document root should point to the application’s web entry (the Views directory with index.php)
-    - For quick local testing, you can use PHP’s built-in server:
-        - php -S localhost:8000 -t src/View
-        - Then open http://localhost:8000/index.php in your browser
+4. Configure the databases:
+  - MySQL:
+    - Create a MySQL database
+    - Create a MySQL user with permission to access this database
+    - Import `database_schema.sql` to create the required tables
+  - MongoDB:
+    - Make sure your MongoDB server is running
+    - Create the database referenced in your `.env` file if needed
+
+5. Update your environment variables in `.env`:
+  - `MYSQL_HOST`
+  - `MYSQL_DB`
+  - `MYSQL_USER`
+  - `MYSQL_PASSWORD`
+  - `MONGODB_URI`
+  - `MONGODB_DB`
+
+6. Configure your web server:
+  - Point the document root to the application entry point located in `src/View`
+  - For quick local testing, you can use PHP’s built-in server:
+    ```bash
+    php -S localhost:8000 -t src/View
+    ```
+
+7. Open the application in your browser:
+    ```text
+    http://localhost:8000/index.php
+    ```
 
 ## 🚀 Usage
 
 - Register a new account or log in
 - Create new recipes from your dashboard
 - View, edit, and delete your recipes
+- Add recipes to your favorites
 - Browse recipes and leave comments
 - Manage your profile information
-
-## ⚙️ Environment & Configuration
-
-- Ensure your PHP environment has both MySQL (PDO) and MongoDB extensions enabled
-- Set proper file permissions for any folders that handle uploads (e.g., images)
-- Adjust base URLs or paths in configuration or view templates if you deploy under a subdirectory
 
 ## 💡 Development Tips
 
 - Follow PSR standards where applicable
 - Keep controller logic thin and move data logic to models
 - Reuse shared UI components for headers/navbars to ensure consistency
-- If you add tests with PHPUnit, place them under a tests directory and configure phpunit.xml accordingly
-
-## 🧯 Troubleshooting
-
-- 500 or blank page:
-    - Enable error reporting in your PHP environment during development
-    - Verify database credentials and extensions
-- Database not reachable:
-    - Check that MySQL/MongoDB services are running and accessible
-    - Confirm hostnames, ports, and credentials
-- CSS/JS not loading:
-    - Ensure your document root points to the correct directory
-    - Verify relative paths to assets in your layout/templates
-
-## Scripts
-
-- Install dependencies:
-    - composer install
-- Start local server (example):
-    - php -S localhost:8000 -t src/View
+- PHPUnit is installed via Composer and tests can be placed in the `tests` directory
+- You may add a `phpunit.xml` file at the project root to simplify test configuration and execution
 
 ## License
 
-Specify your license (e.g., MIT) here.
+This project is licensed under the MIT License.
 
 ## Author
 

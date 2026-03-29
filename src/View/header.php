@@ -34,7 +34,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
                             <a class='btn btn-success btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
                         </li>
                         <li class='nav-item'>
-                            <a class='btn btn-primary btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=addrecipe'>➕ Add Recipe</a>
+                            <a class='btn btn-primary btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=addrecipe'>&#10133; Add Recipe</a>
                         </li>
                         <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
                         <a class='btn btn-warning btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=favorites'>&#11088; My Favorites</a>
@@ -79,7 +79,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
                           <?= $user ?></a>
                       </li>
                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
-                                <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold' href='index.php?action=logout'>Log-out ↪</a>
+                                <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold' href='index.php?action=logout'>Log-out &#8618;</a>
                         </li>
                         </ul>
                     <?php endif;?>
