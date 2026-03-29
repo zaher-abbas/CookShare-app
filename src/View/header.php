@@ -1,7 +1,7 @@
 <?php
 session_start();
 $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "Guest";
-$connected = $user != "Guest";
+$connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
 ?>
 <?php if (!empty($_SESSION['toast'])): ?>
     <script>
@@ -11,7 +11,7 @@ $connected = $user != "Guest";
                 duration: 3000,
                 gravity: "top",
                 position: "right",
-                backgroundColor: "<?php echo ($_SESSION['toast']['type'] ?? 'info') === 'success' ? '#16a34a' : '#dc3545'; ?>",
+                backgroundColor: "<?php echo ($_SESSION['toast']['type']) === 'success' ? '#16a34a' : '#dc3545'; ?>",
                 close: true
             }).showToast();
         });

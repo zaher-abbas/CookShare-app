@@ -60,7 +60,13 @@ class UserController
                 } catch (UserAlreadyExists $e) {
                     setcookie("UserAlreadyExists", $e->getMessage(), time() + 5, "/");
                     $_COOKIE["UserAlreadyExists"] = $e->getMessage();
+                    $_SESSION['toast'] = [
+                        'type' => 'danger',
+                        'message' => 'Error: User already exists. Please login instead!'
+                    ];
                     $this->persistUserInfo($firstname, $lastname, $email);
+                    header('Location: index.php?action=register');
+                    exit();
                 }
             } else {
                 $this->persistUserInfo($firstname, $lastname, $email);
@@ -100,10 +106,22 @@ class UserController
                 } catch (UserNotFound $e) {
                     setcookie("UserNotFound", $e->getMessage(), time() + 5, "/");
                     $_COOKIE["UserNotFound"] = $e->getMessage();
+                    $_SESSION['toast'] = [
+                        'type' => 'danger',
+                        'message' => 'Error: User not found. Please register first!'
+                    ];
+                    header('Location: index.php?action=login');
+                    exit();
 
                 } catch (WrongPassword $e) {
                     setcookie("WrongPassword", $e->getMessage(), time() + 5, "/");
                     $_COOKIE["WrongPassword"] = $e->getMessage();
+                    $_SESSION['toast'] = [
+                        'type' => 'danger',
+                        'message' => 'Error: Wrong password. Please try again!'
+                    ];
+                    header('Location: index.php?action=login');
+                    exit();
 
                 }
                 if (!empty($user)) {

@@ -102,7 +102,6 @@ class RecipeController
                 }
             }
         }
-
         require_once './../View/dashboard.php';
     }
 
