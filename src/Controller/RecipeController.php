@@ -139,6 +139,14 @@ class RecipeController
                         header('Location: index.php?action=recipe&id=' . $id);
                         exit();
                     }
+                    else {
+                        $_SESSION['toast'] = [
+                            'type' => 'danger',
+                            'message' => 'Error adding comment. Please try again.'
+                        ];
+                        header('Location: index.php?action=recipe&id=' . $id);
+                        exit();
+                    }
                 }
             }
             require_once './../View/recipe.php';

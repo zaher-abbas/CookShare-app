@@ -147,7 +147,7 @@
                     <legend class="mb-3">Rate this recipe and leave a comment:</legend>
                     <div class="mb-4">
                         <select class="form-select" aria-label="Default select example" name="note" required>
-                            <option selected disabled>Rate this recipe</option>
+                            <option value="" selected disabled>Rate this recipe</option>
                             <option value="1">&#11088;</option>
                             <option value="2">&#11088; &#11088;</option>
                             <option value="3">&#11088; &#11088; &#11088;</option>
