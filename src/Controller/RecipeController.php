@@ -115,6 +115,7 @@ class RecipeController
         $id = $_GET['id'] ?? null;
         $isRecipeFavorite = false;
         $recipeIngredients = [];
+        $alreadyRated = false;
         if ($id) {
             $isRecipeFavorite = $this->recipe->isRecipeInFavorites($id, $_SESSION['userId']);
             $this->comment = new Comment();
@@ -126,10 +127,18 @@ class RecipeController
                         fn($item) => !empty($item)
                     );
                 $comments = $this->comment->getCommentsByRecipeId($id);
+                if ($comments) {
+                    foreach ($comments as $key => $comment) {
+                        if ($comment['author_name'] === $_SESSION['userFirstName'] . ' ' . $_SESSION['userLastName']) {
+                            $alreadyRated = true;
+                            break;
+                        }
+                    }
+                }
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $comment = isset($_POST["comment"]) ? trim($_POST['comment']) : null;
                     $note = isset($_POST["note"]) ? $_POST['note'] : null;
-                    if ($comment && $note) {
+                    if ($comment && $note && !$alreadyRated) {
                         $fullUserName = $_SESSION['userFirstName'] . ' ' . $_SESSION['userLastName'];
                         $this->comment->createComment($id, $fullUserName, $_SESSION['userPhoto'], $comment, $note);
                         $_SESSION['toast'] = [
@@ -139,7 +148,14 @@ class RecipeController
                         header('Location: index.php?action=recipe&id=' . $id);
                         exit();
                     }
-                    else {
+                    else if ($alreadyRated) {
+                        $_SESSION['toast'] = [
+                            'type' => 'danger',
+                            'message' => 'Error adding comment. You already rated this recipe.'
+                        ];
+                        header('Location: index.php?action=recipe&id=' . $id);
+                        exit();
+                    } else {
                         $_SESSION['toast'] = [
                             'type' => 'danger',
                             'message' => 'Error adding comment. Please try again.'

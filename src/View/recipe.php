@@ -10,11 +10,11 @@
         <?php if ($recipe !== null): ?>
             <div class="card my-4 recipe-details p-3 p-sm-2">
                 <div class="row g-1">
-                    <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                    <div class="col-lg-5 col-md-5 d-flex align-items-center">
                         <img src="<?= './../View/img/' . $recipe['image']; ?>" class="img-fluid rounded-start"
                              alt="<?= htmlspecialchars($recipe['name']) ?>">
                     </div>
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-lg-7 col-md-7">
                         <div class="card-body">
                             <div class="d-flex justify-content-lg-end justify-content-md-center justify-content-sm-center mb-md-4 mb-sm-4">
                                 <?php if (!$isRecipeFavorite): ?>
