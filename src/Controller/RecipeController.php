@@ -46,8 +46,11 @@ class RecipeController
                 $errors["rIngredients"] = "Please enter the recipe ingredients.";
             if (!$rDescription)
                 $errors["rDescription"] = "Please enter the recipe instructions.";
+            if ($rName && strlen($rName) > 50)
+                $errors["rName"] = "Recipe name must be less than 50 characters.";
 
-            if ($rName && $rDescription && $rIngredients && $isValidDuration && $rDifficulty) {
+
+            if (empty($errors)) {
                 if ($rImage['error'] == 0) {
                     $image_name = $rImage['name'];
                     $image_name = time() . $image_name;
