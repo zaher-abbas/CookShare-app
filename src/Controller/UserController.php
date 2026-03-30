@@ -156,30 +156,55 @@ class UserController
             header('Location: index.php?action=login');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
             $profilePhoto = $_FILES['profilePhoto'] ?? null;
-            if ($profilePhoto && $profilePhoto['error'] == 0) {
-                $image_name = 'profile_photo_' . $user['id'];
-                $folderName = './../View/img/';
-                if (!is_dir($folderName)) {
-                    mkdir($folderName, 0775, true);
-                }
-                move_uploaded_file($profilePhoto['tmp_name'], $folderName . $image_name);
-                $this->user->updateUserPhoto($_SESSION['userId'], $image_name);
-                $_SESSION['userPhoto'] = $image_name;
-                $_SESSION['toast'] = [
-                    'type' => 'success',
-                    'message' => 'Profile photo updated successfully.'
+
+            if ($profilePhoto && $profilePhoto['error'] == UPLOAD_ERR_OK) {
+                $allowedMimeTypes = [
+                    'image/jpeg',
+                    'image/png',
+                    'image/webp',
+                    'image/gif',
                 ];
-               header('Location: index.php?action=profile');
-               exit();
+                $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                $mimeType = $finfo->file($profilePhoto['tmp_name']);
+                if (!in_array($mimeType, $allowedMimeTypes, true)) {
+                    $errors["profilePhoto"] = "Please upload a valid image (JPG, PNG, WEBP or GIF).";
+                }
+                if (empty($errors)) {
+
+                    $image_name = 'profile_photo_' . $user['id'];
+                    $folderName = './../View/img/';
+                    if (!is_dir($folderName)) {
+                        mkdir($folderName, 0775, true);
+                    }
+                    move_uploaded_file($profilePhoto['tmp_name'], $folderName . $image_name);
+                    $this->user->updateUserPhoto($_SESSION['userId'], $image_name);
+                    $_SESSION['userPhoto'] = $image_name;
+                    $_SESSION['toast'] = [
+                        'type' => 'success',
+                        'message' => 'Profile photo updated successfully.'
+                    ];
+                    header('Location: index.php?action=profile');
+                    exit();
+                } else {
+                    $_SESSION['toast'] = [
+                        'type' => 'danger',
+                        'message' => 'Error uploading the profile photo!'
+                    ];
+                    header('Location: index.php?action=profile');;
+                    exit();
+                }
             } else {
                 $_SESSION['toast'] = [
                     'type' => 'danger',
-                    'message' => 'Error updating profile photo.'
+                    'message' => 'Error uploading the profile photo!'
                 ];
+                header('Location: index.php?action=profile');
+                exit();
             }
         }
-                require_once './../View/profile.php';
+        require_once './../View/profile.php';
     }
     public function logout(): void
     {

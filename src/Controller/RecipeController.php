@@ -51,18 +51,31 @@ class RecipeController
 
 
             if (empty($errors)) {
-                if ($rImage['error'] == 0) {
-                    $image_name = $rImage['name'];
-                    $image_name = time() . $image_name;
-                    $folderName = './../View/img/';
-                    if (!is_dir($folderName)) {
-                        mkdir($folderName, 0775, true);
+                if ($rImage && $rImage['error'] === UPLOAD_ERR_OK) {
+                    $allowedMimeTypes = [
+                        'image/jpeg',
+                        'image/png',
+                        'image/webp',
+                        'image/gif',
+                    ];
+                    $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                    $mimeType = $finfo->file($rImage['tmp_name']);
+                    if (!in_array($mimeType, $allowedMimeTypes, true)) {
+                        $errors["rImage"] = "Please upload a valid image (JPG, PNG, WEBP or GIF).";
                     }
-                    move_uploaded_file($rImage['tmp_name'], $folderName . $image_name);
+                    if (empty($errors)) {
+                        $image_name = $rImage['name'];
+                        $image_name = time() . $image_name;
+                        $folderName = './../View/img/';
+                        if (!is_dir($folderName)) {
+                            mkdir($folderName, 0775, true);
+                        }
+                        move_uploaded_file($rImage['tmp_name'], $folderName . $image_name);
+                    }
                 } else {
                     $image_name = '';
                 }
-                if ($action == 'addrecipe') {
+                if (empty($errors) && $action == 'addrecipe') {
                     $this->recipe->createRecipe($_SESSION['userId'], $rName, $image_name, $rDuration, $rDifficulty, $rDescription, $rIngredients);
                     $_SESSION['toast'] = [
                         'type' => 'success',
@@ -70,7 +83,7 @@ class RecipeController
                     ];
                     header('Location: index.php?action=home');
                     exit();
-                } elseif ($action == 'updaterecipe') {
+                } elseif (empty($errors) && $action == 'updaterecipe') {
                     if ($image_name != '') {
                         $this->recipe->updateRecipe($id, $rName, $image_name, $rDuration, $rDifficulty, $rDescription, $rIngredients);
                     } else {
