@@ -13,7 +13,7 @@ It allows users to create, manage, and share their culinary recipes, as well as 
 - Upload and update custom user profile pictures 🖼️
 - Create, edit, and delete recipes 🥣
 - Add images and rich descriptions to recipes
-- Comment on recipes and view discussions 🗨️
+- Leave comments and ratings on recipes, and view discussions 🗨️
 - Search and browse recipes 🔍
 - Sort recipes by different criteria ↕️
 - Add recipes to your favorites ⭐
