@@ -125,7 +125,7 @@ class UserController
 
                 }
                 if (!empty($user)) {
-                    $_SESSION['connected'] = true;
+                    $_SESSION['isConnected'] = true;
                     $_SESSION['userFirstName'] = $user['firstname'];
                     $_SESSION['userLastName'] = $user['lastname'];
                     $_SESSION['userPhoto'] = $user['photo'] ?? "default_user_image.jpg";

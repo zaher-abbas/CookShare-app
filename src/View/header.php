@@ -1,6 +1,6 @@
 <?php
 $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "Guest";
-$connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
+$isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true;
 ?>
 <?php if (!empty($_SESSION['toast'])): ?>
     <script>
@@ -27,7 +27,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
             </button>
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 <?php
-                if ($connected && $_SESSION['userRole'] === 'user') {
+                if ($isConnected && $_SESSION['userRole'] === 'user') {
                     echo "<ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
                         <li class='nav-item me-lg-3 mb-sm-2 mb-lg-0 mb-md-0'>
                             <a class='btn btn-success btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
@@ -44,7 +44,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
                     </ul>";
                 }
                 ?>
-                <?php if ($connected && $_SESSION['userRole'] === 'admin'): ?>
+                <?php if ($isConnected && $_SESSION['userRole'] === 'admin'): ?>
                     <ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
                         <li class="nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0 dropdown">
                             <a class="nav-link dropdown-toggle bg-primary-subtle btn btn-outline-info btn-md p-2 rounded-2 mt-0 w-100 fw-bold p-3 fs-6" href="#" role="button" data-bs-toggle="dropdown"
@@ -60,7 +60,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] === true;
                     </ul>
                 <?php endif; ?>
                 <span class="d-lg-flex d-xl-flex align-items-center justify-content-evenly gap-4">
-                    <?php if (!$connected): ?>
+                    <?php if (!$isConnected): ?>
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0'>
                           <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0 me-3 registerBtn'>
                                 <a class='btn btn-primary btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=register'>&#128221; Register</a>

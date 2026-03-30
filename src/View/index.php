@@ -39,7 +39,7 @@ require_once 'header.php';
 
 switch ($action) {
     case 'home':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->showAllRecipes();
         } else {
             require_once 'welcome.php';
@@ -56,7 +56,7 @@ switch ($action) {
         break;
     case 'addrecipe':
     case 'updaterecipe':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->editRecipe();
         } else {
             $_SESSION['toast'] = [
@@ -67,7 +67,7 @@ switch ($action) {
         }
         break;
     case 'profile':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $userController->profile();
         } else {
             $_SESSION['toast'] = [
@@ -78,7 +78,7 @@ switch ($action) {
         }
         break;
     case 'recipe':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->showRecipeDetails();
         } else {
             $_SESSION['toast'] = [
@@ -89,7 +89,7 @@ switch ($action) {
         }
         break;
     case 'search':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
 
             $recipeController->searchRecipeByName();
         } else {
@@ -101,7 +101,7 @@ switch ($action) {
         }
         break;
     case 'order' :
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
 
             $recipeController->orderRecipes();
         } else {
@@ -113,7 +113,7 @@ switch ($action) {
         }
         break;
     case 'addtofavorites':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->addtoFavorites();
         } else {
             $_SESSION['toast'] = [
@@ -124,7 +124,7 @@ switch ($action) {
         }
         break;
     case 'removefromfavorites':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->removeFromFavorites();
         } else {
             $_SESSION['toast'] = [
@@ -135,7 +135,7 @@ switch ($action) {
         }
         break;
     case 'favorites':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
 
             $recipeController->showFavorites();
         } else {
@@ -147,7 +147,7 @@ switch ($action) {
         }
         break;
     case 'userrecipes':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
 
             $recipeController->listUserRecipes();
         } else {
@@ -159,7 +159,7 @@ switch ($action) {
         }
         break;
     case 'deleterecipe':
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->deleteRecipe();
         } else {
             $_SESSION['toast'] = [
@@ -207,7 +207,7 @@ switch ($action) {
         require_once 'error.php';
         break;
     default:
-        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->showAllRecipes();
         } else {
             require_once 'welcome.php';
