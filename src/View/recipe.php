@@ -8,7 +8,7 @@
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container">
         <?php if ($recipe !== null): ?>
-            <div class="card my-4 recipe-details p-3 p-sm-2">
+            <article class="card my-4 recipe-details p-3 p-sm-2">
                 <div class="row g-1">
                     <div class="col-lg-5 col-md-5 d-flex align-items-center">
                         <img src="<?= './../View/img/' . $recipe['image']; ?>" class="img-fluid rounded-start"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         <div class="d-flex justify-content-center my-4">
             <a href="index.php?action=home"
                class="btn btn-outline-danger btn-lg">

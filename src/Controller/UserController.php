@@ -27,25 +27,25 @@ class UserController
             $cgu = isset($_POST['cgu']);
 
             if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($pwdConfirm)) {
-                $errors["empty"] = "Please fill all the fields before submitting!";
+                $errors["empty"] = "Error: Please fill all the fields before submitting!";
             }
             if (strlen($firstname) > 20) {
-                $errors["firstname"] = "First name must be less than 20 characters!";
+                $errors["firstname"] = "Error: First name must be less than 20 characters!";
             }
             if (strlen($lastname) > 50) {
-                $errors["lastname"] = "Last name must be less than 50 characters!";
+                $errors["lastname"] = "Error: Last name must be less than 50 characters!";
             }
             if (strlen($email) > 50) {
-                $errors["email"] = "Email must be less than 50 characters!";
+                $errors["email"] = "Error: Email must be less than 50 characters!";
             }
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors["email"] = "Invalid email format!";
+                $errors["email"] = "Error: Invalid email format!";
             }
             if (strlen($password) < 8) {
-                $errors["pwdLength"] = "Password must be at least 8 characters long!";
+                $errors["pwdLength"] = "Error: Password must be at least 8 characters long!";
             }
             if ($password != $pwdConfirm) {
-                $errors["pwdMatch"] = "Passwords do not match!";
+                $errors["pwdMatch"] = "Error: Passwords do not match!";
             }
             if (!$cgu)
             {
@@ -90,13 +90,13 @@ class UserController
             $email = isset($_POST['email']) ? trim($_POST['email']) : '';
             $password = isset($_POST['password']) ? trim($_POST['password']) : '';
             if (empty($email) || empty($password)) {
-                $errors["empty"] = "Please fill all the fields before submitting!";
+                $errors["empty"] = "Error: Please fill all the fields before submitting!";
             }
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors["email"] = "Invalid email format!";
+                $errors["email"] = "Error: Invalid email format!";
             }
             if (strlen($password) < 8) {
-                $errors["pwdLength"] = "Password must be at least 8 characters long!";
+                $errors["pwdLength"] = "Error: Password must be at least 8 characters long!";
             }
             if (empty($errors)) {
                 $user = [];
