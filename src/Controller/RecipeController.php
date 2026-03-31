@@ -25,6 +25,7 @@ class RecipeController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = [];
+            $image_name = '';
             $rName = isset($_POST['rName']) ? trim($_POST['rName']) : null;
             $rImage = $_FILES['rImage'] ?? null;
             $rDuration = isset($_POST['rDuration']) ? trim($_POST['rDuration']) : null;
