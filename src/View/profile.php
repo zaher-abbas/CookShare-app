@@ -9,7 +9,7 @@
             <div class="row g-0">
                 <div class="col-4">
                     <?php if ($user['photo']): ?>
-                        <img src="./../View/img/<?= $user['photo'] ?>" class="card-img" alt="...">
+                        <img src="<?= BASE_URL . '/img/' . $user['photo'] ?>" class="card-img" alt="...">
                     <?php else: ?>
                     <img
                             src="<?= BASE_URL . '/img/' . 'default_user_image.jpg'?>"
