@@ -5,8 +5,10 @@ use App\config\MySQL;
 use App\Controller\RecipeController;
 use App\Controller\UserController;
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 2));
-$dotenv->load();
+if (file_exists(__DIR__ . '/../../.env')) {
+    $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 2));
+    $dotenv->load();
+}
 session_start();
 
 $db = MySQL::getConnection();
