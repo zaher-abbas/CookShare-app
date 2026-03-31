@@ -176,7 +176,6 @@ class UserController
                     $errors["profilePhoto"] = "Please upload a valid image (JPG, PNG, WEBP or GIF).";
                 }
                 if (empty($errors)) {
-
                     $image_name = 'profile_photo_' . $user['id'];
                     $uploadDir = dirname(__DIR__, 2) . '/src/View/img/';
 
@@ -192,22 +191,20 @@ class UserController
                     ];
                     header('Location: index.php?action=profile');
                     exit();
-                } else {
+                } else if ($errors['profilePhotoSize']) {
                     $_SESSION['toast'] = [
                         'type' => 'danger',
-                        'message' => 'Error uploading the profile photo!'
+                        'message' => 'Error uploading the profile photo! Maximum file size is 2MB!'
                     ];
                     header('Location: index.php?action=profile');;
                     exit();
+                } else if ($errors['profilePhoto']) {
+                    $_SESSION['toast'] = [
+                        'type' => 'danger',
+                        'message' => 'Error uploading the profile photo! Please upload a valid image (JPG, PNG, WEBP or GIF).'
+                    ];
                 }
-            } else if ($profilePhoto && (($profilePhoto['error'] === UPLOAD_ERR_INI_SIZE || $profilePhoto['error'] === UPLOAD_ERR_FORM_SIZE))) {
-                $_SESSION['toast'] = [
-                    'type' => 'danger',
-                    'message' => 'Error uploading the profile photo! Maximum file size is 2MB.'
-                ];
-                header('Location: index.php?action=profile');
-                exit();
-            } else if ($profilePhoto && ($profilePhoto['error'] === UPLOAD_ERR_NO_FILE) || empty($profilePhoto)) {
+            } else {
                 $_SESSION['toast'] = [
                     'type' => 'danger',
                     'message' => 'Error uploading the profile photo!'

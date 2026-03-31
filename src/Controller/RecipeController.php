@@ -66,7 +66,7 @@ class RecipeController
                     }
                     $maxSize = 2 * 1024 * 1024;
                     if ($rImage['size'] > $maxSize) {
-                        $errors["rImageSize"] = "Image File is too large. Maximum 5MB allowed!";
+                        $errors["rImageSize"] = "Image File is too large. Maximum 2MB allowed!";
                     }
                     if (empty($errors)) {
                         $image_name = $rImage['name'];
