@@ -203,6 +203,8 @@ class UserController
                         'type' => 'danger',
                         'message' => 'Error uploading the profile photo! Please upload a valid image (JPG, PNG, WEBP or GIF).'
                     ];
+                    header('Location: index.php?action=profile');
+                    exit();
                 }
             } else {
                 $_SESSION['toast'] = [
