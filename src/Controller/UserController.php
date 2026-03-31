@@ -191,14 +191,14 @@ class UserController
                     ];
                     header('Location: index.php?action=profile');
                     exit();
-                } else if ($errors['profilePhotoSize']) {
+                } else if (isset($errors['profilePhotoSize'])) {
                     $_SESSION['toast'] = [
                         'type' => 'danger',
                         'message' => 'Error uploading the profile photo! Maximum file size is 2MB!'
                     ];
                     header('Location: index.php?action=profile');;
                     exit();
-                } else if ($errors['profilePhoto']) {
+                } else if (isset($errors['profilePhoto'])) {
                     $_SESSION['toast'] = [
                         'type' => 'danger',
                         'message' => 'Error uploading the profile photo! Please upload a valid image (JPG, PNG, WEBP or GIF).'
