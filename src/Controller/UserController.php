@@ -168,9 +168,9 @@ class UserController
                 ];
                 $finfo = new \finfo(FILEINFO_MIME_TYPE);
                 $mimeType = $finfo->file($profilePhoto['tmp_name']);
-                $maxSize = 5 * 1024 * 1024;
+                $maxSize = 2 * 1024 * 1024;
                 if ($profilePhoto['size'] > $maxSize) {
-                    $errors["profilePhotoSize"] = "File too large. Maximum 5MB allowed!";
+                    $errors["profilePhotoSize"] = "File too large. Maximum 2MB allowed!";
                 }
                 if (!in_array($mimeType, $allowedMimeTypes, true)) {
                     $errors["profilePhoto"] = "Please upload a valid image (JPG, PNG, WEBP or GIF).";
