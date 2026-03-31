@@ -13,11 +13,11 @@
                         <div class="w-25">
                             <a class="text-decoration-none text-dark"
                                href="index.php?action=recipe&id=<?= $recipe['id'] ?>">
-                                &#129379; <?= $recipe['name'] ?></a>
+                                &#129379; <?= htmlspecialchars($recipe['name']) ?></a>
                         </div>
                         <div class="w-25">
                             <span>Contributed by: &#128100;
-                                <?= $recipe['firstname'] . ' ' . $recipe['lastname'] ?>
+                                <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                             </span>
                         </div>
                         <div>

@@ -23,7 +23,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             Toastify({
-                text: "<?php echo htmlspecialchars('You have been logged out successfully.'); ?>",
+                text: "<?php echo 'You have been logged out successfully.'; ?>",
                 duration: 3000,
                 gravity: "top",
                 position: "right",

@@ -11,10 +11,10 @@
                 <?php foreach ($users as $user): ?>
                     <div class="list-group-item list-group-item-action p-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
                         <div class="w-25">
-                            <div class="text-dark">&#128100; <?= $user['firstname'] . ' ' . $user['lastname'] ?></div>
+                            <div class="text-dark">&#128100; <?= htmlspecialchars($user['firstname']) . ' ' . htmlspecialchars($user['lastname']) ?></div>
                         </div>
                         <div class="w-25">
-                            <span class="text-dark"><span class="fs-5">&#9993;</span> <?= $user['email'] ?></span>
+                            <span class="text-dark"><span class="fs-5">&#9993;</span> <?= htmlspecialchars($user['email']) ?></span>
                         </div>
                         <div>
                             <button data-bs-toggle="modal" data-bs-target="#deleteModal"

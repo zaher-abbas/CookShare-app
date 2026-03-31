@@ -105,14 +105,14 @@
                             <div class="card-body">
                                 <?php if (isset($comment['author_picture_name'])): ?>
                                     <h5 class="card-title"><img
-                                                src="<?= BASE_URL . '/img/' . $comment['author_picture_name'] ?>"
+                                                src="<?= BASE_URL . '/img/' . htmlspecialchars($comment['author_picture_name']) ?>"
                                                 alt="User Profile Picture"
                                                 class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
                                         <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php else: ?>
                                     <h5 class="card-title"><img src="<?= BASE_URL . '/img/' . 'default_user_image.jpg'?>"
                                                                 alt="User Profile Picture"
-                                                                class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
+                                                                class="rounded-circle profile-img me-2"><?= htmlspecialchars($comment["author_name"]) ?>
                                         <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php endif; ?>
                                 <?php switch ($comment["note"]) {
