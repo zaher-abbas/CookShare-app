@@ -168,6 +168,10 @@ class UserController
                 ];
                 $finfo = new \finfo(FILEINFO_MIME_TYPE);
                 $mimeType = $finfo->file($profilePhoto['tmp_name']);
+                $maxSize = 5 * 1024 * 1024;
+                if ($profilePhoto['size'] > $maxSize) {
+                    $errors["profilePhotoSize"] = "File too large. Maximum 5MB allowed!";
+                }
                 if (!in_array($mimeType, $allowedMimeTypes, true)) {
                     $errors["profilePhoto"] = "Please upload a valid image (JPG, PNG, WEBP or GIF).";
                 }
@@ -195,7 +199,14 @@ class UserController
                     header('Location: index.php?action=profile');;
                     exit();
                 }
-            } else {
+            } else if ($profilePhoto && (($profilePhoto['error'] === UPLOAD_ERR_INI_SIZE || $profilePhoto['error'] === UPLOAD_ERR_FORM_SIZE))) {
+                $_SESSION['toast'] = [
+                    'type' => 'danger',
+                    'message' => 'Error uploading the profile photo! Maximum file size is 2MB.'
+                ];
+                header('Location: index.php?action=profile');
+                exit();
+            } else if ($profilePhoto && ($profilePhoto['error'] === UPLOAD_ERR_NO_FILE) || empty($profilePhoto)) {
                 $_SESSION['toast'] = [
                     'type' => 'danger',
                     'message' => 'Error uploading the profile photo!'

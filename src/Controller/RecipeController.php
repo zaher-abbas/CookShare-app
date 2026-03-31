@@ -63,6 +63,10 @@ class RecipeController
                     if (!in_array($mimeType, $allowedMimeTypes, true)) {
                         $errors["rImage"] = "Please upload a valid image (JPG, PNG, WEBP or GIF).";
                     }
+                    $maxSize = 2 * 1024 * 1024;
+                    if ($rImage['size'] > $maxSize) {
+                        $errors["rImageSize"] = "Image File is too large. Maximum 5MB allowed!";
+                    }
                     if (empty($errors)) {
                         $image_name = $rImage['name'];
                         $image_name = time() . $image_name;
@@ -72,7 +76,9 @@ class RecipeController
                         }
                         move_uploaded_file($rImage['tmp_name'], $folderName . $image_name);
                     }
-                } else {
+                } else if ($rImage && ($rImage['error'] === UPLOAD_ERR_INI_SIZE || $rImage['error'] === UPLOAD_ERR_FORM_SIZE)) {
+                    $errors["rImageSize"] = "Image File is too large. Maximum 5MB allowed!";
+                } else if (!$rImage) {
                     $image_name = '';
                 }
                 if (empty($errors) && $action == 'addrecipe') {
