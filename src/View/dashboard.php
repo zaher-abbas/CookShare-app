@@ -47,10 +47,10 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                 <h4 class="p-3"></h4>
                             <?php endif; ?>
                             <?php if ($recipe['image'] === ''): ?>
-                                <img src="./../View/img/recipe_placeholder.png"
+                                <img src="<?= BASE_URL . '/img/' . 'recipe_placeholder.png'?>"
                                      class="card-img-top rounded-start w-100 fixed-img" alt="recipe placeholder image">
                             <?php else: ?>
-                                <img src="./../View/img/<?= $recipe['image'] ?>"
+                                <img src="<?= BASE_URL . '/img/' . $recipe['image'] ?>"
                                      class="card-img-top rounded-start w-100 fixed-img"
                                      alt="Image of recipe <?= htmlspecialchars($recipe['name']) ?>">
                             <?php endif; ?>

@@ -73,7 +73,7 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                         <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0 d-flex justify-content-center align-items-center'>
                             <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0'>
                       <a href='index.php?action=profile' class='btn btn-outline-primary text-light btn-md border-0 p-2 text-decoration-none mt-0 w-100 fw-bold'>
-                            <img src="./../View/img/<?= $_SESSION['userPhoto'] ?>" class="rounded-circle profile-img me-2"
+                            <img src="<?= BASE_URL . '/img/' . $_SESSION['userPhoto'] ?>" class="rounded-circle profile-img me-2"
                                  alt="User Profile Picture">
                           <?= $user ?></a>
                       </li>

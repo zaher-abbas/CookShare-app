@@ -11,7 +11,7 @@
             <article class="card my-4 recipe-details p-3 p-sm-2">
                 <div class="row g-1">
                     <div class="col-lg-5 col-md-5 d-flex align-items-center">
-                        <img src="<?= './../View/img/' . $recipe['image']; ?>" class="img-fluid rounded-start"
+                        <img src="<?= BASE_URL . '/img/' . $recipe['image']; ?>" class="img-fluid rounded-start"
                              alt="<?= htmlspecialchars($recipe['name']) ?>">
                     </div>
                     <div class="col-lg-7 col-md-7">
@@ -53,7 +53,7 @@
                                                 <img src="./../View/img/<?= $recipe['photo'] ?>"
                                                      alt="User Profile Picture" class="rounded-circle profile-img me-0">
                                             <?php else: ?>
-                                                <img src="./../View/img/default_user_image.jpg"
+                                                <img src="img/default_user_image.jpg"
                                                      alt="User Profile Picture" class="rounded-circle profile-img me-0">
                                             <?php endif; ?>
                                          </span>
@@ -105,12 +105,12 @@
                             <div class="card-body">
                                 <?php if (isset($comment['author_picture_name'])): ?>
                                     <h5 class="card-title"><img
-                                                src="./../View/img/<?= $comment['author_picture_name'] ?>"
+                                                src="<?= BASE_URL . '/img/' . $comment['author_picture_name'] ?>"
                                                 alt="User Profile Picture"
                                                 class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
                                         <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php else: ?>
-                                    <h5 class="card-title"><img src="./../View/img/default_user_image.jpg"
+                                    <h5 class="card-title"><img src="<?= BASE_URL . '/img/' . 'default_user_image.jpg'?>"
                                                                 alt="User Profile Picture"
                                                                 class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
                                         <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>

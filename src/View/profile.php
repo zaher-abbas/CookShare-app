@@ -12,7 +12,7 @@
                         <img src="./../View/img/<?= $user['photo'] ?>" class="card-img" alt="...">
                     <?php else: ?>
                     <img
-                            src="./../View/img/default_user_image.jpg"
+                            src="<?= BASE_URL . '/img/' . 'default_user_image.jpg'?>"
                             class="card-img" alt="...">
                     <?php endif; ?>
                     <br>

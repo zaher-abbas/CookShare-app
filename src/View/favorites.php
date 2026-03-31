@@ -12,7 +12,7 @@
                 <?php foreach ($favoriteRecipes as $recipe): ?>
                     <div class="col">
                         <div class="card h-100 recipe-card bg-sage-light text-forest border border-secondary-subtle border-start-0 rounded-end border-4 mb-3 p-4">
-                            <img src="./../View/img/<?= $recipe['image'] ?>"
+                            <img src="<?= BASE_URL . '/img/' . $recipe['image'] ?>"
                                  class="card-img-top rounded-start w-100 fixed-img"
                                  alt="">
                             <div class="card-body">

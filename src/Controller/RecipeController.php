@@ -70,11 +70,12 @@ class RecipeController
                     if (empty($errors)) {
                         $image_name = $rImage['name'];
                         $image_name = time() . $image_name;
-                        $folderName = './../View/img/';
-                        if (!is_dir($folderName)) {
-                            mkdir($folderName, 0775, true);
+                        $uploadDir = dirname(__DIR__, 2) . '/src/View/img/';
+
+                        if (!is_dir($uploadDir)) {
+                            mkdir($uploadDir, 0775, true);
                         }
-                        move_uploaded_file($rImage['tmp_name'], $folderName . $image_name);
+                        move_uploaded_file($rImage['tmp_name'], $uploadDir . $image_name);
                     }
                 } else if ($rImage && ($rImage['error'] === UPLOAD_ERR_INI_SIZE || $rImage['error'] === UPLOAD_ERR_FORM_SIZE)) {
                     $errors["rImageSize"] = "Image File is too large. Maximum 5MB allowed!";

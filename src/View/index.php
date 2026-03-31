@@ -1,4 +1,5 @@
 <?php
+
 require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use App\config\MySQL;
@@ -9,6 +10,7 @@ if (file_exists(__DIR__ . '/../../.env')) {
     $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 2));
     $dotenv->load();
 }
+define('BASE_URL', $_ENV['BASE_URL'] ?? '');
 session_start();
 
 $db = MySQL::getConnection();

@@ -178,11 +178,12 @@ class UserController
                 if (empty($errors)) {
 
                     $image_name = 'profile_photo_' . $user['id'];
-                    $folderName = './../View/img/';
-                    if (!is_dir($folderName)) {
-                        mkdir($folderName, 0775, true);
+                    $uploadDir = dirname(__DIR__, 2) . '/src/View/img/';
+
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0775, true);
                     }
-                    move_uploaded_file($profilePhoto['tmp_name'], $folderName . $image_name);
+                    move_uploaded_file($profilePhoto['tmp_name'], $uploadDir . $image_name);
                     $this->user->updateUserPhoto($_SESSION['userId'], $image_name);
                     $_SESSION['userPhoto'] = $image_name;
                     $_SESSION['toast'] = [
