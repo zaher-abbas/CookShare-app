@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="card mt-5 mb-4 border-light shadow-sm">
-            <form method="post" action="" class="my-4 p-3 rounded w-75">
+            <form method="post" action="" class="my-4 p-3 rounded w-90">
                 <fieldset>
                     <legend class="mb-3">Rate this recipe and leave a comment:</legend>
                     <div class="mb-4">
