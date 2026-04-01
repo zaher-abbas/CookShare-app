@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-8 col-md-10 col-sm-10">
-                    <h1 class="display-4 fw-bold mb-4">Welcome to CookShare &#127869;</h1>
+                    <h1 class="display-2 fw-bold mb-4">Welcome to CookShare &#127869;</h1>
                     <p class="lead my-5">Discover tasty recipes 🥗 from kitchens around the world 🌍, share your signature
                         dishes 👨‍🍳, and turn every meal into something unforgettable ✨
                     </p>
