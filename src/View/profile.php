@@ -2,12 +2,12 @@
 
 /** @var array|null $user */
 ?>
-<main class="flex-grow-1">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container my-3">
         <div class="card p-3">
             <div class="card-header text-primary fw-bolder fs-2 mb-3">Profile Info</div>
-            <div class="row g-0">
-                <div class="col-4">
+            <div class="d-flex flex-column row g-0">
+                <div class="col-lg-4 col-md-4">
                     <?php if ($user['photo']): ?>
                         <img src="<?= BASE_URL . '/img/' . htmlspecialchars($user['photo']) ?>" class="card-img" alt="...">
                     <?php else: ?>
@@ -25,7 +25,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="card-body col-8 d-flex flex-column align-items-center justify-content-around">
+                <div class="card-body col-lg-4 col-md-4 d-flex flex-column align-items-center justify-content-around">
                     <h3 class="card-title align-self-start">
                         &#128100; <?= htmlspecialchars($user["firstname"]) . " " . htmlspecialchars($user['lastname']) ?></h3>
                     <p class="card-text fs-3 align-self-start">📧 <?= htmlspecialchars($user["email"]) ?> </p>
