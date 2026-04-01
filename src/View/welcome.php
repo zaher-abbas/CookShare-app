@@ -1,18 +1,18 @@
 <?php
 ?>
 <main class="flex-grow-1 d-flex justify-content-center align-items-center">
-    <section class="hero-section my-3 p-5 container rounded-5">
+    <section class="hero-section p-3 mx-2 my-2 p-lg-5 p-md-3 p-sm-4 rounded-5">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-md-10 col-sm-10">
                     <h1 class="display-4 fw-bold mb-4">Welcome to CookShare &#127869;</h1>
                     <p class="lead my-5">Discover tasty recipes 🥗 from kitchens around the world 🌍, share your signature
                         dishes 👨‍🍳, and turn every meal into something unforgettable ✨
                     </p>
                     <p class="lead mb-5">Try it...it is Fun!</p>
-                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <div class="d-flex gap-3 justify-content-center align-items-center flex-wrap">
                         <a href="index.php?action=register"
-                           class="btn btn-light btn-lg px-4 py-2 me-4 btnHero">Register</a>
+                           class="btn btn-light btn-lg px-4 py-2 btnHero">Register</a>
                         <a href="index.php?action=login"
                            class="btn btn-outline-light btn-lg px-4 py-2 btnHero">Login</a>
                     </div>

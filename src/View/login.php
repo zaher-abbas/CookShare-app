@@ -2,9 +2,9 @@
 /** @var array|null $errors */
 ?>
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
-    <section class="container my-4">
-        <h3 class="text-center alert alert-info w-75 mx-auto">&#128273; Log-in to your account</h3>
-        <form class="auth-form p-5 rounded-3 w-75 mx-auto" action="" method="post">
+    <section class="container my-2">
+        <h3 class="text-center alert alert-info w-100 mx-auto">&#128273; Log-in to your account</h3>
+        <form class="auth-form p-3 p-lg-5 p-md-4 rounded-3 w-100 mx-auto" action="" method="post">
             <?php
             if (isset($_COOKIE['UserNotFound'])) {
                 echo "<div class='form-text alert alert-danger'>" . $_COOKIE['UserNotFound'] . "</div>";
