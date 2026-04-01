@@ -290,6 +290,21 @@ class RecipeController
             header('Location: index.php?action=userrecipes');
         }
     }
+
+    public function deleteComment(): void
+    {
+        $recipeId = $_GET['recipeId'] ?? null;
+        $commentId = (string)$_GET['commentId'] ?? null;
+        if ($commentId) {
+            $this->comment = new Comment();
+            $this->comment->deleteComment($commentId);
+            $_SESSION['toast'] = [
+                'type' => 'danger',
+                'message' => 'Comment was deleted successfully.'
+            ];
+            header('Location: index.php?action=recipe&id=' . $recipeId);
+        }
+    }
 }
 
 

@@ -207,6 +207,17 @@ switch ($action) {
             header('Location: index.php?action=error');
         }
         break;
+    case 'deletecomment':
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
+            $recipeController->deleteComment();
+        } else {
+            $_SESSION['toast'] = [
+                'type' => 'danger',
+                'message' => 'You dont have the permission to access this page.'
+            ];
+            header('Location: index.php?action=error');
+        }
+        break;
     case 'error':
         require_once 'error.php';
         break;

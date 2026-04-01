@@ -103,11 +103,12 @@
                     <?php foreach ($comments as $comment): ?>
                         <div class="card mb-4 border-secondary-subtle bg-light shadow-sm">
                             <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
                                 <?php if (isset($comment['author_picture_name'])): ?>
                                     <h5 class="card-title"><img
                                                 src="<?= BASE_URL . '/img/' . htmlspecialchars($comment['author_picture_name']) ?>"
                                                 alt="User Profile Picture"
-                                                class="rounded-circle profile-img me-2"><?= $comment["author_name"] ?>
+                                                class="rounded-circle profile-img me-2"><?= htmlspecialchars($comment["author_name"]) ?>
                                         <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php else: ?>
                                     <h5 class="card-title"><img src="<?= BASE_URL . '/img/' . 'default_user_image.jpg'?>"
@@ -115,6 +116,14 @@
                                                                 class="rounded-circle profile-img me-2"><?= htmlspecialchars($comment["author_name"]) ?>
                                         <span class="fw-lighter fs-6">on</span> <?= $comment["date"] ?></h5>
                                 <?php endif; ?>
+                                    <?php if ($comment["author_name"] === $_SESSION['userFirstName'] . ' ' . $_SESSION['userLastName'] || $_SESSION["userRole"] === "admin"): ?>
+                                    <div>
+                                        <button data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                class="btn btn-danger deleteBtn">Delete
+                                        </button>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
                                 <?php switch ($comment["note"]) {
                                     case 1:
                                         echo "<p class='card-text'>	&#11088;</p>";
@@ -168,5 +177,23 @@
         <?php endif; ?>
     </section>
 </main>
+<div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this comment and rating?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="<?= 'index.php?action=deletecomment&commentId=' . $comment['_id'] . '&recipeId=' . $recipe['id'] ?>" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 

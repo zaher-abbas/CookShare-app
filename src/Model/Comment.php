@@ -32,5 +32,9 @@ class Comment
     {
         return $this->dbCollection->find(["recipe_id" => $recipeId])->toArray();
     }
+    public function deleteComment(string $id): void
+    {
+        $this->dbCollection->deleteOne(["_id" => new \MongoDB\BSON\ObjectId($id)]);
+    }
 
 }
