@@ -32,13 +32,13 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                         <li class='nav-item me-lg-3 mb-2 mb-lg-0 mb-md-0'>
                             <a class='btn btn-success btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
                         </li>
-                        <li class='nav-item'>
+                        <li class='nav-item mb-2 mb-lg-0 mb-md-0'>
                             <a class='btn btn-primary btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=addrecipe'>&#10133; Add Recipe</a>
                         </li>
-                        <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
+                        <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mb-md-0'>
                         <a class='btn btn-warning btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=favorites'>&#11088; My Favorites</a>
                         </li>
-                          <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
+                          <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mb-md-0'>
                         <a class='btn btn-info btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=userrecipes'>&#128105;&#8205;&#127859; My Recipes</a>
                         </li>
                     </ul>";
@@ -70,8 +70,8 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                                 </li>
                         </ul>
                     <?php else: ?>
-                        <ul class='navbar-nav mb-2 mb-lg-0 mb-md-0 d-flex justify-content-center align-items-center'>
-                            <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0'>
+                        <ul class='navbar-nav mt-2 mt-lg-0 mt-md-0 d-flex justify-content-center align-items-center'>
+                            <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0 mb-2 mb-lg-0 mb-md-0'>
                       <a href='index.php?action=profile' class='btn btn-outline-primary text-light btn-md border-0 p-2 text-decoration-none mt-0 w-100 fw-bold'>
                             <img src="<?= BASE_URL . '/img/' . htmlspecialchars($_SESSION['userPhoto']) ?>" class="rounded-circle profile-img me-2"
                                  alt="User Profile Picture">
