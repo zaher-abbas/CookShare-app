@@ -11,7 +11,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
         <?php elseif ($action == 'updaterecipe'): ?>
             <h3 class="text-center alert alert-light w-75 mx-auto">&#9998; Edit Recipe</h3>
         <?php endif; ?>
-        <form class="edit-form p-5 w-75 mx-auto rounded" method="post" action="" enctype="multipart/form-data">
+        <form class="edit-form p-3 p-lg-5 p-md-4 rounded-3 w-100 mx-auto" method="post" action="" enctype="multipart/form-data">
             <?php
             if (!empty($errors))
             foreach ($errors as $error)
