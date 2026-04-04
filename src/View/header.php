@@ -17,7 +17,7 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
     </script>
     <?php unset($_SESSION['toast']); endif; ?>
 <header>
-    <nav class="navbar navbar-expand-md p-2 p-lg-4 p-md-3 text-light">
+    <nav class="navbar navbar-expand-lg p-2 p-lg-4 p-md-3 text-light">
         <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
             <a class="navbar-brand text-light fs-2 logo" href="index.php">&#127869; CookShare</a>
             <button class="navbar-toggler mt-2 mb-2 mt-md-0" type="button" data-bs-toggle="collapse"
@@ -29,16 +29,16 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                 <?php
                 if ($isConnected && $_SESSION['userRole'] === 'user') {
                     echo "<ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
-                        <li class='nav-item me-lg-3 mb-2 mb-lg-0 mb-md-0'>
+                        <li class='nav-item me-lg-3 mb-2 mb-md-2 mb-lg-0'>
                             <a class='btn btn-success btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
                         </li>
-                        <li class='nav-item mb-2 mb-lg-0 mb-md-0'>
+                        <li class='nav-item mb-2 mb-lg-0 mb-md-2'>
                             <a class='btn btn-primary btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=addrecipe'>&#10133; Add Recipe</a>
                         </li>
-                        <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mb-md-0'>
+                        <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mb-md-2'>
                         <a class='btn btn-warning btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=favorites'>&#11088; My Favorites</a>
                         </li>
-                          <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mb-md-0'>
+                          <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mmb-md-2'>
                         <a class='btn btn-info btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=userrecipes'>&#128105;&#8205;&#127859; My Recipes</a>
                         </li>
                     </ul>";
@@ -72,13 +72,16 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                     <?php else: ?>
                         <ul class='navbar-nav mt-2 mt-lg-0 mt-md-0 d-flex justify-content-center align-items-center'>
                             <li class='nav-item mt-sm-2 mt-lg-0 mt-md-0 mb-2 mb-lg-0 mb-md-0'>
-                      <a href='index.php?action=profile' class='btn btn-outline-primary text-light btn-md border-0 p-2 text-decoration-none mt-0 w-100 fw-bold'>
-                            <img src="<?= BASE_URL . '/img/' . htmlspecialchars($_SESSION['userPhoto']) ?>" class="rounded-circle profile-img me-2"
+                      <a href='index.php?action=profile'
+                         class='btn btn-outline-primary text-light btn-md border-0 p-2 text-decoration-none mt-0 w-100 fw-bold'>
+                            <img src="<?= BASE_URL . '/img/' . htmlspecialchars($_SESSION['userPhoto']) ?>"
+                                 class="rounded-circle profile-img me-2"
                                  alt="User Profile Picture">
                           <?= $user ?></a>
-                      </li>
-                         <li class='nav-item ms-lg-3 mt-sm-2 mt-lg-0 mt-md-0'>
-                                <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold' href='index.php?action=logout'>Log-out &#8618;</a>
+                            </li>
+                         <li class='nav-item ms-xxl-4 ms-xl-3 ms-lg-3 mt-2 mt-md-2 mt-lg-0'>
+                                <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold'
+                                   href='index.php?action=logout'>Log-out &#8618;</a>
                         </li>
                         </ul>
                     <?php endif;?>
