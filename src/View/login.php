@@ -28,7 +28,7 @@
                 <input type="password" class="form-control" id="password" name="password" minlength="8" required>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-success">Log-in</button>
+                <button type="submit" class="btn btn-success">Login</button>
             </div>
         </form>
     </section>
