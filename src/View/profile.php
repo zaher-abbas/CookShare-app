@@ -26,9 +26,9 @@
                     </div>
                 </div>
                 <div class="card-body col-12 col-lg-4 col-md-4 d-flex flex-column align-items-center justify-content-around">
-                    <h3 class="card-title align-self-start">
+                    <h3 class="card-title align-self-start fs-5 fs-md-3 fs-lg-3 fs-xl-3">
                         &#128100; <?= htmlspecialchars($user["firstname"]) . " " . htmlspecialchars($user['lastname']) ?></h3>
-                    <p class="card-text fs-3 align-self-start">📧 <?= htmlspecialchars($user["email"]) ?> </p>
+                    <p class="card-text fs-5 fs-md-3 fs-lg-3 fs-xl-3 align-self-start">📧 <?= htmlspecialchars($user["email"]) ?> </p>
                     <a href="index.php" class="btn btn-outline-danger btn-lg">Back</a>
                 </div>
             </div>
