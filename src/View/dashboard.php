@@ -24,16 +24,18 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                     <button class="btn btn-success" type="submit" title="Search">Go</button>
                 </div>
             </form>
-            <form class="d-flex justify-content-center mt-5" method="get" action="index.php">
-                <input type="hidden" name="action" value="order"/>
-                <select name="orderBy" onchange="this.form.submit()">
-                    <option value="" selected disabled>Order recipes by:</option>
-                    <option value="nameAZ">Order by name (A-Z)</option>
-                    <option value="nameZA">Order by name (Z-A)</option>
-                    <option value="dateNewest">Order by date (Newest first)</option>
-                    <option value="dateOldest">Order by date (oldest first)</option>
-                </select>
-            </form>
+            <div class="d-flex justify-content-center">
+                <form class="d-flex justify-content-center mt-5" method="get" action="index.php">
+                    <input type="hidden" name="action" value="order"/>
+                    <select class="form-select" name="orderBy" onchange="this.form.submit()">
+                        <option value="" selected disabled>Order recipes by:</option>
+                        <option value="nameAZ">Order by name (A-Z)</option>
+                        <option value="nameZA">Order by name (Z-A)</option>
+                        <option value="dateNewest">Order by date (Newest first)</option>
+                        <option value="dateOldest">Order by date (oldest first)</option>
+                    </select>
+                </form>
+            </div>
         </section>
         <?php if ($recipes): ?>
         <section class="container">
