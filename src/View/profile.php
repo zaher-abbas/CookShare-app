@@ -17,8 +17,8 @@
                     <?php endif; ?>
                     <br>
                     <div class="d-flex justify-content-center mt-3">
-                        <form method="POST" action="" enctype="multipart/form-data">
-                            <input type="file" name="profilePhoto" accept="image/*" required>
+                        <form method="POST" action="" enctype="multipart/form-data" class="form-group">
+                            <input type="file" name="profilePhoto" accept="image/*" required class="form-control">
                             <div class="d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-primary btn-lg" type="submit">Upload Photo</button>
                             </div>
