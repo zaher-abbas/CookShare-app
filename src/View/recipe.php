@@ -19,12 +19,12 @@
                             <div class="d-flex justify-content-lg-end justify-content-md-center justify-content-sm-center mb-md-4 mb-sm-4">
                                 <?php if (!$isRecipeFavorite): ?>
                                     <a href="index.php?action=addtofavorites&id=<?= $recipe['id'] ?>"
-                                       class="btn btn-warning btn-lg my-4">
-                                        ★ Add to Favorites
+                                       class="btn btn-outline-warning btn-lg my-4 fw-bold btn-favorite">
+                                        &#x2B50; Add to Favorites
                                     </a>
                                 <?php else: ?>
                                     <a href="index.php?action=removefromfavorites&id=<?= $recipe['id'] ?>"
-                                       class="btn btn-danger btn-lg my-4">
+                                       class="btn btn-outline-danger btn-lg my-4">
                                         ★ Remove from Favorites
                                     </a>
                                 <?php endif; ?>
@@ -119,7 +119,7 @@
                                     <?php if ($comment["author_name"] === $_SESSION['userFirstName'] . ' ' . $_SESSION['userLastName'] || $_SESSION["userRole"] === "admin"): ?>
                                     <div>
                                         <button data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                class="btn btn-danger deleteBtn">Delete
+                                                class="btn btn-outline-danger deleteBtn"><span>&#x274C;</span>
                                         </button>
                                     </div>
                                     <?php endif; ?>
