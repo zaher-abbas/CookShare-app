@@ -63,10 +63,10 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                     <?php if (!$isConnected): ?>
                         <ul class='navbar-nav mt-3 mt-lg-0 my-md-0 mb-lg-0 mb-md-0'>
                           <li class='nav-item me-lg-3 me-md-3 mb-3 mb-lg-0 mb-md-0 registerBtn'>
-                                <a class='btn btn-primary btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=register'>&#128221; Register</a>
+                                <a class='btn btn-outline-primary border-bottom border-3 rounded-bottom-5 text-light fw-bold mt-0 w-100' href='index.php?action=register'>&#128221; Register</a>
                                 </li>
                           <li class='nav-item  loginBtn'>
-                                <a class='btn btn-success btn-outline-light btn-md p-2 rounded-2 fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
+                                <a class='btn btn-outline-success border-bottom border-3 rounded-bottom-5 text-light fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
                                 </li>
                         </ul>
                     <?php else: ?>
