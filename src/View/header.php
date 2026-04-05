@@ -30,16 +30,16 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                 if ($isConnected && $_SESSION['userRole'] === 'user') {
                     echo "<ul class='navbar-nav me-auto mb-2 mb-lg-0 mb-md-0'>
                         <li class='nav-item me-lg-3 mb-2 mb-md-2 mb-lg-0'>
-                            <a class='btn btn-success btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
+                            <a class='btn btn-outline-success border-bottom border-3 text-light btn-md rounded-bottom-5 p-2 w-100 fw-bold' aria-current='page' href='index.php?action=home'>&#127968; Home</a>
                         </li>
                         <li class='nav-item mb-2 mb-lg-0 mb-md-2'>
-                            <a class='btn btn-primary btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=addrecipe'>&#10133; Add Recipe</a>
+                            <a class='btn btn-outline-primary border-bottom border-3 text-light btn-md rounded-bottom-5 p-2 w-100 fw-bold' href='index.php?action=addrecipe'>&#10133; Add Recipe</a>
                         </li>
                         <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mb-md-2'>
-                        <a class='btn btn-warning btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=favorites'>&#11088; My Favorites</a>
+                        <a class='btn btn-outline-warning border-bottom border-3 text-light btn-md rounded-bottom-5 p-2 w-100 fw-bold' href='index.php?action=favorites'>&#11088; My Favorites</a>
                         </li>
                           <li class='nav-item ms-lg-3 mb-2 mb-lg-0 mmb-md-2'>
-                        <a class='btn btn-info btn-outline-dark btn-md rounded-2 p-2 w-100 fw-bold' href='index.php?action=userrecipes'>&#128105;&#8205;&#127859; My Recipes</a>
+                        <a class='btn btn-outline-info border-bottom border-3 text-light btn-md rounded-bottom-5 p-2 w-100 fw-bold' href='index.php?action=userrecipes'>&#128105;&#8205;&#127859; My Recipes</a>
                         </li>
                     </ul>";
                 }
