@@ -83,7 +83,7 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <small class="text-body-secondary">Submitted on
+                                <small class="text-body-secondary">Date added
                                     <time class="fs-6"><?= date('d/m/Y', strtotime($recipe['created_at'])) ?></time>
                                 </small>
                             </div>
