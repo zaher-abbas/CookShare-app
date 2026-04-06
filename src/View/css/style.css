@@ -103,6 +103,20 @@ input {
     width: 125px;
 }
 
+@media (max-width: 768px) {
+    .nav-item {
+        width: 40%;
+    }
+    .logoutBtn, .profileBtn {
+        width: 100%;
+    }
+    .navbar-collapse ul {
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+}
+
 
 
 
