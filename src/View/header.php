@@ -17,10 +17,10 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
     </script>
     <?php unset($_SESSION['toast']); endif; ?>
 <header>
-    <nav class="navbar navbar-expand-lg p-2 p-lg-4 p-md-3 text-light">
+    <nav class="navbar navbar-expand-lg p-2 p-md-3 p-lg-4 text-light">
         <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
             <a class="navbar-brand text-light fs-2 logo" href="index.php">&#127869; CookShare</a>
-            <button class="navbar-toggler mt-2 mb-2 mt-md-0" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler mt-2 mb-3 mt-md-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

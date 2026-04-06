@@ -107,8 +107,11 @@ input {
     .nav-item {
         width: 40%;
     }
-    .logoutBtn, .profileBtn {
+    .logoutBtn, .profileBtn, .loginBtn, .registerBtn {
         width: 100%;
+    }
+    .dropdown {
+        width: 60%;
     }
     .navbar-collapse ul {
         align-items: center;
