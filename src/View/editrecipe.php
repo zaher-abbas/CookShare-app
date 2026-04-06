@@ -88,10 +88,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
             </div>
             <div class="text-center">
                 <?php if ($action == 'addrecipe'): ?>
-                    <button type="submit" class="btn btn-success">Add Recipe</button>
+                    <button type="submit" class="btn btn-success w-100">Add Recipe</button>
                     <a href="index.php?action=home" class="ms-3 btn btn-outline-danger btn-md">Back</a>
                 <?php elseif ($action == 'updaterecipe'): ?>
-                    <button type="submit" class="btn btn-success">Edit Recipe</button>
+                    <button type="submit" class="btn btn-success w-100">Edit Recipe</button>
                     <a href="index.php?action=userrecipes" class="ms-3 btn btn-outline-danger btn-md">Back</a>
                 <?php endif; ?></div>
         </form>

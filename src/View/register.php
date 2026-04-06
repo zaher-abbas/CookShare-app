@@ -49,7 +49,7 @@
                 <label class="form-check-label" for="cgu">I agree to the Terms and Conditions and the Privacy Policy</label>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-success">Register</button>
+                <button type="submit" class="btn btn-success w-100">Register</button>
             </div>
         </form>
     </section>
