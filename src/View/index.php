@@ -42,13 +42,6 @@ if ($db) {
 require_once 'header.php';
 
 switch ($action) {
-    case 'home':
-        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
-            $recipeController->showAllRecipes();
-        } else {
-            require_once 'welcome.php';
-        }
-        break;
     case 'register':
         $userController->register();
         break;
@@ -56,7 +49,15 @@ switch ($action) {
         $userController->login();
         break;
     case 'logout':
-        $userController->logout();
+        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
+            $userController->logout();
+        } else {
+            $_SESSION['toast'] = [
+                'type' => 'danger',
+                'message' => 'You dont have the permission to access this page.'
+            ];
+            header('Location: index.php?action=error');
+        }
         break;
     case 'addrecipe':
     case 'updaterecipe':
@@ -221,6 +222,7 @@ switch ($action) {
     case 'error':
         require_once 'error.php';
         break;
+    case 'home':
     default:
         if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
             $recipeController->showAllRecipes();
