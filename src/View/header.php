@@ -79,7 +79,7 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                                  alt="User Profile Picture">
                           <?= $user ?></a>
                             </li>
-                         <li class='nav-item ms-xxl-4 ms-xl-3 ms-lg-3 mt-3 mt-md-3 mt-lg-0 logoutBtn'>
+                         <li class='nav-item ms-xxl-4 ms-xl-3 ms-lg-3 mt-2 mt-md-2 mt-lg-0 logoutBtn'>
                                 <a class='btn btn-outline-danger btn-md p-2 rounded-2 mt-0 w-100 fw-bold'
                                    href='index.php?action=logout'>Logout &#8618;</a>
                         </li>
