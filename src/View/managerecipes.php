@@ -20,8 +20,9 @@
                                 <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                             </span>
                         </div>
-                        <div>
-                            <a href="index.php?action=updaterecipe&id=<?= $recipe['id'] ?>" class="btn btn-warning me-3 editBtn">Edit</a>
+                        <div class="d-flex flex-column flex-sm-row flex-md-row flex-lg-row justify-content-center align-items-center gap-3">
+
+                            <a href="index.php?action=updaterecipe&id=<?= $recipe['id'] ?>" class="btn btn-warning me-0 me-sm-3 me-md-3 me-lg-3 editBtn">Edit</a>
                             <button data-bs-toggle="modal" data-bs-target="#deleteModal"
                                     class="btn btn-danger deleteBtn">Delete
                             </button>

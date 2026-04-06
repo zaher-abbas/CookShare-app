@@ -15,7 +15,7 @@ $_COOKIE['ErrorAddingRecipe'] = '';
                            href="index.php?action=recipe&id=<?= $recipe['id'] ?>">
                             &#129379; <?= $recipe['name'] ?></a>
                     </div>
-                    <div>
+                    <div class="d-flex justify-content-end align-items-center">
                         <a href="index.php?action=updaterecipe&id=<?= $recipe['id'] ?>" class="btn btn-warning me-3 editBtn">Edit</a>
                         <button data-bs-toggle="modal" data-bs-target="#deleteModal"
                                 class="btn btn-danger deleteBtn">Delete
