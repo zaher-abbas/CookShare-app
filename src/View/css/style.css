@@ -18,6 +18,10 @@ nav.navbar {
     font-weight: bolder;
 }
 
+.logo-icon {
+    font-size: 42px !important;
+}
+
 footer {
     background-color: #1a392a;
     color: #ffffff;
