@@ -21,6 +21,10 @@ class RecipeController
         $action = $_GET['action'] ?? null;
         if ($action == 'updaterecipe' && $id) {
             $recipe = $this->recipe->getRecipeById($id);
+            if (($recipe['user_id'] != $_SESSION['userId']) && ($_SESSION['userRole'] != 'admin')) {
+                require_once './../View/error.php';
+                exit();
+            }
         }
         elseif (!$id && $action !== 'addrecipe')
         {
