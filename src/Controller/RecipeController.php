@@ -19,8 +19,13 @@ class RecipeController
         $recipe = null;
         $id = $_GET['id'] ?? null;
         $action = $_GET['action'] ?? null;
-        if ($action == 'updaterecipe') {
+        if ($action == 'updaterecipe' && $id) {
             $recipe = $this->recipe->getRecipeById($id);
+        }
+        elseif (!$id && $action !== 'addrecipe')
+        {
+            require_once './../View/error.php';
+            exit();
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

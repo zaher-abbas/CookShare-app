@@ -11,7 +11,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
         <?php elseif ($action == 'updaterecipe'): ?>
             <h3 class="text-center alert alert-light w-75 mx-auto">&#9998; Edit Recipe</h3>
         <?php endif; ?>
-        <form class="edit-form p-3 p-lg-5 p-md-4 rounded-3 w-100 mx-auto" method="post" action="" enctype="multipart/form-data">
+        <form class="edit-form p-3 pb-1 p-md-4 pb-md-1 p-lg-5 pb-lg-1 rounded-3 w-100 mx-auto" method="post" action="" enctype="multipart/form-data">
             <?php
             if (!empty($errors))
             foreach ($errors as $error)
@@ -88,11 +88,18 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
             </div>
             <div class="text-center">
                 <?php if ($action == 'addrecipe'): ?>
-                    <button type="submit" class="btn btn-success w-100">Add Recipe</button>
-                    <a href="index.php?action=home" class="ms-3 btn btn-outline-danger btn-md">Back</a>
-                <?php elseif ($action == 'updaterecipe'): ?>
-                    <button type="submit" class="btn btn-success w-100">Edit Recipe</button>
-                    <a href="index.php?action=userrecipes" class="ms-3 btn btn-outline-danger btn-md">Back</a>
+                    <div>
+                        <button type="submit" class="btn btn-success w-100">Add Recipe</button>
+                    </div>
+                    <div class="my-3">
+                        <a href="index.php?action=userrecipes" class="ms-3 btn btn-outline-danger btn-md">Back</a>
+                    </div>                <?php elseif ($action == 'updaterecipe'): ?>
+                    <div>
+                        <button type="submit" class="btn btn-success w-100">Edit Recipe</button>
+                    </div>
+                    <div class="my-3">
+                        <a href="index.php?action=userrecipes" class="ms-3 btn btn-outline-danger btn-md">Back</a>
+                    </div>
                 <?php endif; ?></div>
         </form>
     </section>
