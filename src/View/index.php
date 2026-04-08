@@ -119,7 +119,7 @@ switch ($action) {
         break;
     case 'addtofavorites':
         if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
-            $recipeController->addtoFavorites();
+            $recipeController->addToFavorites();
         } else {
             $_SESSION['toast'] = [
                 'type' => 'danger',

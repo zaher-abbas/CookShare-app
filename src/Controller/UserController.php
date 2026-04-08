@@ -250,17 +250,12 @@ class UserController
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            if ($_SESSION['userRole'] === 'admin') {
-                $this->user->deleteUser($id);
-                $_SESSION['toast'] = [
-                    'type' => 'success',
-                    'message' => 'User deleted successfully.'
-                ];
-                header('Location: index.php?action=manageusers');
-            }
-            else {
-                header('Location: index.php?action=error');
-            }
+            $this->user->deleteUser($id);
+            $_SESSION['toast'] = [
+                'type' => 'success',
+                'message' => 'User deleted successfully.'
+            ];
+            header('Location: index.php?action=manageusers');
         }
     }
 }

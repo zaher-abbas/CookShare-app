@@ -230,7 +230,7 @@ class RecipeController
     require_once './../View/dashboard.php';
     }
 
-    public function addtoFavorites(): void
+    public function addToFavorites(): void
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
