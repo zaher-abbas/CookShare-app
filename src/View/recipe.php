@@ -50,10 +50,10 @@
                                     <span>
                                      <span>
                                             <?php if ($recipe['photo']): ?>
-                                                <img src="./../View/img/<?= $recipe['photo'] ?>"
+                                                <img src="<?= BASE_URL . '/img/' . $recipe['photo']; ?>"
                                                      alt="User Profile Picture" class="rounded-circle profile-img me-0">
                                             <?php else: ?>
-                                                <img src="img/default_user_image.jpg"
+                                                <img src="<?= BASE_URL . '/img/' . 'default_user_image.jpg' ?>"
                                                      alt="User Profile Picture" class="rounded-circle profile-img me-0">
                                             <?php endif; ?>
                                          </span>
