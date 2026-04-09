@@ -90,3 +90,8 @@ ALTER TABLE `recipes`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `FK_roleID` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- Insert the default roles in the required order: admin first, then user
+INSERT INTO `roles` (`name`) VALUES
+                                 ('admin'),
+                                 ('user');
