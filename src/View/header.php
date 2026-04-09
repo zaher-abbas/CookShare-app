@@ -20,7 +20,7 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
     <nav class="navbar navbar-expand-lg p-2 p-md-3 p-lg-4 text-light">
         <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
             <a class="navbar-brand text-light fs-1 fw-bold logo" href="index.php"><span class="logo-icon">🍽️</span> CookShare</a>
-            <button class="navbar-toggler mt-2 mb-3 mt-md-0" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler fw-bold mt-2 mb-3 mt-md-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -74,11 +74,16 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
                 <span class="d-flex align-items-center justify-content-center">
                     <?php if (!$isConnected): ?>
                         <ul class='navbar-nav mt-3 mt-lg-0 my-md-0 mb-lg-0 mb-md-0'>
-                          <li class='nav-item me-lg-3 me-md-3 mb-3 mb-lg-0 mb-md-0 registerBtn'>
-                                <a class='btn btn-outline-primary border-bottom border-3 rounded-bottom-5 text-light fw-bold mt-0 w-100' href='index.php?action=register'>&#128221; Register</a>
+                          <li class='nav-item me-lg-3 me-md-3 mb-2 mb-lg-0 mb-md-0 registerBtn'>
+                                <a class='btn btn-outline-primary border-bottom border-3 rounded-bottom-5 text-light fw-bold mt-0 w-100'
+                                   href='index.php?action=register'>&#128221; Register</a>
                                 </li>
+                            <div class='w-50 divider'>
+                           <hr>
+                           </div>
                           <li class='nav-item  loginBtn'>
-                                <a class='btn btn-outline-success border-bottom border-3 rounded-bottom-5 text-light fw-bold mt-0 w-100' href='index.php?action=login'>&#128273; Login</a>
+                                <a class='btn btn-outline-success border-bottom border-3 rounded-bottom-5 text-light fw-bold mt-0 w-100'
+                                   href='index.php?action=login'>&#128273; Login</a>
                                 </li>
                         </ul>
                     <?php else: ?>

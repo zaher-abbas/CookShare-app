@@ -107,7 +107,25 @@ input {
     width: 125px;
 }
 
+.navbar-toggler {
+    background-color: #37663b !important;
+    border: 2px solid #fff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 2px rgba(44,85,48,0.08);
+    padding: 0.5rem 1rem !important;
+    transition: background 0.2s, border 0.2s, transform 0.3s;
+}
+
+.navbar-toggler:focus, .navbar-toggler:hover {
+    background-color: #2c5530 !important;
+    border-color: #ffd700 !important;
+    transform: scale(1.07);
+}
+
 @media (max-width: 768px) {
+    .auth-form, .auth-title {
+        width: 90% !important;
+    }
     .nav-item {
         width: 50%;
     }
