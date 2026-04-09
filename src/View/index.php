@@ -22,6 +22,10 @@ if ($db) {
     echo "Database connection failed.";
     exit();
 }
+if ($action === 'logout') {
+    $userController->logout();
+    exit();
+}
 ?>
 
 <!doctype html>
@@ -47,17 +51,6 @@ switch ($action) {
         break;
     case 'login':
         $userController->login();
-        break;
-    case 'logout':
-        if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true) {
-            $userController->logout();
-        } else {
-            $_SESSION['toast'] = [
-                'type' => 'danger',
-                'message' => 'You dont have the permission to access this page.'
-            ];
-            header('Location: index.php?action=error');
-        }
         break;
     case 'addrecipe':
     case 'updaterecipe':

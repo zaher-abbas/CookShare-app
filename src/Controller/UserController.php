@@ -219,9 +219,10 @@ class UserController
     }
     public function logout(): void
     {
-        setcookie("loggedOut", "true", time() + 2, "/");;
         session_destroy();
-        Header('Location: index.php?action=home');
+        setcookie("loggedOut", "true", time() + 2);
+        header('Location: index.php?action=home');
+        exit();
     }
 
     public function persistUserInfo(string $firstname, string $lastname, string $email): void

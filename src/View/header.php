@@ -1,5 +1,5 @@
 <?php
-$user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "Guest";
+$user = $_SESSION['userFirstName'] ?? "Guest";
 $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true;
 ?>
 <?php if (!empty($_SESSION['toast'])): ?>
