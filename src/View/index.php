@@ -33,6 +33,10 @@ if ($action === 'logout') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CookShare est une plateforme pour découvrir, partager et gérer des recettes maison facilement.">
+    <meta name="author" content="Zaher ABBAS">
+    <meta name="keywords" content="CookShare, recettes, cuisine, partage de recettes, recettes maison, recettes en ligne, application de recettes, communauté culinaire">
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
