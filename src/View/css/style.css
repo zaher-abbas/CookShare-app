@@ -147,6 +147,9 @@ input {
         margin-top: 5px;
         margin-bottom: 10px;
     }
+    .edit-form, .edit-title {
+        width: 90% !important;
+    }
 }
 
 @media (min-width: 992px) {
