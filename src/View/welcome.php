@@ -2,7 +2,7 @@
 ?>
 <main class="flex-grow-1 d-flex justify-content-center align-items-center">
     <div class="row justify-content-center text-center my-3">
-        <div class="col-10 col-sm-10 col-md-8 col-lg-8">
+        <div class="col-11 col-sm-11 col-md-8 col-lg-8">
             <section class="hero-section p-3 mx-2 my-2 p-lg-5 p-md-3 p-sm-4 rounded-5">
                 <h1 class="display-2 fw-bold mb-4">Welcome to CookShare &#127869;</h1>
                 <p class="lead my-5">Discover tasty recipes 🥗 from kitchens around the world 🌍, share your signature
@@ -15,7 +15,6 @@
                     <a href="index.php?action=login"
                        class="btn btn-outline-light btn-lg px-4 py-2 btnHero">Login</a>
                 </div>
-
             </section>
         </div>
     </div>
