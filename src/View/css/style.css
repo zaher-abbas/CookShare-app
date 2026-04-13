@@ -146,6 +146,9 @@ input {
     .edit-form, .edit-title {
         width: 90% !important;
     }
+    .recipe-author {
+        font-size: 14px;
+    }
 }
 
 @media (min-width: 992px) {
