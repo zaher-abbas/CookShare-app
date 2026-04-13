@@ -11,8 +11,13 @@
             <article class="card my-4 recipe-details bg-sage-light p-3 p-sm-2 p-md-4 p-lg-5 border-light shadow-sm">
                 <div class="row g-1">
                     <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
+                        <?php if ($recipe['image'] !== ''): ?>
                         <img src="<?= BASE_URL . '/img/' . $recipe['image']; ?>" class="img-fluid rounded-start"
                              alt="<?= htmlspecialchars($recipe['name']) ?>">
+                        <?php else: ?>
+                        <img src="<?= BASE_URL . '/img/' . 'recipe_placeholder.png' ?>" class="img-fluid rounded-start"
+                        alt="<?= htmlspecialchars($recipe['name']) ?>">
+                        <?php endif; ?>
                     </div>
                     <div class="col-12 col-md-6 col-lg-7">
                         <div class="card-body">
@@ -43,7 +48,7 @@
                                     break;
                             } ?>
                             <br>
-                            <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
+                            <h5 class="recipe-author my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
                                 <span>
                                     <span class="me-2">Contributed by</span>
                                     <span>
