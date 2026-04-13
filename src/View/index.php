@@ -33,7 +33,15 @@ switch ($action) {
         $userController->login();
         break;
     case 'logout':
-        $userController->logout();
+        if (isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === true) {
+            $userController->logout();
+        } else {
+            $_SESSION['toast'] = [
+                    'type' => 'danger',
+                    'message' => 'You dont have the permission to access this page.'
+            ];
+            header('Location: index.php?action=error');
+        }
         break;
     case 'addrecipe':
     case 'updaterecipe':
