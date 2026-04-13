@@ -64,8 +64,7 @@
                                         <span class="me-2">
                                             <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span>
-                                    </span>
-                                    <span>on <time class="bg-light text-secondary">
+                                    </span><span>on <time class="bg-light text-secondary">
                                             &#128198; <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
                                         </time>
                                     </span>
