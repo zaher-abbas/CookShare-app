@@ -8,7 +8,7 @@
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container">
         <?php if ($recipe !== null): ?>
-            <article class="card my-4 recipe-details bg-sage-light p-3 p-sm-2 p-md-4 p-lg-5 border-light shadow-sm">
+            <article class="card my-4 recipe-details bg-sage-light p-2 p-md-4 p-lg-5 border-light shadow-sm">
                 <div class="row g-1">
                     <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
                         <?php if ($recipe['image'] !== ''): ?>
@@ -65,8 +65,8 @@
                                             <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span>
                                     </span>
-                                    <span>on
-                                        <time class="badge bg-light text-secondary border">
+                                    <span>on &#128197;
+                                        <time class="badge bg-light text-secondary ms-1">
                                             <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
                                         </time>
                                     </span>
