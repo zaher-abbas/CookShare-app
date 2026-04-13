@@ -149,6 +149,10 @@ input {
     .recipe-author {
         font-size: 14px;
     }
+    .card-body {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
 }
 
 @media (min-width: 992px) {
