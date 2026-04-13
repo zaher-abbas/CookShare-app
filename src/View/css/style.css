@@ -147,8 +147,8 @@ input {
         width: 90% !important;
     }
     .recipe-author {
-        font-size: 10px;
-        font-weight: normal;
+        font-size: 12px !important;
+        font-weight: normal !important;
     }
 }
 
