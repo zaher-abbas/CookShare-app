@@ -17,8 +17,8 @@ $isConnected = isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === t
     </script>
     <?php unset($_SESSION['toast']); endif; ?>
 <header>
-    <nav class="navbar navbar-expand-lg p-2 p-md-3 p-lg-4 text-light">
-        <div class="container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-md-between">
+    <nav class="navbar navbar-expand-lg p-2 p-md-3 p-lg-4">
+        <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-md-between">
             <a class="navbar-brand text-light fs-1 fw-bold logo" href="index.php"><span class="logo-icon">🍽️</span> CookShare</a>
             <button class="navbar-toggler fw-bold mt-2 mb-3 mt-md-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

@@ -13,6 +13,17 @@ nav.navbar {
     color: #ffffff;
 }
 
+a.btn-outline-warning:focus,
+a.btn.btn-outline-warning:hover,
+a.btn-outline-primary:focus,
+a.btn-outline-primary:hover,
+a.btn-outline-success:hover,
+a.btn-outline-success:focus,
+a.btn-outline-info:focus,
+a.btn-outline-info:hover{
+    color: black !important;
+}
+
 .logo {
     font-size: 34px !important;
     font-weight: bolder;
