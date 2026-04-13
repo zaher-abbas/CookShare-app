@@ -84,7 +84,7 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body px-0 px-md-2 px-lg-4">
                         <h2 class="mb-3 ">&#128195; Instructions</h2>
                         <div class="border-start border-4 border-success ps-3 py-3 bg-light rounded-3 shadow-sm">
                         <p class="card-text"><?= htmlspecialchars($recipe['description']) ?></p>
