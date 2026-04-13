@@ -8,7 +8,7 @@
 <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <section class="container">
         <?php if ($recipe !== null): ?>
-            <article class="card my-4 recipe-details p-3 p-sm-2">
+            <article class="card my-4 recipe-details bg-sage-light p-3 p-sm-2 p-md-4 p-lg-5 border-light shadow-sm">
                 <div class="row g-1">
                     <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
                         <img src="<?= BASE_URL . '/img/' . $recipe['image']; ?>" class="img-fluid rounded-start"
@@ -41,7 +41,6 @@
                                 case 'Hard':
                                     echo '<span class="badge rounded-pill text-bg-danger p-3 fs-6">&#127919; Hard</span>';
                                     break;
-
                             } ?>
                             <br>
                             <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
