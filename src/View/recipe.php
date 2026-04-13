@@ -20,7 +20,7 @@
                         <?php endif; ?>
                     </div>
                     <div class="col-12 col-md-6 col-lg-7">
-                        <div class="card-body">
+                        <div class="card-body px-0 px-md-2 px-lg-4">
                             <div class="d-flex justify-content-lg-end justify-content-md-center justify-content-sm-center mb-md-4 mb-sm-4">
                                 <?php if (!$isRecipeFavorite): ?>
                                     <a href="index.php?action=addtofavorites&id=<?= $recipe['id'] ?>"
@@ -48,7 +48,7 @@
                                     break;
                             } ?>
                             <br>
-                            <h5 class="recipe-author my-4 bg-light text-secondary rounded-3 d-inline-block p-2">
+                            <h5 class="recipe-author my-4 bg-light text-secondary rounded-3 d-inline-block p-1 p-md-2 p-lg-2">
                                 <span>
                                     <span class="me-2">Contributed by</span>
                                     <span>
