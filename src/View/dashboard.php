@@ -78,7 +78,7 @@ $user = isset($_SESSION['userFirstName']) ? $_SESSION['userFirstName'] : "";
                                         </span></p>
                                 <div class="text-center my-4">
                                     <a href="index.php?action=recipe&id=<?= $recipe['id'] ?>"
-                                       class="btn btn-success w-60">Check
+                                       class="btn btn-success w-100">Check
                                         this Recipe</a>
                                 </div>
                             </div>
