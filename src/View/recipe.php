@@ -62,7 +62,7 @@
                                         </span>
                                     </span>
                                     <span>
-                                        on
+                                        &#128197; on
                                         <time class="badge bg-light text-secondary border">
                                             <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
                                         </time>

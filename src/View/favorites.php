@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <small class="text-body-secondary">Submitted on <?= $recipe['created_at'] ?></small>
+                                <small class="text-body-secondary">&#128197; Date added <?= $recipe['created_at'] ?></small>
                             </div>
                         </div>
                     </article>
