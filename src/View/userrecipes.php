@@ -11,7 +11,7 @@ $_COOKIE['ErrorAddingRecipe'] = '';
             <?php foreach ($userRecipes as $recipe): ?>
                 <div class="list-group-item list-group-item-action p-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
                     <div class="w-50">
-                        <a class="text-decoration-none text-dark"
+                        <a class="text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                            href="index.php?action=recipe&id=<?= $recipe['id'] ?>">
                             &#129379; <?= $recipe['name'] ?></a>
                     </div>
