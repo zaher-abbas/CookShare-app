@@ -52,7 +52,7 @@ class Recipe
     {
         $sql = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id WHERE recipes.name LIKE :query";
         $statement = $this->db->prepare($sql);
-        $statement->bindValue(':query', '%' . $query . '%');
+        $statement->bindValue(':query', '%' . $query . '%'); //bindvalue
         $statement->execute();
         return $statement->fetchAll() ?? null;
     }
