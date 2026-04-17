@@ -50,7 +50,7 @@
                             <br>
                             <h5 class="recipe-author my-4 bg-light text-secondary rounded-3 d-inline-block p-1 p-md-2 p-lg-2">
                                 <span>
-                                    <span class="me-2">Contributed by</span>
+                                    <span class="me-1">Contributed by</span>
                                     <span>
                                      <span>
                                             <?php if ($recipe['photo']): ?>
@@ -61,7 +61,7 @@
                                                      alt="User Profile Picture" class="rounded-circle profile-img me-0">
                                             <?php endif; ?>
                                          </span>
-                                        <span class="me-2">
+                                        <span class="me-1">
                                             <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span>
                                     </span><span>on <time class="bg-light text-secondary">
