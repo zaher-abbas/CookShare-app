@@ -64,7 +64,7 @@
                                         </span>
                                 </h5>
                             <br>
-                                <h5 class="w-auto d-inline-block">On
+                                <h5 class="w-auto d-inline-block">
                                     <time class="bg-light text-secondary">
                                         &#128198; <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
                                     </time>
