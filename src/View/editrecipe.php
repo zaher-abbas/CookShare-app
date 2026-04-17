@@ -35,9 +35,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
             <div class="my-3 p-2 d-flex flex-column justify-content-center align-items-start">
                 <?php if ($recipe && $recipe['image'] != ''): ?>
                     <p class="text-center badge text-bg-success p-2">Current Image</p>
-                    <p class="badge text-bg-info fst-italic p-2">If you don't upload a new image, the current one will
-                        be
-                        kept!</p>
                     <img src="<?= BASE_URL . '/img/' . $recipe['image'] ?>" alt="Recipe Image" class="w-25 rounded mb-2">
                 <?php endif; ?>
             </div>
