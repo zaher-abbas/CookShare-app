@@ -5,7 +5,7 @@
 /** @var boolean $isRecipeFavorite */
 
 ?>
-<main class="flex-grow-1 d-flex align-items-center justify-content-center">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center" xmlns="http://www.w3.org/1999/html">
     <section class="container">
         <?php if ($recipe !== null): ?>
             <article class="card my-4 recipe-details bg-sage-light p-2 p-md-4 p-lg-5 border-light shadow-sm">
@@ -48,10 +48,8 @@
                                     break;
                             } ?>
                             <br>
-                            <h5 class="recipe-author my-4 bg-light text-secondary rounded-3 d-inline-block p-1 p-md-2 p-lg-2">
-                                <span>
-                                    <span class="me-2">Contributed by</span>
-                                    <span>
+                                <h5 class="w-auto d-inline-block my-4 bg-light text-secondary rounded-3 p-1 p-md-2 p-lg-2">
+                                    Contributed by
                                      <span>
                                             <?php if ($recipe['photo']): ?>
                                                 <img src="<?= BASE_URL . '/img/' . $recipe['photo']; ?>"
@@ -61,15 +59,16 @@
                                                      alt="User Profile Picture" class="rounded-circle profile-img me-0">
                                             <?php endif; ?>
                                          </span>
-                                        <span class="me-2">
+                                        <span>
                                             <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span>
-                                    </span><span>on <time class="bg-light text-secondary">
-                                            &#128198; <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
-                                        </time>
-                                    </span>
-                                </span>
-                            </h5>
+                                </h5>
+                            <br>
+                                <h5 class="w-auto d-inline-block">
+                                    <time class="bg-light text-secondary">
+                                        &#128198; <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
+                                    </time>
+                                </h5>
                             <br><br>
                             <h2 class="mb-3">&#129379; Ingredients</h2>
                             <?php if ($recipeIngredients): ?>

@@ -9,13 +9,17 @@
         <div class="container">
             <section class="list-group">
                 <?php foreach ($users as $user): ?>
-                    <div class="list-group-item list-group-item-action p-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
-                        <div class="w-45">
-                            <div class="text-dark">&#128100; <?= htmlspecialchars($user['firstname']) . ' ' . htmlspecialchars($user['lastname']) ?></div>
+                    <div class="list-group-item list-group-item-action p-1 p-md-2 p-lg-3 mb-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center text-center userName">
+                            <div class="text-dark">&#128100;</div>
+                            <div class="text-dark">
+                                <?= htmlspecialchars($user['firstname']) . ' ' . htmlspecialchars($user['lastname']) ?>
+                            </div>
                         </div>
-                        <div class="w-45">
-                            <span class="text-dark"><span class="fs-5">&#9993;</span> <?= htmlspecialchars($user['email']) ?></span>
-                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center text-center userMail">
+                                <div>&#9993;</div>
+                                <div> <?= htmlspecialchars($user['email']) ?></div>
+                            </div>
                         <div class="w-15">
                             <button data-bs-toggle="modal" data-bs-target="#deleteModal"
                                     class="btn btn-danger deleteBtn">Delete

@@ -9,14 +9,14 @@
         <div class="container">
             <section class="list-group">
                 <?php foreach ($recipes as $recipe): ?>
-                    <div class="list-group-item list-group-item-action p-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
+                    <div class="list-group-item list-group-item-action p-1 p-md-2 p-lg-3 mb-3 d-flex justify-content-between align-items-center cursor-pointer">
                         <div class="w-25">
                             <a class="text-decoration-none text-dark"
                                href="index.php?action=recipe&id=<?= $recipe['id'] ?>">
                                 &#129379; <?= htmlspecialchars($recipe['name']) ?></a>
                         </div>
                         <div class="w-25">
-                            <span>Contributed by: &#128100;
+                            <span>By: &#128100;
                                 <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                             </span>
                         </div>

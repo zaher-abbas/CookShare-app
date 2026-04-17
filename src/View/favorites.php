@@ -15,7 +15,7 @@
                             <img src="<?= BASE_URL . '/img/' . $recipe['image'] ?>"
                                  class="card-img-top rounded-start w-100 fixed-img"
                                  alt="">
-                            <div class="card-body d-flex flex-column justify-content-between pb-0">
+                            <div class="card-body d-flex flex-column justify-content-between pb-0 px-0 px-md-2 px-lg-3">
                                 <h5 class="card-title fw-bold"><?= htmlspecialchars($recipe['name']) ?></h5>
                                 <div>
                                     <span class="badge rounded-pill text-bg-primary fs-6 p-2 mt-1 me-2">&#8987; <?= htmlspecialchars($recipe['duration']) ?> min</span>
@@ -42,7 +42,9 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <small class="text-body-secondary">&#128197; Date added <?= $recipe['created_at'] ?></small>
+                                <small class="text-body-secondary">&#128197; Date added
+                                    <time><?= date('d/m/Y H:i', strtotime($recipe['created_at'])) ?></time>
+                                </small>
                             </div>
                         </div>
                     </article>

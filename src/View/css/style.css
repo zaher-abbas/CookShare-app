@@ -158,9 +158,8 @@ input {
     .edit-form, .edit-title {
         width: 90% !important;
     }
-    .recipe-author {
-        font-size: 13px !important;
-        font-weight: normal !important;
+    .userMail, .userName {
+        font-size: 12px;
     }
 }
 
