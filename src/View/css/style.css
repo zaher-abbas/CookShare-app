@@ -158,6 +158,9 @@ input {
     .edit-form, .edit-title {
         width: 90% !important;
     }
+    .userMail, .userName {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 992px) {
