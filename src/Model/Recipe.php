@@ -50,7 +50,7 @@ class Recipe
 
     public function searchRecipeByName(string $query): array|null
     {
-        $sql = "SELECT recipes.*, firstname, lastname FROM recipe JOIN users u ON u.id = recipes.user_id WHERE recipes.name LIKE :query";
+        $sql = "SELECT recipes.*, firstname, lastname FROM recipes JOIN users u ON u.id = recipes.user_id WHERE recipes.name LIKE :query";
         $statement = $this->db->prepare($sql);
         $statement->bindValue(':query', '%' . $query . '%');
         $statement->execute();
