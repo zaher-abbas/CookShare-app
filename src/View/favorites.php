@@ -41,8 +41,10 @@
                                         this Recipe!</a>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-body-secondary">&#128197; Date added <?= $recipe['created_at'] ?></small>
+                            <div class="card-footer">                                    <time class="fs-6"><?= date('d/m/Y H:i', strtotime($recipe['created_at'])) ?></time>
+
+                                <small class="text-body-secondary">
+                                </small>
                             </div>
                         </div>
                     </article>
