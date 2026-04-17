@@ -43,7 +43,7 @@
                             </div>
                             <div class="card-footer">
                                 <small class="text-body-secondary">&#128197; Date added
-                                    <time class="fs-6"><?= date('d/m/Y H:i', strtotime($recipe['created_at'])) ?></time>
+                                    <time><?= date('d/m/Y H:i', strtotime($recipe['created_at'])) ?></time>
                                 </small>
                             </div>
                         </div>
