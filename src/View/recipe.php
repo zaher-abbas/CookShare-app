@@ -48,7 +48,7 @@
                                     break;
                             } ?>
                             <br>
-                            <h5 class="recipe-author my-4 bg-light text-secondary rounded-3 d-inline-block p-1 p-md-2 p-lg-2">
+                            <h5 class="my-4 bg-light text-secondary rounded-3 d-inline-block p-1 p-md-2 p-lg-2">
                                 <span>
                                     <span class="me-1">Contributed by</span>
                                     <span>
@@ -64,11 +64,14 @@
                                         <span class="me-1">
                                             <?= htmlspecialchars($recipe['firstname']) . ' ' . htmlspecialchars($recipe['lastname']) ?>
                                         </span>
-                                    </span><span>on <time class="bg-light text-secondary">
+                                    </span>
+                                    <div>
+                                    <h5>On <time class="bg-light text-secondary">
                                             &#128198; <?= htmlspecialchars(date('d/m/Y', strtotime($recipe['created_at']))) ?>
                                         </time>
-                                    </span>
-                                </span>
+                                    </h5>
+
+                                </div>
                             </h5>
                             <br><br>
                             <h2 class="mb-3">&#129379; Ingredients</h2>
